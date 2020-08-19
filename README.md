@@ -46,3 +46,16 @@ As a User
 So that I can tell buyers what the item is
 I want to be able to create a description for the item
 ```
+```
+As a User
+So that I can find out more about the item
+I want to be able to message the buyer to discuss the details
+```
+```
+As a User
+So that I can talk to my customers
+I want to be able to message the customers to discuss the details
+```
+
+
+
