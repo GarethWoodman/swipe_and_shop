@@ -58,4 +58,16 @@ I want to be able to message the customers to discuss the details
 ```
 
 
+## Database
+
+`USER` table:
+
+| field | type |
+| --- | --- |
+| USER ID | PRIMARY SERIAL ID |
+| EMAIL | VARCHAR(200) |
+| PASSWORD | VARCHAR(60) |
+| USERNAME | VARCHAR(100) |
+| REAL NAME | VARCHAR(100) |
+| PICTURE | URL |
 
