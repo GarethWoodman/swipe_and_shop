@@ -5,7 +5,7 @@ An app to buy and sell items using a Tinder style selection process
 
 - MongoDB
 - Express JS
-- React JS
+- React JS/React Native
 - Node JS
 - Bootstrap
 - Cypress
