@@ -71,3 +71,15 @@ I want to be able to message the customers to discuss the details
 | REAL NAME | VARCHAR(100) |
 | PICTURE | URL |
 
+
+`ITEM ADVERTISEMENT` table:
+
+| field | type |
+| --- | --- |
+| ITEM ID | PRIMARY SERIAL ID |
+| USER ID (seller) | VARCHAR(100) (FOREIGN KEY) |
+| NAME OF ITEM | VARCHAR(100) |
+| DESCRIPTION | VARCHAR(250) |
+| PRICE | Integer |
+| EXPIRY DATE | VARCHAR |
+| PICTURE | URL |
