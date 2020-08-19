@@ -1,6 +1,15 @@
 # Swipe and Shop
 An app to buy and sell items using a Tinder style selection process
 
+# Tech Stack:
+
+- MongoDB
+- Express JS
+- React JS
+- Node JS
+- Bootstrap
+- Cypress
+
 ## User Stores (Behavioural Driven Development)
 ```
 As a User
