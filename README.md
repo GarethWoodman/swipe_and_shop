@@ -70,6 +70,7 @@ I want to be able to message the customers to discuss the details
 | USERNAME | VARCHAR(100) |
 | REAL NAME | VARCHAR(100) |
 | PICTURE | URL |
+| LOCATION | VARCHAR(100) |
 
 
 `ITEM ADVERTISEMENT` table:
