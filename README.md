@@ -99,3 +99,11 @@ I want to be able to message the customers to discuss the details
 | Item | @name @price @description|
 | | .addItem(user,name, description, price) |
 | | .viewItems(searchCriteria) |
+
+| class | methods |
+| --- | --- |
+| Chat | @messages @participants |
+| | .sendMessage(user, time) |
+
+
+
