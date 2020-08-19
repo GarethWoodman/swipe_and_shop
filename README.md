@@ -84,3 +84,18 @@ I want to be able to message the customers to discuss the details
 | PRICE | Integer |
 | EXPIRY DATE | VARCHAR |
 | PICTURE | URL |
+
+## Domain Models 
+
+| class | methods |
+| --- | --- |
+| user | @itemsToBuy @itemsToSell |
+| | .logIn	 |
+| | .signUp |
+
+
+| class | methods |
+| --- | --- |
+| Item | @name @price @description|
+| | .addItem(user,name, description, price) |
+| | .viewItems(searchCriteria) |
