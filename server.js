@@ -7,7 +7,8 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-const MONGODB_URI = "mongodb+srv://andrewhulme:MerryChristmas@swipeandshop.rtrxp.mongodb.net/test?retryWrites=true&w=majority";
+const MONGODB_URI =
+  "mongodb+srv://andrewhulme:MerryChristmas@swipeandshop.rtrxp.mongodb.net/test?retryWrites=true&w=majority";
 
 mongoose.connect(MONGODB_URI || "mongodb://localhost/swipe_and_shop", {
   userNewUrlParser: true,
@@ -42,23 +43,26 @@ const data = {
 
 const newBlogPost = new BlogPost(data); //instance of the model
 
-newBlogPost.save((error) => {
-  if (error) {
-    console.log("Oops, something happened");
-  } else {
-    console.log("Data has been saved!");
-  }
-});
+// newBlogPost.save((error) => {
+//   if (error) {
+//     console.log("Oops, something happened");
+//   } else {
+//     console.log("Data has been saved!");
+//   }
+// });
 
 // HTTP request logger
 app.use(morgan("tiny"));
 
 app.get("/api", (req, res) => {
-  const data = {
-    username: "accimeesterlin",
-    age: 5,
-  };
-  res.json(data);
+  BlogPost.find({})
+    .then((data) => {
+      console.log("Data: ", data);
+      res.json(data);
+    })
+    .catch((error) => {
+      console.log("error: ", error);
+    });
 });
 
 app.get("/api/name", (req, res) => {
