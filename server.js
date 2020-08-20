@@ -7,8 +7,7 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-const MONGODB_URI =
-  "mongodb+srv://andrewhulme:MerryChristmas@swipeandshop.rtrxp.mongodb.net/<dbname>?retryWrites=true&w=majority";
+const MONGODB_URI = "mongodb+srv://andrewhulme:MerryChristmas@swipeandshop.rtrxp.mongodb.net/test?retryWrites=true&w=majority";
 
 mongoose.connect(MONGODB_URI || "mongodb://localhost/swipe_and_shop", {
   userNewUrlParser: true,
