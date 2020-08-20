@@ -19,6 +19,38 @@ mongoose.connection.on("connected", () => {
   console.log("Mongoose is connected!!!!");
 });
 
+// Schema
+const Schema = mongoose.Schema;
+const BlogPostSchema = new Schema({
+  title: String,
+  body: String,
+  date: {
+    type: String,
+    default: Date.now(),
+  },
+});
+
+// Model
+const BlogPost = mongoose.model("BlogPost", BlogPostSchema);
+
+// Saving data to our mongo database
+const data = {
+  title: "Hello!",
+  body: "Goodbye!",
+};
+
+// .save();
+
+const newBlogPost = new BlogPost(data); //instance of the model
+
+newBlogPost.save((error) => {
+  if (error) {
+    console.log("Oops, something happened");
+  } else {
+    console.log("Data has been saved!");
+  }
+});
+
 // HTTP request logger
 app.use(morgan("tiny"));
 
