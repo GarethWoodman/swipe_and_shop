@@ -6,7 +6,7 @@ const BlogPost = require("../models/blogPost");
 
 // Routes
 
-router.get("/api", (req, res) => {
+router.get("/", (req, res) => {
   BlogPost.find({})
     .then((data) => {
       console.log("Data: ", data);
@@ -17,7 +17,7 @@ router.get("/api", (req, res) => {
     });
 });
 
-router.get("/api/name", (req, res) => {
+router.get("/name", (req, res) => {
   const data = {
     username: "peterson",
     age: 59,
