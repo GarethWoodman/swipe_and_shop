@@ -32,10 +32,6 @@ router.post("/save", (req, res) => {
       });
     }
   });
-
-  res.json({
-    msg: "We received your data!!!!",
-  });
 });
 
 router.get("/name", (req, res) => {
