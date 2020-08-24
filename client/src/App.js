@@ -49,6 +49,7 @@ class App extends React.Component {
       .then(() => {
         console.log("Data has been sent to the server");
         this.resetUserInputs();
+        this.getBlogPost();
       })
       .catch(() => {
         console.log("Internal server error");
@@ -60,6 +61,17 @@ class App extends React.Component {
       title: "",
       body: "",
     });
+  };
+
+  displayBlogPost = (posts) => {
+    if (!posts.length) return null;
+
+    return posts.map((post, index) => (
+      <div key={index}>
+        <h3>{post.title}</h3>
+        <p>{post.body}</p>
+      </div>
+    ));
   };
 
   render() {
@@ -90,6 +102,10 @@ class App extends React.Component {
 
           <button>Submit</button>
         </form>
+
+        <div className="blog-posts">
+          {this.displayBlogPost(this.state.posts)}
+        </div>
       </div>
     );
   }
