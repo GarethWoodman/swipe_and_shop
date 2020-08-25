@@ -12,13 +12,16 @@ const PORT = process.env.PORT || 8080;
 const routes = require("./routes/api");
 
 // const MONGODB_URI =
-//   "mongodb+srv://andrewhulme:MerryChristmas@swipeandshop.rtrxp.mongodb.net/test?retryWrites=true&w=majority";
+//   "mongodb+srv://andrewhulme:MerryChristmas@swipeandshop.rtrxp.mongodb.net/SwipeAndShop?retryWrites=true&w=majority";
 
 //Step 2
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/swipe_and_shop", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/swipe_and_shop",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
 mongoose.connection.on("connected", () => {
   console.log("Mongoose is connected!!!!");
@@ -47,8 +50,8 @@ app.use(express.urlencoded({ extended: false }));
 // });
 
 // Step 3
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
 }
 
 // HTTP request logger
