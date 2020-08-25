@@ -80,7 +80,7 @@ class App extends React.Component {
     console.log("state: ", this.state);
     return (
       <div className="app">
-        <h2>Welcome to my App</h2>
+        <h2>Welcome to Swipe and Shop</h2>
         <form onSubmit={this.submit}>
           <div className="form-input">
             <input
