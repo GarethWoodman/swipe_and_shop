@@ -5,6 +5,8 @@ const morgan = require("morgan");
 const path = require("path");
 
 const app = express();
+// process.env.PORT tells Heroku to use it's own port?
+// Step 1
 const PORT = process.env.PORT || 8080;
 
 const routes = require("./routes/api");
@@ -12,7 +14,8 @@ const routes = require("./routes/api");
 // const MONGODB_URI =
 //   "mongodb+srv://andrewhulme:MerryChristmas@swipeandshop.rtrxp.mongodb.net/test?retryWrites=true&w=majority";
 
-mongoose.connect("mongodb://localhost/swipe_and_shop", {
+//Step 2
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/swipe_and_shop", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -46,5 +49,10 @@ app.use(express.urlencoded({ extended: false }));
 // HTTP request logger
 app.use(morgan("tiny"));
 app.use("/api", routes);
+
+// Step 3
+if (process.env.NODE_ENV === 'production') {
+
+}
 
 app.listen(PORT, console.log(`Server is starting at ${PORT}`));
