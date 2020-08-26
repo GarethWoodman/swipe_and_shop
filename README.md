@@ -112,3 +112,11 @@ I want to be able to message the customers to discuss the details
 | ----- | ------------------------ |
 | Chat  | @messages @participants  |
 |       | .sendMessage(user, time) |
+
+## Mock Ups
+
+![Homepage1](images/Homepage1.JPG)
+![Homepage2](diagrams/Homepage2.JPG)
+![MyProfile](diagrams/MyProfile.JPG)
+![SignUp](diagrams/SignUp.JPG)
+![LogIn](diagrams/LogIn.JPG)
