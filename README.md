@@ -118,3 +118,9 @@ I want to be able to message the customers to discuss the details
 ![Homepage](images/SAS-Mockup-Home.png)
 ![Shortlist](images/SAS-Mockup-Shortlist.png)
 ![Details](images/SAS-Mockup-Details.png)
+![AddItem](images/SAS-Mockup-AddItem.png)
+![SignUp](images/SAS-Mockup-SignUp.png)
+![Profile](images/SAS-Mockup-Profile.png)
+![ToSell](images/SAS-Mockup-ToSell.png)
+
+
