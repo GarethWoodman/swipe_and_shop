@@ -115,8 +115,6 @@ I want to be able to message the customers to discuss the details
 
 ## Mock Ups
 
-![Homepage1](images/Homepage1.JPG)
-![Homepage2](diagrams/Homepage2.JPG)
-![MyProfile](diagrams/MyProfile.JPG)
-![SignUp](diagrams/SignUp.JPG)
-![LogIn](diagrams/LogIn.JPG)
+![Homepage](images/SAS-Mockup-Home.png)
+![Shortlist](images/SAS-Mockup-Shortlist.png)
+![Details](images/SAS-Mockup-Details.png)
