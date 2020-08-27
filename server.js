@@ -5,7 +5,8 @@ const morgan = require("morgan");
 const path = require("path");
 
 const app = express();
-// process.env.PORT tells Heroku to use it's own port?
+
+// process.env.PORT tells Heroku to use it's own port
 // Step 1
 const PORT = process.env.PORT || 8080;
 
@@ -30,24 +31,6 @@ mongoose.connection.on("connected", () => {
 // JSON parsing
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-// Saving data to our mongo database
-// const data = {
-//   title: "Hello!",
-//   body: "Goodbye!",
-// };
-
-// .save();
-
-// const newBlogPost = new BlogPost(data); //instance of the model
-
-// newBlogPost.save((error) => {
-//   if (error) {
-//     console.log("Oops, something happened");
-//   } else {
-//     console.log("Data has been saved!");
-//   }
-// });
 
 // Step 3
 if (process.env.NODE_ENV === "production") {
