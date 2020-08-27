@@ -81,6 +81,8 @@ I want to be able to message the customers to discuss the details
 | REAL NAME | VARCHAR(100)      |
 | PICTURE   | URL               |
 | LOCATION  | VARCHAR(100)      |
+| TO BUY  | ARRAY      |
+| TO SELL  | ARRAY      |
 
 `ITEM ADVERTISEMENT` table:
 
