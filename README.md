@@ -1,4 +1,4 @@
-# Swipe and Shop
+# Swipe and Shop 🛒
 
 An app to buy and sell items using a Tinder style selection process
 
