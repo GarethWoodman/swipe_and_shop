@@ -7,7 +7,7 @@ const UserSchema = new Schema({
   password: String,
   username: String,
   real_name: String,
-  picture: URL,
+  picture: String,
   to_buy: Array,
   to_sell: Array,
 });

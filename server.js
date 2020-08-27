@@ -10,7 +10,9 @@ const app = express();
 // Step 1
 const PORT = process.env.PORT || 8080;
 
+// import routes
 const routes = require("./routes/api");
+const userRouter = require("./routes/user");
 
 // const MONGODB_URI =
 //   "mongodb+srv://andrewhulme:MerryChristmas@swipeandshop.rtrxp.mongodb.net/SwipeAndShop?retryWrites=true&w=majority";
@@ -39,6 +41,9 @@ if (process.env.NODE_ENV === "production") {
 
 // HTTP request logger
 app.use(morgan("tiny"));
+
+// Route setup
 app.use("/api", routes);
+app.use("/user", userRouter);
 
 app.listen(PORT, console.log(`Server is starting at ${PORT}`));
