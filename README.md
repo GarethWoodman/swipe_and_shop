@@ -81,15 +81,15 @@ I want to be able to message the customers to discuss the details
 | REAL NAME | VARCHAR(100)      |
 | PICTURE   | URL               |
 | LOCATION  | VARCHAR(100)      |
-| TO BUY  | ARRAY      |
-| TO SELL  | ARRAY      |
+| TO BUY    | ARRAY             |
+| TO SELL   | ARRAY             |
 
 `ITEM ADVERTISEMENT` table:
 
 | field            | type                       |
 | ---------------- | -------------------------- |
 | ITEM ID          | PRIMARY SERIAL ID          |
-| USER ID (seller) | VARCHAR(100) (FOREIGN KEY) |
+| USER ID (seller) | VARCHAR(100)               |
 | NAME OF ITEM     | VARCHAR(100)               |
 | DESCRIPTION      | VARCHAR(250)               |
 | PRICE            | Integer                    |
