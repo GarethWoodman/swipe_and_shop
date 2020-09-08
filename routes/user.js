@@ -4,6 +4,8 @@ const router = express.Router();
 
 const User = require("../models/user");
 
+const mongoose = require("mongoose");
+
 // Routes
 
 router.get("/", (req, res) => {
@@ -33,5 +35,27 @@ router.post("/save", (req, res) => {
     });
   });
 });
+
+router.post('/update', (req, res) => {
+  var item = {
+    password: req.body.password
+  };
+
+  var id = req.body.id
+
+  mongoose.connect(url, function(err, db) {
+    assert.equal(null, err);
+    db.collection('user').updateOne({"_id": id}, function(err, result) {
+      assert.equal(null, err);
+      console.log('Item inserted');
+      db.close();
+    });
+  });
+});
+
+// { "real_name" : "Heroku Server" }, // specifies the document to update
+// {
+//   $set: {  "real_name" : "New name"}
+// }
 
 module.exports = router;

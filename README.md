@@ -125,4 +125,11 @@ I want to be able to message the customers to discuss the details
 ![Profile](images/SAS-Mockup-Profile.png)
 ![ToSell](images/SAS-Mockup-ToSell.png)
 
+## Curl Commands
+Heroku: 
+curl -H "Content-Type: application/json" -X POST -d '{"email":"jag@gmail.com","password":"hello","username":"jag","real_name":"JedAndrewGareth","picture":"picture","to_buy":[1,2,3],"to_sell":[1,2,3]}' https://swipe-and-shop.herokuapp.com/user/save
+
+Local:
+curl -H "Content-Type: application/json" -X POST -d '{"email":"jag@gmail.com","password":"hello","username":"jag","real_name":"JedAndrewGareth","picture":"picture","to_buy":[1,2,3],"to_sell":[1,2,3]}' http://localhost:8080/user/save
+
 
