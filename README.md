@@ -115,6 +115,25 @@ I want to be able to message the customers to discuss the details
 | Chat  | @messages @participants  |
 |       | .sendMessage(user, time) |
 
+## Curl Commands
+
+### Save User
+
+Heroku: 
+curl -H "Content-Type: application/json" -X POST -d '{"email":"jag@gmail.com","password":"hello","username":"jag","real_name":"JedAndrewGareth","picture":"picture","to_buy":[1,2,3],"to_sell":[1,2,3]}' https://swipe-and-shop.herokuapp.com/user/save
+
+Local:
+curl -H "Content-Type: application/json" -X POST -d '{"email":"jag@gmail.com","password":"hello","username":"jag","real_name":"JedAndrewGareth","picture":"picture","to_buy":[1,2,3],"to_sell":[1,2,3]}' http://localhost:8080/user/save
+
+
+### Save Item
+
+Heroku:
+curl -H "Content-Type: application/json" -X POST -d '{"user_id":"12","item_name":"12345","description":"funBox","expiry_date":"tomorrow","picture":"picture","price":20}' https://swipe-and-shop.herokuapp.com/item/save
+
+Local: 
+curl -H "Content-Type: application/json" -X POST -d '{"user_id":"12","item_name":"12345","description":"funBox","expiry_date":"tomorrow","picture":"picture","price":20}' http://localhost:8080/item/save
+
 ## Mock Ups
 
 ![Homepage](images/SAS-Mockup-Home.png)
@@ -124,12 +143,4 @@ I want to be able to message the customers to discuss the details
 ![SignUp](images/SAS-Mockup-SignUp.png)
 ![Profile](images/SAS-Mockup-Profile.png)
 ![ToSell](images/SAS-Mockup-ToSell.png)
-
-## Curl Commands
-Heroku: 
-curl -H "Content-Type: application/json" -X POST -d '{"email":"jag@gmail.com","password":"hello","username":"jag","real_name":"JedAndrewGareth","picture":"picture","to_buy":[1,2,3],"to_sell":[1,2,3]}' https://swipe-and-shop.herokuapp.com/user/save
-
-Local:
-curl -H "Content-Type: application/json" -X POST -d '{"email":"jag@gmail.com","password":"hello","username":"jag","real_name":"JedAndrewGareth","picture":"picture","to_buy":[1,2,3],"to_sell":[1,2,3]}' http://localhost:8080/user/save
-
 
