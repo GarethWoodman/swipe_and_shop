@@ -54,6 +54,9 @@ router.post("/update", (req, res) => {
 });
 
 router.get("/test", (req, res) => {
+  const user = req.params;
+  console.log(user);
+
   User.find({ username: "jag" })
     .then((data) => {
       console.log("Data: ", data);
@@ -64,25 +67,19 @@ router.get("/test", (req, res) => {
     });
 });
 
-// router.get("/:_id", (req, res) => {
-//   // const user = getUser(req.params.userId);
+router.get("/:id", (req, res) => {
+  console.log(req.params);
 
-//   // if (!user) return res.status(404).json({});
+  const id = req.params.id;
 
-//   // user.name = req.body.name;
-//   // res.json(user);
+  User.findById(id, function (err, user) {
+    if (err) throw err;
 
-//   const id = getUser(req.params.userId);
-
-//   User.find({ username: "jag" })
-//     .then((data) => {
-//       console.log("Data: ", data);
-//       res.json(data);
-//     })
-//     .catch((error) => {
-//       console.log("error: ", error);
-//     });
-// });
+    // show the one user
+    console.log(user);
+    res.json(user);
+  });
+});
 
 // { "real_name" : "Heroku Server" }, // specifies the document to update
 // {
