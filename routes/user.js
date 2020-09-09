@@ -67,19 +67,36 @@ router.get("/test", (req, res) => {
     });
 });
 
+// router.get("/:id", (req, res) => {
+//   console.log(req.params);
+//
+//   const id = req.params.id;
+//
+//   User.findById(id, function (err, user) {
+//     if (err) throw err;
+//
+//     // show the one user
+//     console.log(user);
+//     res.json(user);
+//   });
+// });
+
 router.get("/:id", (req, res) => {
   console.log(req.params);
 
   const id = req.params.id;
 
-  User.findById(id, function (err, user) {
-    if (err) throw err;
-
-    // show the one user
-    console.log(user);
-    res.json(user);
-  });
+  User.find({_id: id})
+    .then((data) => {
+      console.log(data);
+      res.json(data);
+    })
+    .catch((error) => {
+      console.log("error: ", error);
+    });
 });
+
+
 
 // { "real_name" : "Heroku Server" }, // specifies the document to update
 // {
