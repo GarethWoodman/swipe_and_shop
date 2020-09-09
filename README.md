@@ -134,6 +134,13 @@ curl -H "Content-Type: application/json" -X POST -d '{"user_id":"12","item_name"
 Local: 
 curl -H "Content-Type: application/json" -X POST -d '{"user_id":"12","item_name":"12345","description":"funBox","expiry_date":"tomorrow","picture":"picture","price":20}' http://localhost:8080/item/save
 
+### Delete Item
+Heroku:
+curl -i -X DELETE https://swipe-and-shop.herokuapp.com/user/5f575b68a40a66e836c05673
+
+Local:
+curl -i -X DELETE http://localhost:8080/user/5f575b68a40a66e836c05673
+
 ## Mock Ups
 
 ![Homepage](images/SAS-Mockup-Home.png)
