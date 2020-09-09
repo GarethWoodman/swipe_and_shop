@@ -96,6 +96,49 @@ router.get("/:id", (req, res) => {
     });
 });
 
+// router.put("/:id/update", (req, res) => {
+//   console.log(req.params);
+//
+//   const id = req.params.id;
+//
+//   User.find({_id: id})
+//     .then((data) => {
+//       console.log(data);
+//       data[0].real_name = "JAG"
+//       console.log(data);
+//       res.json(data);
+//     })
+//     .catch((error) => {
+//       console.log("error: ", error);
+//     });
+// });
+
+router.delete("/:id", (req, res) => {
+  console.log(req.params);
+  const id = req.params.id;
+
+  // User.find({ _id: id }, function(err, user) {
+  //   if (err) throw err;
+  //
+  //   user.remove(function(err) {
+  //     if (err) throw err;
+  //
+  //     console.log('User successfully deleted!');
+  //   });
+  // });
+
+  User.findByIdAndRemove(id, function(err) {
+    if (err) throw err;
+
+    // we have deleted the user
+    console.log('User deleted!');
+    res.status(200).json({ msg: "Yes mate, deleted!" });
+  });
+})
+
+
+
+
 
 
 // { "real_name" : "Heroku Server" }, // specifies the document to update
