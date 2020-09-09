@@ -36,22 +36,51 @@ router.post("/save", (req, res) => {
   });
 });
 
-router.post('/update', (req, res) => {
+router.post("/update", (req, res) => {
   var item = {
-    password: req.body.password
+    password: req.body.password,
   };
 
-  var id = req.body.id
+  var id = req.body.id;
 
-  mongoose.connect(url, function(err, db) {
+  mongoose.connect(url, function (err, db) {
     assert.equal(null, err);
-    db.collection('user').updateOne({"_id": id}, function(err, result) {
+    db.collection("user").updateOne({ _id: id }, function (err, result) {
       assert.equal(null, err);
-      console.log('Item inserted');
+      console.log("Item inserted");
       db.close();
     });
   });
 });
+
+router.get("/test", (req, res) => {
+  User.find({ username: "jag" })
+    .then((data) => {
+      console.log("Data: ", data);
+      res.json(data);
+    })
+    .catch((error) => {
+      console.log("error: ", error);
+    });
+});
+
+// router.get("/:userId", (req, res) => {
+//   // const user = getUser(req.params.userId);
+
+//   // if (!user) return res.status(404).json({});
+
+//   // user.name = req.body.name;
+//   // res.json(user);
+
+//   User.find({ username: "jag" })
+//     .then((data) => {
+//       console.log("Data: ", data);
+//       res.json(data);
+//     })
+//     .catch((error) => {
+//       console.log("error: ", error);
+//     });
+// });
 
 // { "real_name" : "Heroku Server" }, // specifies the document to update
 // {
