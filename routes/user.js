@@ -64,13 +64,15 @@ router.get("/test", (req, res) => {
     });
 });
 
-// router.get("/:userId", (req, res) => {
+// router.get("/:_id", (req, res) => {
 //   // const user = getUser(req.params.userId);
 
 //   // if (!user) return res.status(404).json({});
 
 //   // user.name = req.body.name;
 //   // res.json(user);
+
+//   const id = getUser(req.params.userId);
 
 //   User.find({ username: "jag" })
 //     .then((data) => {
