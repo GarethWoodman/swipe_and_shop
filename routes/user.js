@@ -36,20 +36,48 @@ router.post("/save", (req, res) => {
   });
 });
 
-router.post('/update', (req, res) => {
+router.post("/update", (req, res) => {
   var item = {
-    password: req.body.password
+    password: req.body.password,
   };
 
-  var id = req.body.id
+  var id = req.body.id;
 
-  mongoose.connect(url, function(err, db) {
+  mongoose.connect(url, function (err, db) {
     assert.equal(null, err);
-    db.collection('user').updateOne({"_id": id}, function(err, result) {
+    db.collection("user").updateOne({ _id: id }, function (err, result) {
       assert.equal(null, err);
-      console.log('Item inserted');
+      console.log("Item inserted");
       db.close();
     });
+  });
+});
+
+router.get("/test", (req, res) => {
+  const user = req.params;
+  console.log(user);
+
+  User.find({ username: "jag" })
+    .then((data) => {
+      console.log("Data: ", data);
+      res.json(data);
+    })
+    .catch((error) => {
+      console.log("error: ", error);
+    });
+});
+
+router.get("/:id", (req, res) => {
+  console.log(req.params);
+
+  const id = req.params.id;
+
+  User.findById(id, function (err, user) {
+    if (err) throw err;
+
+    // show the one user
+    console.log(user);
+    res.json(user);
   });
 });
 
