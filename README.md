@@ -141,6 +141,14 @@ curl -i -X DELETE https://swipe-and-shop.herokuapp.com/user/5f575b68a40a66e836c0
 Local:
 curl -i -X DELETE http://localhost:8080/user/5f575b68a40a66e836c05673
 
+### Update Item
+
+Heroku:
+curl -X PUT -H "Content-Type: application/json" -d '{"real_name":"mkyong","email":"abc@gmail.com"}' https://swipe-and-shop.herokuapp.com/user/5f575b68a40a66e836c05673
+
+Local:
+curl -X PUT -H "Content-Type: application/json" -d '{"real_name":"mkyong","email":"abc@gmail.com"}' http://localhost:8080/user/5f575b68a40a66e836c05673
+
 ## Mock Ups
 
 ![Homepage](images/SAS-Mockup-Home.png)
