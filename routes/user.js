@@ -97,7 +97,7 @@ router.get("/:id", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  console.log(req.params);
+  console.log(req.body);
   const id = req.params.id;
 
   // User.find({ _id: id }, function(err, user) {
@@ -121,9 +121,10 @@ router.delete("/:id", (req, res) => {
 
 // Update
 
-router.put("/:id&:email", (req, res) => {
-  console.log("UPDATED parameters: ", req.params);
+router.put("/:id", (req, res) => {
+  console.log("UPDATED parameters: ", req.body);
   const id = req.params.id;
+  const email = req.params.email;
 
   // User.find({ _id: id })
   //   .then((data) => {
@@ -136,7 +137,10 @@ router.put("/:id&:email", (req, res) => {
   //     console.log("error: ", error);
   //   });
 
-  User.findByIdAndUpdate(id, { real_name: "ADJH" }, function (err, user) {
+  User.findByIdAndUpdate(id, { real_name: "AD", email: email }, function (
+    err,
+    user
+  ) {
     if (err) throw err;
 
     console.log(user);
