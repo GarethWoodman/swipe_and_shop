@@ -86,7 +86,7 @@ router.get("/:id", (req, res) => {
 
   const id = req.params.id;
 
-  User.find({_id: id})
+  User.find({ _id: id })
     .then((data) => {
       console.log(data);
       res.json(data);
@@ -95,23 +95,6 @@ router.get("/:id", (req, res) => {
       console.log("error: ", error);
     });
 });
-
-// router.put("/:id/update", (req, res) => {
-//   console.log(req.params);
-//
-//   const id = req.params.id;
-//
-//   User.find({_id: id})
-//     .then((data) => {
-//       console.log(data);
-//       data[0].real_name = "JAG"
-//       console.log(data);
-//       res.json(data);
-//     })
-//     .catch((error) => {
-//       console.log("error: ", error);
-//     });
-// });
 
 router.delete("/:id", (req, res) => {
   console.log(req.params);
@@ -127,19 +110,39 @@ router.delete("/:id", (req, res) => {
   //   });
   // });
 
-  User.findByIdAndRemove(id, function(err) {
+  User.findByIdAndRemove(id, function (err) {
     if (err) throw err;
 
     // we have deleted the user
-    console.log('User deleted!');
+    console.log("User deleted!");
     res.status(200).json({ msg: "Yes mate, deleted!" });
   });
-})
+});
 
+// Update
 
+router.put("/:id", (req, res) => {
+  console.log("UPDATED parameters: ", req.params);
+  const id = req.params.id;
 
+  // User.find({ _id: id })
+  //   .then((data) => {
+  //     console.log(data);
+  //     data[0].real_name = "JAG";
+  //     console.log(data);
+  //     res.json(data);
+  //   })
+  //   .catch((error) => {
+  //     console.log("error: ", error);
+  //   });
 
+  User.findByIdAndUpdate(id, { username: "starlord88" }, function (err, user) {
+    if (err) throw err;
 
+    console.log(user);
+    res.status(200).json({ msg: "Yes mate, updated!" });
+  });
+});
 
 // { "real_name" : "Heroku Server" }, // specifies the document to update
 // {
