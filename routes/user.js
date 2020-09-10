@@ -136,7 +136,7 @@ router.put("/:id", (req, res) => {
   //     console.log("error: ", error);
   //   });
 
-  User.findByIdAndUpdate(id, { username: "starlord88" }, function (err, user) {
+  User.findByIdAndUpdate(id, { real_name: "ADJH" }, function (err, user) {
     if (err) throw err;
 
     console.log(user);
