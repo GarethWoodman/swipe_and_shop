@@ -124,7 +124,8 @@ router.delete("/:id", (req, res) => {
 router.put("/:id", (req, res) => {
   console.log("UPDATED parameters: ", req.body);
   const id = req.params.id;
-  const email = req.params.email;
+  const email = req.body.email;
+  const real_name = req.body.real_name;
 
   // User.find({ _id: id })
   //   .then((data) => {
@@ -137,7 +138,7 @@ router.put("/:id", (req, res) => {
   //     console.log("error: ", error);
   //   });
 
-  User.findByIdAndUpdate(id, { real_name: "AD", email: email }, function (
+  User.findByIdAndUpdate(id, { real_name: real_name, email: email }, function (
     err,
     user
   ) {
