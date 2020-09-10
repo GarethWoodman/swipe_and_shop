@@ -121,7 +121,7 @@ router.delete("/:id", (req, res) => {
 
 // Update
 
-router.put("/:id", (req, res) => {
+router.put("/:id&:email", (req, res) => {
   console.log("UPDATED parameters: ", req.params);
   const id = req.params.id;
 
