@@ -161,5 +161,5 @@ curl -X PUT -H "Content-Type: application/json" -d '{"real_name":"mkyong","email
 
 ## Frontend
 
-![Component Tree] (https://app.lucidchart.com/invitations/accept/be9fd103-3005-40fa-9f5e-ea1a3176418b)
+![Component Tree](https://app.lucidchart.com/invitations/accept/be9fd103-3005-40fa-9f5e-ea1a3176418b)
 
