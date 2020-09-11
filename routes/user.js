@@ -130,32 +130,37 @@ router.put("/:id", (req, res) => {
   console.log("REAL NAME?!: ", real_name);
   console.log("EMAIL?!: ", email);
 
-  if (real_name !== undefined && email !== undefined) {
-    User.findByIdAndUpdate(
-      id,
-      { real_name: real_name, email: email },
-      function (err, user) {
-        if (err) throw err;
+  const body = req.body;
 
-        console.log(user);
-        res.status(200).json({ msg: "Yes mate, updated!" });
-      }
-    );
-  } else if (real_name == undefined && email !== undefined) {
-    User.findByIdAndUpdate(id, { email: email }, function (err, user) {
-      if (err) throw err;
+  User.findByIdAndUpdate(id, body, function (err, user) {
+    if (err) throw err;
 
-      console.log(user);
-      res.status(200).json({ msg: "Yes mate, updated!" });
-    });
-  } else if (real_name !== undefined && email == undefined) {
-    User.findByIdAndUpdate(id, { real_name: real_name }, function (err, user) {
-      if (err) throw err;
+    res.status(200).json({ msg: "Yes mate, updated!" });
+  });
 
-      console.log(user);
-      res.status(200).json({ msg: "Yes mate, updated!" });
-    });
-  }
+  // if (real_name !== undefined && email !== undefined) {
+  //   User.findByIdAndUpdate(
+  //     id,
+  //     { real_name: real_name, email: email },
+  //     function (err, user) {
+  //       if (err) throw err;
+
+  //       res.status(200).json({ msg: "Yes mate, updated!" });
+  //     }
+  //   );
+  // } else if (real_name == undefined && email !== undefined) {
+  //   User.findByIdAndUpdate(id, { email: email }, function (err, user) {
+  //     if (err) throw err;
+
+  //     res.status(200).json({ msg: "Yes mate, updated!" });
+  //   });
+  // } else if (real_name !== undefined && email == undefined) {
+  //   User.findByIdAndUpdate(id, { real_name: real_name }, function (err, user) {
+  //     if (err) throw err;
+
+  //     res.status(200).json({ msg: "Yes mate, updated!" });
+  //   });
+  // }
 });
 
 // { "real_name" : "Heroku Server" }, // specifies the document to update
