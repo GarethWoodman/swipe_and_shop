@@ -34,4 +34,17 @@ router.post("/save", (req, res) => {
   });
 });
 
+router.get("/:id", (req, res) => {
+  const id = req.params.id
+
+  Item.find({_id: id})
+    .then((data) => {
+      console.log(data);
+      res.json(data);
+    })
+    .catch((error) => {
+      console.log("error: ", error);
+    });
+})
+
 module.exports = router;
