@@ -47,4 +47,17 @@ router.get("/:id", (req, res) => {
     });
 })
 
+router.delete("/:id", (req, res) => {
+  console.log(req.body);
+  const id = req.params.id;
+
+  Item.findByIdAndRemove(id, function (err) {
+    if (err) throw err;
+
+    // we have deleted the user
+    console.log("Item deleted!");
+    res.status(200).json({ msg: "Yes mate, deleted!" });
+  });
+});
+
 module.exports = router;
