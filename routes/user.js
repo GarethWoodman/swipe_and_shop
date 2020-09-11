@@ -124,12 +124,6 @@ router.delete("/:id", (req, res) => {
 router.put("/:id", (req, res) => {
   console.log("UPDATED parameters: ", req.body);
   const id = req.params.id;
-  const email = req.body.email;
-  const real_name = req.body.real_name;
-
-  console.log("REAL NAME?!: ", real_name);
-  console.log("EMAIL?!: ", email);
-
   const body = req.body;
 
   User.findByIdAndUpdate(id, body, function (err, user) {
@@ -137,30 +131,6 @@ router.put("/:id", (req, res) => {
 
     res.status(200).json({ msg: "Yes mate, updated!" });
   });
-
-  // if (real_name !== undefined && email !== undefined) {
-  //   User.findByIdAndUpdate(
-  //     id,
-  //     { real_name: real_name, email: email },
-  //     function (err, user) {
-  //       if (err) throw err;
-
-  //       res.status(200).json({ msg: "Yes mate, updated!" });
-  //     }
-  //   );
-  // } else if (real_name == undefined && email !== undefined) {
-  //   User.findByIdAndUpdate(id, { email: email }, function (err, user) {
-  //     if (err) throw err;
-
-  //     res.status(200).json({ msg: "Yes mate, updated!" });
-  //   });
-  // } else if (real_name !== undefined && email == undefined) {
-  //   User.findByIdAndUpdate(id, { real_name: real_name }, function (err, user) {
-  //     if (err) throw err;
-
-  //     res.status(200).json({ msg: "Yes mate, updated!" });
-  //   });
-  // }
 });
 
 // { "real_name" : "Heroku Server" }, // specifies the document to update
