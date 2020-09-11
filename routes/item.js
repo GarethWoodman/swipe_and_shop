@@ -60,4 +60,18 @@ router.delete("/:id", (req, res) => {
   });
 });
 
+// Update
+
+router.put("/:id", (req, res) => {
+  console.log("UPDATED parameters: ", req.body);
+  const id = req.params.id;
+  const body = req.body;
+
+  Item.findByIdAndUpdate(id, body, function (err, user) {
+    if (err) throw err;
+
+    res.status(200).json({ msg: "Yes mate, updated!" });
+  });
+});
+
 module.exports = router;
