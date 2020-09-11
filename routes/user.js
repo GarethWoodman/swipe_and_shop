@@ -127,26 +127,35 @@ router.put("/:id", (req, res) => {
   const email = req.body.email;
   const real_name = req.body.real_name;
 
-  // User.find({ _id: id })
-  //   .then((data) => {
-  //     console.log(data);
-  //     data[0].real_name = "JAG";
-  //     console.log(data);
-  //     res.json(data);
-  //   })
-  //   .catch((error) => {
-  //     console.log("error: ", error);
-  //   });
+  console.log("REAL NAME?!: ", real_name);
+  console.log("EMAIL?!: ", email);
 
-  User.findByIdAndUpdate(id, { real_name: real_name, email: email }, function (
-    err,
-    user
-  ) {
-    if (err) throw err;
+  if (real_name !== undefined && email !== undefined) {
+    User.findByIdAndUpdate(
+      id,
+      { real_name: real_name, email: email },
+      function (err, user) {
+        if (err) throw err;
 
-    console.log(user);
-    res.status(200).json({ msg: "Yes mate, updated!" });
-  });
+        console.log(user);
+        res.status(200).json({ msg: "Yes mate, updated!" });
+      }
+    );
+  } else if (real_name == undefined && email !== undefined) {
+    User.findByIdAndUpdate(id, { email: email }, function (err, user) {
+      if (err) throw err;
+
+      console.log(user);
+      res.status(200).json({ msg: "Yes mate, updated!" });
+    });
+  } else if (real_name !== undefined && email == undefined) {
+    User.findByIdAndUpdate(id, { real_name: real_name }, function (err, user) {
+      if (err) throw err;
+
+      console.log(user);
+      res.status(200).json({ msg: "Yes mate, updated!" });
+    });
+  }
 });
 
 // { "real_name" : "Heroku Server" }, // specifies the document to update
