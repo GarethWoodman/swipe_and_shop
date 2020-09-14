@@ -1,15 +1,32 @@
-import React from "react";
+import React, { Component } from "react";
+import Sell from "./components/sell.jsx";
 
-const App = () => {
-  return (
-    <div>
-      <p>Swipe and Shop</p>
+class App extends Component {
+  state = {
+    currentPage: "Buy",
+  };
 
-      <button id="buyButton" value="Buy">
-        Buy
-      </button>
-    </div>
-  );
-};
+  pageSetter = () => {
+    this.setState({ currentPage: "Sell" });
+  };
+
+  render() {
+    return (
+      <div>
+        <p>Swipe and Shop</p>
+
+        <button id="buyButton" value="Buy">
+          Buy
+        </button>
+
+        <button id="sellButton" value="Sell" onClick={this.pageSetter}>
+          Sell
+        </button>
+
+        {this.state.currentPage === "Sell" && <Sell />}
+      </div>
+    );
+  }
+}
 
 export default App;
