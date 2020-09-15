@@ -6,8 +6,8 @@ class App extends Component {
     currentPage: "Buy",
   };
 
-  pageSetter = () => {
-    this.setState({ currentPage: "Sell" });
+  pageSetter = ({ target }) => {
+    this.setState({ currentPage: target.value });
   };
 
   render() {
@@ -15,7 +15,7 @@ class App extends Component {
       <div>
         <p>Swipe and Shop</p>
 
-        <button id="buyButton" value="Buy">
+        <button id="buyButton" value="Buy" onClick={this.pageSetter}>
           Buy
         </button>
 
