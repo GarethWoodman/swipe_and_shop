@@ -3,14 +3,8 @@ import axios from "axios";
 
 class Buy extends Component {
   state = {
-    user: "",
-    item_name: "",
-    description: "",
-    expiry_date: "",
-    picture: "",
-    price: "",
-    items: ""
-  }
+    items: "",
+  };
 
   componentDidMount = () => {
     axios
@@ -19,20 +13,22 @@ class Buy extends Component {
         var data = response.data;
         this.setState({ items: data });
         // console.log(data)
-        console.log("Data has been recieved")
+        console.log("Data has been recieved");
       })
       .catch(() => {
-        alert("Error retrieving data!!!")
-      })
+        alert("Error retrieving data!!!");
+      });
   };
 
   render() {
-    if(!this.state.items.length) return null;
-    console.log(this.state.items[0].item_name)
+    if (!this.state.items.length) return null;
+    console.log(this.state.items[0].item_name);
     return (
       <div>
-        <h1>Buy Page</h1>;
+        <h1>Buy Page</h1>
         <p>{this.state.items[0].item_name}</p>
+        <p>{this.state.items[0].description}</p>
+        <p>{this.state.items[0].price}</p>
       </div>
     );
   }
