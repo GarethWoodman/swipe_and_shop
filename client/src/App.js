@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Sell from "./components/sell.jsx";
+import Buy from "./components/buy.jsx";
 
 class App extends Component {
   state = {
@@ -23,6 +24,7 @@ class App extends Component {
           Sell
         </button>
 
+        {this.state.currentPage === "Buy" && <Buy />}
         {this.state.currentPage === "Sell" && <Sell />}
       </div>
     );

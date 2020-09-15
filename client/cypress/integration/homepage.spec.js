@@ -5,6 +5,7 @@ describe("Homepage", () => {
 
   it("Displays the message in the list", () => {
     cy.contains("Swipe and Shop");
+    cy.contains("Buy Page");
   });
 
   it("Contains a buy button", () => {
