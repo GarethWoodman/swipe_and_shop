@@ -8,57 +8,43 @@ class SignUp extends Component {
     real_name: "",
     picture: "",
     to_buy: [],
-    to_sell: []
+    to_sell: [],
   };
 
   myChangeHandler = (event) => {
-    let attribute = event.target.id
-    let value     = event.target.value
-    this.setState({[attribute]: value})
-  }
+    let attribute = event.target.id;
+    let value = event.target.value;
+    this.setState({ [attribute]: value });
+  };
 
   render() {
     console.log(this.state);
     return (
       <div>
+        <form>
+          <p>real_name:</p>
+          <input id="real_name" type="text" onChange={this.myChangeHandler} />
 
-        <p>real_name:</p>
-        <input
-          id="real_name"
-          type="text"
-          onChange={this.myChangeHandler}
-        />
+          <p>username:</p>
+          <input id="username" type="text" onChange={this.myChangeHandler} />
 
-        <p>username:</p>
-        <input
-          id="username"
-          type="text"
-          onChange={this.myChangeHandler}
-        />
+          <p>email:</p>
+          <input id="email" type="text" onChange={this.myChangeHandler} />
 
-        <p>email:</p>
-        <input
-          id="email"
-          type="text"
-          onChange={this.myChangeHandler}
-        />
+          <p>password:</p>
+          <input
+            id="password"
+            type="password"
+            onChange={this.myChangeHandler}
+          />
 
-        <p>password:</p>
-        <input
-          id="password"
-          type="password"
-          onChange={this.myChangeHandler}
-        />
-
-        <p>picture</p>
-        <input
-          id="picture"
-          type="text"
-          onChange={this.myChangeHandler}
-        />
-
+          <p>picture</p>
+          <input id="picture" type="text" onChange={this.myChangeHandler} />
+          <p></p>
+          <input type="submit" value="Submit" />
+        </form>
       </div>
-    )
+    );
   }
 }
 
