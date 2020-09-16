@@ -39,7 +39,9 @@ class Buy extends Component {
         <p>{this.state.items[this.state.itemNum].price}</p>
         <img src={this.state.items[this.state.itemNum].picture} alt="pic"></img>
 
-        <button id="yesButton">Yes</button>
+        <button id="yesButton" onClick={this.nextItem}>
+          Yes
+        </button>
 
         <button id="noButton" onClick={this.nextItem}>
           No
