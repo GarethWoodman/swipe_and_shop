@@ -21,7 +21,33 @@ class Buy extends Component {
       });
   };
 
-  nextItem = () => {
+  nextItemNo = () => {
+    const num = this.state.itemNum;
+    if (num < this.state.items.length - 1) {
+      this.setState({ itemNum: num + 1 });
+    }
+  };
+
+  nextItemYes = () => {
+    // const payload = {
+    //   title: this.state.title,
+    //   body: this.state.body,
+    // };
+
+    // axios({
+    //   url: "/user/save",
+    //   method: "POST",
+    //   data: payload,
+    // })
+    //   .then(() => {
+    //     console.log("Data has been sent to the server");
+    //     this.resetUserInputs();
+    //     this.getBlogPost();
+    //   })
+    //   .catch(() => {
+    //     console.log("Internal server error");
+    //   });
+
     const num = this.state.itemNum;
     if (num < this.state.items.length - 1) {
       this.setState({ itemNum: num + 1 });
@@ -39,11 +65,11 @@ class Buy extends Component {
         <p>{this.state.items[this.state.itemNum].price}</p>
         <img src={this.state.items[this.state.itemNum].picture} alt="pic"></img>
 
-        <button id="yesButton" onClick={this.nextItem}>
+        <button id="yesButton" onClick={this.nextItemYes}>
           Yes
         </button>
 
-        <button id="noButton" onClick={this.nextItem}>
+        <button id="noButton" onClick={this.nextItemNo}>
           No
         </button>
       </div>
