@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Sell from "./components/sell.jsx";
 import Buy from "./components/buy.jsx";
+import SignUp from "./components/signUp.jsx";
 
 class App extends Component {
   state = {
@@ -16,6 +17,10 @@ class App extends Component {
       <div>
         <p>Swipe and Shop</p>
 
+        <button id="signUp" value="SignUp" onClick={this.pageSetter}>
+          Sign Up
+        </button>
+
         <button id="buyButton" value="Buy" onClick={this.pageSetter}>
           Buy
         </button>
@@ -26,6 +31,7 @@ class App extends Component {
 
         {this.state.currentPage === "Buy" && <Buy />}
         {this.state.currentPage === "Sell" && <Sell />}
+        {this.state.currentPage === "SignUp" && <SignUp />}
       </div>
     );
   }
