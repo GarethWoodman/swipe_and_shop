@@ -1,6 +1,8 @@
 describe("Homepage", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000");
+    cy.task('dropItems');
+    cy.task('addItem', {"user_id":"12","item_name":"Makers","description":"Makers Course","expiry_date":"6 months I reckon","picture":"https://coursereport-s3-production.global.ssl.fastly.net/rich/rich_files/rich_files/5940/s300/screen-shot-2020-03-30-at-14-28-10.png","price":8000.00});
+    cy.visit("http://localhost:3030");
   });
 
   it("Displays the message in the list", () => {
