@@ -12,6 +12,13 @@ An app to buy and sell items using a Tinder style selection process
 - Cypress
 - npm
 
+
+## Testing
+The test server must be running for integration tests to pass. The test server runs on port 8080 at http://localhost:8080. 
+
+* In one terminal, start the test server: `npm run start:test` 
+* In another terminal, run Cypress feature tests: `npx cypress open` (runs in a separate window)
+
 ## User Stores (Behavioural Driven Development)
 
 ```
