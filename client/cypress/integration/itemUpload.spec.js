@@ -6,7 +6,7 @@ describe("Sell Items Page", () => {
   });
 
   it("has item upload form", () => {
-    const imageAdress =
+    const imageAddress =
       "https://static01.nyt.com/images/2019/04/02/science/28SCI-ZIMMER1/28SCI-ZIMMER1-videoSixteenByNineJumbo1600.jpg";
     cy.get("#itemUploadName").type("Frog").should("have.value", "Frog");
     cy.get("#itemUploadDescription")
@@ -16,6 +16,6 @@ describe("Sell Items Page", () => {
     cy.get("#itemUploadExpiry").type("1 year").should("have.value", "1 year");
     cy.get("#itemUploadPicture")
       .type(imageAdress)
-      .should("have.value", imageAdress);
+      .should("have.value", imageAddress);
   });
 });
