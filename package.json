@@ -11,7 +11,7 @@
     "start": "node server.js",
     "client": "cd client && npm start",
     "dev": "concurrently -n 'server,client' -c 'red,green' \"nodemon server.js\" \"npm run client\"",
-    "start:test": "concurrently -n 'server,client' -c 'red,green' \"PORT=3030 MONGODB_URI='mongodb://localhost/swipe_and_shop_test' npm start\" \"npm run client\""
+    "start:test": "concurrently -n 'server,client' -c 'red,green' \"PORT=8080 MONGODB_URI='mongodb://localhost/swipe_and_shop_test' npm start\" \"npm run client\""
   },
   "repository": {
     "type": "git",
