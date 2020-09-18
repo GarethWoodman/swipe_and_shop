@@ -12,6 +12,13 @@ An app to buy and sell items using a Tinder style selection process
 - Cypress
 - npm
 
+## Installation Guide
+1. Clone or Fork this repo to your local machine
+2. Install Node Version Manager (NVM) and ```nvm install 14.3.0 ```
+3. Navigate into the project repo
+4. Install dependencies ```npm install```
+5. ```npm run dev``` to start the server in the development environment.
+6. Visit http://localhost:3000 to see the website in action!
 
 ## Testing
 The test server must be running for integration tests to pass. The test server runs on port 8080 at http://localhost:8080. 
