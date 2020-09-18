@@ -10,6 +10,16 @@ describe("Homepage", () => {
         "https://coursereport-s3-production.global.ssl.fastly.net/rich/rich_files/rich_files/5940/s300/screen-shot-2020-03-30-at-14-28-10.png",
       price: 8000.0,
     });
+
+    cy.task("addItem", {
+      user_id: "70",
+      item_name: "Jigglypluff",
+      description: "Sings beautifully",
+      expiry_date: "never",
+      picture: "https://upload.wikimedia.org/wikipedia/en/thumb/2/22/Pok%C3%A9mon_Jigglypuff_art.png/220px-Pok%C3%A9mon_Jigglypuff_art.png",
+      price: 5,
+    });
+
     cy.visit("http://localhost:3000");
   });
 
@@ -38,5 +48,13 @@ describe("Homepage", () => {
     cy.get('#itemDescription').contains('Makers Course')
     cy.get('#itemPrice').contains(8000.0)
     cy.get('#itemPicture').should('have.attr', 'src', 'https://coursereport-s3-production.global.ssl.fastly.net/rich/rich_files/rich_files/5940/s300/screen-shot-2020-03-30-at-14-28-10.png')
+  })
+
+  it("Clicks yes/no and gets second item details", () => {
+    cy.get('#yesButton').click();
+    cy.get('#itemName').contains('Jigglypluff')
+    cy.get('#itemDescription').contains('Sings beautifully')
+    cy.get('#itemPrice').contains(5)
+    cy.get('#itemPicture').should('have.attr', 'src', 'https://upload.wikimedia.org/wikipedia/en/thumb/2/22/Pok%C3%A9mon_Jigglypuff_art.png/220px-Pok%C3%A9mon_Jigglypuff_art.png')
   })
 });
