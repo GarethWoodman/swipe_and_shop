@@ -60,10 +60,10 @@ class Buy extends Component {
     return (
       <div>
         <h1>Buy Page</h1>
-        <p>{this.state.items[this.state.itemNum].item_name}</p>
-        <p>{this.state.items[this.state.itemNum].description}</p>
-        <p>{this.state.items[this.state.itemNum].price}</p>
-        <img src={this.state.items[this.state.itemNum].picture} alt="pic"></img>
+        <p id="itemName">{this.state.items[this.state.itemNum].item_name}</p>
+        <p id="itemDescription">{this.state.items[this.state.itemNum].description}</p>
+        <p id="itemPrice">{this.state.items[this.state.itemNum].price}</p>
+        <img id="itemPicture" src={this.state.items[this.state.itemNum].picture} alt="pic"></img>
 
         <button id="yesButton" onClick={this.nextItemYes}>
           Yes
