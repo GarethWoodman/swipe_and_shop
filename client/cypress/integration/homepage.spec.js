@@ -32,4 +32,11 @@ describe("Homepage", () => {
     cy.contains("Swipe and Shop");
     cy.contains("Sell Page").should("not.exist");
   });
+
+  it("Contains first item details", () => {
+    cy.get('#itemName').contains('Makers_test')
+    cy.get('#itemDescription').contains('Makers Course')
+    cy.get('#itemPrice').contains(8000.0)
+    cy.get('#itemPicture').should('have.attr', 'src', 'https://coursereport-s3-production.global.ssl.fastly.net/rich/rich_files/rich_files/5940/s300/screen-shot-2020-03-30-at-14-28-10.png')
+  })
 });
