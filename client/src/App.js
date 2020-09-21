@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import Sell from "./components/sell.jsx";
 import Buy from "./components/buy.jsx";
 import SignUp from "./components/signUp.jsx";
+import Button from "./components/button.jsx";
 
 class App extends Component {
   state = {
-    currentPage: "Buy",
+    currentPage: "Login",
   };
 
   pageSetter = ({ target }) => {
@@ -17,21 +18,18 @@ class App extends Component {
       <div>
         <p>Swipe and Shop</p>
 
-        <button id="signUp" value="SignUp" onClick={this.pageSetter}>
-          Sign Up
-        </button>
+        <Button id={"signUp"} value={"Sign Up"} onClick={this.pageSetter} />
 
-        <button id="buyButton" value="Buy" onClick={this.pageSetter}>
-          Buy
-        </button>
-
-        <button id="sellButton" value="Sell" onClick={this.pageSetter}>
-          Sell
-        </button>
+        {this.state.currentPage !== "Login" && (
+          <Button id={"buyButton"} value={"Buy"} onClick={this.pageSetter} />
+        )}
+        {this.state.currentPage !== "Login" && (
+          <Button id={"sellButton"} value={"Sell"} onClick={this.pageSetter} />
+        )}
 
         {this.state.currentPage === "Buy" && <Buy />}
         {this.state.currentPage === "Sell" && <Sell />}
-        {this.state.currentPage === "SignUp" && <SignUp />}
+        {this.state.currentPage === "Sign Up" && <SignUp />}
       </div>
     );
   }
