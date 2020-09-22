@@ -5,12 +5,17 @@ An app to buy and sell items using a Tinder style selection process
 # Tech Stack:
 
 - MongoDB
-- Express JS
+- Express.js
 - React JS/React Native
-- Node JS
+- Node.js
+- JavaScript
+- Mongoose
+- Nodemon
+- Prettier
 - Bootstrap
 - Cypress
 - npm
+- Heroku
 
 ## Installation Guide
 1. Clone or Fork this repo to your local machine
