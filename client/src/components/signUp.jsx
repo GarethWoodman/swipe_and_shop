@@ -18,7 +18,9 @@ class SignUp extends Component {
     this.setState({ [attribute]: value });
   };
 
-  handleSubmit = (event) => {
+  onSubmit = (event) => {
+    event.preventDefault();
+
     const payload = {
       email: this.state.email,
       password: this.state.password,
@@ -30,8 +32,8 @@ class SignUp extends Component {
     };
 
     axios({
-      url: "user/save",
-      method: "POST",
+      method: "post",
+      url: "/user/save",
       data: payload,
     })
       .then(() => {
@@ -41,15 +43,13 @@ class SignUp extends Component {
       .catch(() => {
         console.log("Internal server error");
       });
-
-    event.preventDefault();
   };
 
   render() {
     console.log(this.state);
     return (
       <div>
-        <form>
+        <form onSubmit={this.onSubmit}>
           <p>real_name:</p>
           <input id="real_name" type="text" onChange={this.myChangeHandler} />
 
@@ -68,8 +68,8 @@ class SignUp extends Component {
 
           <p>picture</p>
           <input id="picture" type="text" onChange={this.myChangeHandler} />
-          <p></p>
-          <input type="submit" value="Submit" onSubmit={this.handleSumbit} />
+
+          <button type="submit">Submit</button>
         </form>
       </div>
     );
