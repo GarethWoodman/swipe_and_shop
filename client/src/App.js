@@ -3,6 +3,7 @@ import Sell from "./components/sell.jsx";
 import Buy from "./components/buy.jsx";
 import SignUp from "./components/signUp.jsx";
 import Button from "./components/button.jsx";
+import Login from "./components/login.jsx";
 
 class App extends Component {
   state = {
@@ -27,6 +28,7 @@ class App extends Component {
           <Button id={"sellButton"} value={"Sell"} onClick={this.pageSetter} />
         )}
 
+        {this.state.currentPage === "Login" && <Login />}
         {this.state.currentPage === "Buy" && <Buy />}
         {this.state.currentPage === "Sell" && <Sell />}
         {this.state.currentPage === "Sign Up" && <SignUp />}
