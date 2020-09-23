@@ -14,7 +14,7 @@ describe("Logging In", () => {
     cy.visit("http://localhost:3000");
   });
 
-  it("Sign up and login", () => {
+  it("Login form available on homepage", () => {
     cy.contains("Swipe and Shop");
 
     cy.contains("Buy Page").should("not.exist");
@@ -31,5 +31,29 @@ describe("Logging In", () => {
     cy.get("#signUp");
     cy.get("#emailLogin");
     cy.get("#passwordLogin");
+  });
+
+  it("Sign up and login", () => {
+    cy.get("#signUp").click();
+
+    cy.get("#buyButton").should("not.exist");
+    cy.get("#sellButton").should("not.exist");
+    cy.get("#signUp").should("not.exist");
+    cy.get("#login");
+
+    cy.get("#real_name").type("Jag").should("have.value", "Jag");
+    cy.get("#username").type("Jag").should("have.value", "Jag");
+    cy.get("#email").type("jag@jag.com").should("have.value", "jag@jag.com");
+    cy.get("#password").type("12345").should("have.value", "12345");
+    cy.get("#picture").type("jag.png").should("have.value", "jag.png");
+    cy.get("#userSubmit").click();
+
+    cy.get("#emailLogin").type("jag@jag.com");
+    cy.get("#passwordLogin").type("12345");
+    cy.get("#loginSubmit").click();
+
+    cy.contains("Buy Page");
+    cy.get("#buyButton");
+    cy.get("#sellButton");
   });
 });

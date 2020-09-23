@@ -43,6 +43,10 @@ class SignUp extends Component {
       .catch(() => {
         console.log("Internal server error");
       });
+
+    console.log("PROPS");
+    console.log(this.props);
+    // this.props.pageSetter();
   };
 
   render() {
@@ -69,7 +73,9 @@ class SignUp extends Component {
           <p>picture</p>
           <input id="picture" type="text" onChange={this.myChangeHandler} />
 
-          <button type="submit">Submit</button>
+          <button id="userSubmit" type="submit">
+            Submit
+          </button>
         </form>
       </div>
     );

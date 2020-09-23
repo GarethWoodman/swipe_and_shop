@@ -11,6 +11,8 @@ class App extends Component {
   };
 
   pageSetter = ({ target }) => {
+    console.log("Target page setter");
+    console.log(target);
     this.setState({ currentPage: target.value });
   };
 
@@ -19,19 +21,33 @@ class App extends Component {
       <div>
         <p>Swipe and Shop</p>
 
-        <Button id={"signUp"} value={"Sign Up"} onClick={this.pageSetter} />
+        {this.state.currentPage !== "Sign Up" && (
+          <Button id={"signUp"} value={"Sign Up"} onClick={this.pageSetter} />
+        )}
 
         {this.state.currentPage !== "Login" && (
-          <Button id={"buyButton"} value={"Buy"} onClick={this.pageSetter} />
+          <Button id={"login"} value={"Login"} onClick={this.pageSetter} />
         )}
-        {this.state.currentPage !== "Login" && (
-          <Button id={"sellButton"} value={"Sell"} onClick={this.pageSetter} />
-        )}
+
+        {this.state.currentPage === "Buy" &&
+          this.state.currentPage === "Sell" && (
+            <Button id={"buyButton"} value={"Buy"} onClick={this.pageSetter} />
+          )}
+        {this.state.currentPage === "Buy" &&
+          this.state.currentPage === "Sell" && (
+            <Button
+              id={"sellButton"}
+              value={"Sell"}
+              onClick={this.pageSetter}
+            />
+          )}
 
         {this.state.currentPage === "Login" && <Login />}
         {this.state.currentPage === "Buy" && <Buy />}
         {this.state.currentPage === "Sell" && <Sell />}
-        {this.state.currentPage === "Sign Up" && <SignUp />}
+        {this.state.currentPage === "Sign Up" && (
+          <SignUp pageSetter={this.pageSetter} />
+        )}
       </div>
     );
   }
