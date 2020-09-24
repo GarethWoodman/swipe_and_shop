@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class Login extends Component {
   state = {
@@ -13,23 +14,35 @@ class Login extends Component {
   };
 
   onSubmit = (event) => {
-    // const payload = {
-    //   email: this.state.email,
-    //   password: this.state.password,
-    // };
-    // axios
-    //   .get("/user")
-    //   .then((response) => {
-    //     var data = response.data;
-    //     this.setState({ items: data });
-    //     // console.log(data)
-    //     console.log("Data has been recieved");
-    //   })
-    //   .catch(() => {
-    //     alert("Error retrieving data!!!");
-    //   });
+    event.preventDefault();
 
-    this.props.pageSetter("Buy");
+    const payload = {
+      email: this.state.emailLogin,
+      password: this.state.passwordLogin,
+    };
+
+    console.log(payload)
+
+    axios({
+      method: "post",
+      url: "/user/login",
+      data: payload,
+    })
+    // Called if server provides response
+      .then((response) => {
+        if(response.data.length == 0) {
+          console.log("Wrong info mate")
+        } else {
+          console.log("Login accepted")
+          this.props.pageSetter("Buy")
+        }
+      })
+      // Called if server is unresponsive
+      .catch(() => {
+        console.log("Internal Server Error");
+      });
+
+    // this.props.pageSetter("Buy");
   };
 
   render() {

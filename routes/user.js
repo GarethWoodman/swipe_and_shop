@@ -5,6 +5,7 @@ const router = express.Router();
 const User = require("../models/user");
 
 const mongoose = require("mongoose");
+const { getMaxListeners } = require("../models/user");
 
 // Routes
 
@@ -81,6 +82,34 @@ router.get("/test", (req, res) => {
 //   });
 // });
 
+// router.get("/login", (req, res) => {
+//   const user = req.params;
+//   console.log(user);
+
+//   User.find({ email: "jag@gmail.com" })
+//     .then((data) => {
+//       console.log("Data: ", data);
+//       res.json(data);
+//     })
+//     .catch((error) => {
+//       console.log("error: ", error);
+//     });
+// });
+
+router.post("/login", (req, res) => {
+  console.log("body: ", req.body)
+  const email = req.body.email;
+  const password = req.body.password;
+
+  User.find({email: email, password: password})
+    .then((data) => {
+      res.json(data)
+    })
+    .catch((error) => {
+      console.log("error", error)
+    })
+})
+
 router.get("/:id", (req, res) => {
   console.log(req.params);
 
@@ -133,6 +162,20 @@ router.put("/:id", (req, res) => {
   });
 });
 
+// router.get("/:id", (req, res) => {
+//   console.log(req.params);
+
+//   const id = req.params.id;
+
+//   User.find({ _id: id })
+//     .then((data) => {
+//       console.log(data);
+//       res.json(data);
+//     })
+//     .catch((error) => {
+//       console.log("error: ", error);
+//     });
+// });
 // { "real_name" : "Heroku Server" }, // specifies the document to update
 // {
 //   $set: {  "real_name" : "New name"}

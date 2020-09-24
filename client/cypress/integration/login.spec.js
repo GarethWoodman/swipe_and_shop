@@ -34,6 +34,17 @@ describe("Logging In", () => {
     cy.get("#passwordLogin");
   });
 
+  it("Login with incorrect details", () => {
+    cy.get("#emailLogin").type("null@jag.com");
+    cy.get("#passwordLogin").type("null");
+    cy.get("#loginSubmit").click();
+
+    cy.get("#emailLogin")
+    cy.get("#passwordLogin")
+
+    cy.get("#loginError").should("have.value", "what you sayin?")
+  });
+
   it("Sign up and login", () => {
     cy.get("#signUp").click();
 
