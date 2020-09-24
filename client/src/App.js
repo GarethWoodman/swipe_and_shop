@@ -10,18 +10,22 @@ class App extends Component {
     currentPage: "Login",
   };
 
-  pageSetter = ({ target }) => {
-    console.log("Target page setter");
-    console.log(target);
-    this.setState({ currentPage: target.value });
-  };
+  // pageSetter = ({ target }) => {
+  //   console.log("Target page setter");
+  //   console.log(target);
+  //   this.setState({ currentPage: target.value });
+  // };
 
-  signUpSubmit = () => {
-    this.setState({ currentPage: "Login" });
-  };
+  // signUpSubmit = () => {
+  //   this.setState({ currentPage: "Login" });
+  // };
 
-  loginSubmit = () => {
-    this.setState({ currentPage: "Buy" });
+  // loginSubmit = () => {
+  //   this.setState({ currentPage: "Buy" });
+  // };
+
+   pageSetter = (value) => {
+    this.setState({ currentPage: value });
   };
 
   render() {
@@ -47,12 +51,12 @@ class App extends Component {
         )}
 
         {this.state.currentPage === "Login" && (
-          <Login loginSubmit={this.loginSubmit} />
+          <Login pageSetter={this.pageSetter} />
         )}
         {this.state.currentPage === "Buy" && <Buy />}
         {this.state.currentPage === "Sell" && <Sell />}
         {this.state.currentPage === "Sign Up" && (
-          <SignUp signUpSubmit={this.signUpSubmit} />
+          <SignUp pageSetter={this.pageSetter} />
         )}
       </div>
     );

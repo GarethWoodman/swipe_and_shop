@@ -29,7 +29,7 @@ class Login extends Component {
     //     alert("Error retrieving data!!!");
     //   });
 
-    this.props.loginSubmit();
+    this.props.pageSetter("Buy");
   };
 
   render() {

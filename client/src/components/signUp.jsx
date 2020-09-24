@@ -46,7 +46,7 @@ class SignUp extends Component {
 
     console.log("PROPS");
     console.log(this.props);
-    this.props.signUpSubmit();
+    this.props.pageSetter("Login")
   };
 
   render() {
