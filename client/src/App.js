@@ -34,20 +34,20 @@ class App extends Component {
         <p>Swipe and Shop</p>
 
         {this.state.currentPage === "Login" && (
-          <Button id={"signUp"} value={"Sign Up"} onClick={this.pageSetter} />
+          <Button id={"signUp"} value={"Sign Up"} pageSetter={this.pageSetter} />
         )}
 
         {this.state.currentPage === "Sign Up" && (
-          <Button id={"login"} value={"Login"} onClick={this.pageSetter} />
+          <Button id={"login"} value={"Login"} pageSetter={this.pageSetter} />
         )}
 
         {(this.state.currentPage === "Buy" ||
           this.state.currentPage === "Sell") && (
-          <Button id={"buyButton"} value={"Buy"} onClick={this.pageSetter} />
+          <Button id={"buyButton"} value={"Buy"} pageSetter={this.pageSetter} />
         )}
         {(this.state.currentPage === "Buy" ||
           this.state.currentPage === "Sell") && (
-          <Button id={"sellButton"} value={"Sell"} onClick={this.pageSetter} />
+          <Button id={"sellButton"} value={"Sell"} pageSetter={this.pageSetter} />
         )}
 
         {this.state.currentPage === "Login" && (
