@@ -68,34 +68,7 @@ router.get("/test", (req, res) => {
     });
 });
 
-// router.get("/:id", (req, res) => {
-//   console.log(req.params);
-//
-//   const id = req.params.id;
-//
-//   User.findById(id, function (err, user) {
-//     if (err) throw err;
-//
-//     // show the one user
-//     console.log(user);
-//     res.json(user);
-//   });
-// });
-
-// router.get("/login", (req, res) => {
-//   const user = req.params;
-//   console.log(user);
-
-//   User.find({ email: "jag@gmail.com" })
-//     .then((data) => {
-//       console.log("Data: ", data);
-//       res.json(data);
-//     })
-//     .catch((error) => {
-//       console.log("error: ", error);
-//     });
-// });
-
+// Needs to be post to pass in body/data
 router.post("/login", (req, res) => {
   console.log("body: ", req.body)
   const email = req.body.email;
@@ -129,16 +102,6 @@ router.delete("/:id", (req, res) => {
   console.log(req.body);
   const id = req.params.id;
 
-  // User.find({ _id: id }, function(err, user) {
-  //   if (err) throw err;
-  //
-  //   user.remove(function(err) {
-  //     if (err) throw err;
-  //
-  //     console.log('User successfully deleted!');
-  //   });
-  // });
-
   User.findByIdAndRemove(id, function (err) {
     if (err) throw err;
 
@@ -149,7 +112,6 @@ router.delete("/:id", (req, res) => {
 });
 
 // Update
-
 router.put("/:id", (req, res) => {
   console.log("UPDATED parameters: ", req.body);
   const id = req.params.id;
