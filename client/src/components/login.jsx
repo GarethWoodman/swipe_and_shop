@@ -1,23 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class Login extends Component {
   state = {
     emailLogin: "",
-    passwordLogin: ""
+    passwordLogin: "",
   };
 
   myChangeHandler = (event) => {
     let attribute = event.target.id;
     let value = event.target.value;
-    this.setState({ [attribute]: value});
-  }
+    this.setState({ [attribute]: value });
+  };
 
-  handleSubmit = (event) => {
-    const payload = {
-      email: this.state.email,
-      password: this.state.password
-    }
-
+  onSubmit = (event) => {
+    // const payload = {
+    //   email: this.state.email,
+    //   password: this.state.password,
+    // };
     // axios
     //   .get("/user")
     //   .then((response) => {
@@ -29,21 +28,31 @@ class Login extends Component {
     //   .catch(() => {
     //     alert("Error retrieving data!!!");
     //   });
+
+    this.props.loginSubmit();
   };
 
   render() {
     return (
       <div>
         <h1>Login</h1>
-        <form>
+        <form onSubmit={this.onSubmit}>
           <p>email:</p>
           <input id="emailLogin" type="text" onChange={this.myChangeHandler} />
 
           <p>password:</p>
-          <input id="passwordLogin" type="text" onChange={this.myChangeHandler} />
+          <input
+            id="passwordLogin"
+            type="text"
+            onChange={this.myChangeHandler}
+          />
+
+          <button id="loginSubmit" type="submit">
+            Submit
+          </button>
         </form>
       </div>
-    )
+    );
   }
 }
 

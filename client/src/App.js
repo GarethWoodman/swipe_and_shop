@@ -16,37 +16,43 @@ class App extends Component {
     this.setState({ currentPage: target.value });
   };
 
+  signUpSubmit = () => {
+    this.setState({ currentPage: "Login" });
+  };
+
+  loginSubmit = () => {
+    this.setState({ currentPage: "Buy" });
+  };
+
   render() {
     return (
       <div>
         <p>Swipe and Shop</p>
 
-        {this.state.currentPage !== "Sign Up" && (
+        {this.state.currentPage === "Login" && (
           <Button id={"signUp"} value={"Sign Up"} onClick={this.pageSetter} />
         )}
 
-        {this.state.currentPage !== "Login" && (
+        {this.state.currentPage === "Sign Up" && (
           <Button id={"login"} value={"Login"} onClick={this.pageSetter} />
         )}
 
-        {this.state.currentPage === "Buy" &&
-          this.state.currentPage === "Sell" && (
-            <Button id={"buyButton"} value={"Buy"} onClick={this.pageSetter} />
-          )}
-        {this.state.currentPage === "Buy" &&
-          this.state.currentPage === "Sell" && (
-            <Button
-              id={"sellButton"}
-              value={"Sell"}
-              onClick={this.pageSetter}
-            />
-          )}
+        {(this.state.currentPage === "Buy" ||
+          this.state.currentPage === "Sell") && (
+          <Button id={"buyButton"} value={"Buy"} onClick={this.pageSetter} />
+        )}
+        {(this.state.currentPage === "Buy" ||
+          this.state.currentPage === "Sell") && (
+          <Button id={"sellButton"} value={"Sell"} onClick={this.pageSetter} />
+        )}
 
-        {this.state.currentPage === "Login" && <Login />}
+        {this.state.currentPage === "Login" && (
+          <Login loginSubmit={this.loginSubmit} />
+        )}
         {this.state.currentPage === "Buy" && <Buy />}
         {this.state.currentPage === "Sell" && <Sell />}
         {this.state.currentPage === "Sign Up" && (
-          <SignUp pageSetter={this.pageSetter} />
+          <SignUp signUpSubmit={this.signUpSubmit} />
         )}
       </div>
     );

@@ -55,5 +55,8 @@ describe("Logging In", () => {
     cy.contains("Buy Page");
     cy.get("#buyButton");
     cy.get("#sellButton");
+
+    // cy.get("#signUp").should("not.exist");
+    cy.get("#login").should("not.exist");
   });
 });
