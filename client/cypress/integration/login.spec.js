@@ -1,5 +1,6 @@
 describe("Logging In", () => {
   beforeEach(() => {
+    cy.task("dropUsers");
     cy.task("dropItems");
     cy.task("addItem", {
       user_id: "69",
