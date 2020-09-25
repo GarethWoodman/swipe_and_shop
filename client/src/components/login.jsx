@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Error from "./error.jsx";
 
 class Login extends Component {
   state = {
+    error: false,
     emailLogin: "",
     passwordLogin: "",
   };
@@ -31,7 +33,7 @@ class Login extends Component {
     // Called if server provides response
       .then((response) => {
         if(response.data.length == 0) {
-          console.log("Wrong info mate")
+          this.setState({error: true})
         } else {
           console.log("Login accepted")
           this.props.pageSetter("Buy")
@@ -46,9 +48,15 @@ class Login extends Component {
   };
 
   render() {
+    console.log(this.state)
     return (
       <div>
         <h1>Login</h1>
+
+        {this.state.error === true && (
+          <Error message={"Incorrect login information"} />
+        )}
+
         <form onSubmit={this.onSubmit}>
           <p>email:</p>
           <input id="emailLogin" type="text" onChange={this.myChangeHandler} />

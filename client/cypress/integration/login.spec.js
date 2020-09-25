@@ -42,7 +42,7 @@ describe("Logging In", () => {
     cy.get("#emailLogin")
     cy.get("#passwordLogin")
 
-    cy.get("#loginError").should("have.value", "what you sayin?")
+    cy.get("#error").contains("Incorrect login information")
   });
 
   it("Sign up and login", () => {
