@@ -39,36 +39,55 @@ describe("Logging In", () => {
     cy.get("#passwordLogin").type("null");
     cy.get("#loginSubmit").click();
 
-    cy.get("#emailLogin")
-    cy.get("#passwordLogin")
+    cy.get("#emailLogin");
+    cy.get("#passwordLogin");
 
-    cy.get("#error").contains("Incorrect login information")
+    cy.get("#error").contains("Incorrect login information");
   });
 
-  it("Sign up and login", () => {
-    cy.get("#signUp").click();
+  describe("Signed Up", () => {
+    beforeEach(() => {
+      cy.get("#signUp").click();
 
-    cy.get("#buyButton").should("not.exist");
-    cy.get("#sellButton").should("not.exist");
-    cy.get("#signUp").should("not.exist");
-    cy.get("#login");
+      cy.get("#buyButton").should("not.exist");
+      cy.get("#sellButton").should("not.exist");
+      cy.get("#signUp").should("not.exist");
+      cy.get("#login");
 
-    cy.get("#real_name").type("Jag").should("have.value", "Jag");
-    cy.get("#username").type("Jag").should("have.value", "Jag");
-    cy.get("#email").type("jag@jag.com").should("have.value", "jag@jag.com");
-    cy.get("#password").type("12345").should("have.value", "12345");
-    cy.get("#picture").type("jag.png").should("have.value", "jag.png");
-    cy.get("#userSubmit").click();
+      cy.get("#real_name").type("Jag").should("have.value", "Jag");
+      cy.get("#username").type("Jag").should("have.value", "Jag");
+      cy.get("#email").type("jag@jag.com").should("have.value", "jag@jag.com");
+      cy.get("#password").type("12345").should("have.value", "12345");
+      cy.get("#picture").type("jag.png").should("have.value", "jag.png");
+      cy.get("#userSubmit").click();
+    });
 
-    cy.get("#emailLogin").type("jag@jag.com");
-    cy.get("#passwordLogin").type("12345");
-    cy.get("#loginSubmit").click();
+    it("Login after signing up", () => {
+      cy.get("#emailLogin").type("jag@jag.com");
+      cy.get("#passwordLogin").type("12345");
+      cy.get("#loginSubmit").click();
 
-    cy.contains("Buy Page");
-    cy.get("#buyButton");
-    cy.get("#sellButton");
+      cy.contains("Buy Page");
+      cy.get("#buyButton");
+      cy.get("#sellButton");
 
-    // cy.get("#signUp").should("not.exist");
-    cy.get("#login").should("not.exist");
+      // cy.get("#signUp").should("not.exist");
+      cy.get("#login").should("not.exist");
+    });
+
+    it("Incorrect login after signing up", () => {
+      cy.get("#emailLogin").type("null@null.com");
+      cy.get("#passwordLogin").type("null");
+      cy.get("#loginSubmit").click();
+
+      cy.contains("Buy Page").should("not.exist");
+      cy.get("#buyButton").should("not.exist");
+      cy.get("#sellButton").should("not.exist");
+
+      cy.get("#emailLogin");
+      cy.get("#passwordLogin");
+
+      cy.get("#error").contains("Incorrect login information");
+    });
   });
 });
