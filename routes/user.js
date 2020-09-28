@@ -9,14 +9,6 @@ const User = require("../models/user");
 const mongoose = require("mongoose");
 const { getMaxListeners } = require("../models/user");
 
-// JWT authentication routes
-
-router.get("/api", (req, res) => {
-  res.json({
-    message: "Welcome to the API",
-  });
-});
-
 // Routes
 
 router.get("/", (req, res) => {
@@ -64,19 +56,19 @@ router.post("/update", (req, res) => {
   });
 });
 
-router.get("/test", (req, res) => {
-  const user = req.params;
-  console.log(user);
+// router.get("/test", (req, res) => {
+//   const user = req.params;
+//   console.log(user);
 
-  User.find({ username: "jag" })
-    .then((data) => {
-      console.log("Data: ", data);
-      res.json(data);
-    })
-    .catch((error) => {
-      console.log("error: ", error);
-    });
-});
+//   User.find({ username: "jag" })
+//     .then((data) => {
+//       console.log("Data: ", data);
+//       res.json(data);
+//     })
+//     .catch((error) => {
+//       console.log("error: ", error);
+//     });
+// });
 
 // Needs to be post to pass in body/data
 router.post("/login", (req, res) => {
@@ -93,7 +85,7 @@ router.post("/login", (req, res) => {
     });
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", (req, res, next) => {
   console.log(req.params);
 
   const id = req.params.id;
@@ -105,8 +97,19 @@ router.get("/:id", (req, res) => {
     })
     .catch((error) => {
       console.log("error: ", error);
+      next();
     });
 });
+
+// JWT authentication routes
+
+router.get("/api", (req, res) => {
+  res.json({
+    message: "Welcome to the API",
+  });
+});
+
+// Delete and Put
 
 router.delete("/:id", (req, res) => {
   console.log(req.body);
