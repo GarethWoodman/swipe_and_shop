@@ -11,6 +11,43 @@ const { getMaxListeners } = require("../models/user");
 
 // Routes
 
+router.post('/api/posts', verifyToken, (req, res) => {
+  res.json({
+    message: 'Post created...'
+  });
+});
+
+router.post('/api/login', (req, res) => {
+  // Mock user
+  const user = {
+    id: 1,
+    username: 'brad',
+    email: 'brad@gmail.com'
+  }
+
+  jwt.sign({user}, 'secretkey', (err, token) => {
+    res.json({
+      token
+    });
+  });
+});
+
+// FORMAT OF TOKEN
+// Authorizatio: Bearer <access_token>
+
+// Verify Token
+function verifyToken(req, res, next) {
+  // Get auth header value
+  const bearerHeader = req.headers['authorization'];
+  // Check if bearer is undefined
+  if(typeof bearerHeader !== 'undefined') {
+    
+  } else {
+    // Forbidden
+    res.sendStatus('403')
+  }
+}
+
 router.get("/", (req, res) => {
   User.find({})
     .then((data) => {
