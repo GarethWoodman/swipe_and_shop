@@ -2,10 +2,20 @@ const express = require("express");
 
 const router = express.Router();
 
+const jwt = require("jsonwebtoken");
+
 const User = require("../models/user");
 
 const mongoose = require("mongoose");
 const { getMaxListeners } = require("../models/user");
+
+// JWT authentication routes
+
+router.get("/api", (req, res) => {
+  res.json({
+    message: "Welcome to the API",
+  });
+});
 
 // Routes
 
@@ -70,18 +80,18 @@ router.get("/test", (req, res) => {
 
 // Needs to be post to pass in body/data
 router.post("/login", (req, res) => {
-  console.log("body: ", req.body)
+  console.log("body: ", req.body);
   const email = req.body.email;
   const password = req.body.password;
 
-  User.find({email: email, password: password})
+  User.find({ email: email, password: password })
     .then((data) => {
-      res.json(data)
+      res.json(data);
     })
     .catch((error) => {
-      console.log("error", error)
-    })
-})
+      console.log("error", error);
+    });
+});
 
 router.get("/:id", (req, res) => {
   console.log(req.params);
