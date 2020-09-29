@@ -22,6 +22,7 @@ router.get("/api", (req, res) => {
 router.post("/api/posts", verifyToken, (req, res) => {
   jwt.verify(req.token, "secretKey", (err, authData) => {
     if (err) {
+      console.log(err)
       res.sendStatus(403);
     } else {
       res.json({
@@ -40,7 +41,7 @@ router.post("/api/login", (req, res) => {
     email: "brad@gmail.com",
   };
 
-  jwt.sign({ user }, "secretkey", (err, token) => {
+  jwt.sign({ user }, "secretKey", (err, token) => {
     res.json({
       token,
     });
