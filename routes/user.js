@@ -11,6 +11,14 @@ const { getMaxListeners } = require("../models/user");
 
 // Routes
 
+// JWT authentication routes
+
+router.get("/api", (req, res) => {
+  res.json({
+    message: "Welcome to the API",
+  });
+});
+
 router.post('/api/posts', verifyToken, (req, res) => {
   jwt.verify(req.token, 'secretKey', (err, authData) => {
     if(err) {
@@ -150,14 +158,6 @@ router.get("/:id", (req, res, next) => {
       console.log("error: ", error);
       next();
     });
-});
-
-// JWT authentication routes
-
-router.get("/api", (req, res) => {
-  res.json({
-    message: "Welcome to the API",
-  });
 });
 
 // Delete and Put
