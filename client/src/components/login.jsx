@@ -23,20 +23,23 @@ class Login extends Component {
       password: this.state.passwordLogin,
     };
 
-    console.log(payload)
+    console.log(payload);
 
     axios({
       method: "post",
       url: "/user/login",
       data: payload,
     })
-    // Called if server provides response
+      // Called if server provides response
       .then((response) => {
-        if(response.data.length == 0) {
-          this.setState({error: true})
+        if (response.data.data.length == 0) {
+          this.setState({ error: true });
         } else {
-          console.log("Login accepted")
-          this.props.pageSetter("Buy")
+          console.log("Login accepted");
+          this.props.pageSetter("Buy");
+
+          console.log(response.data.token);
+          localStorage.setItem("authToken", response.data.token);
         }
       })
       // Called if server is unresponsive
@@ -48,7 +51,7 @@ class Login extends Component {
   };
 
   render() {
-    console.log(this.state)
+    console.log(this.state);
     return (
       <div>
         <h1>Login</h1>

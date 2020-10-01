@@ -33,20 +33,20 @@ router.post("/api/posts", verifyToken, (req, res) => {
   });
 });
 
-router.post("/api/login", (req, res) => {
-  // Mock user
-  const user = {
-    id: 1,
-    username: "brad",
-    email: "brad@gmail.com",
-  };
+// router.post("/api/login", (req, res) => {
+//   // Mock user
+//   const user = {
+//     id: 1,
+//     username: "brad",
+//     email: "brad@gmail.com",
+//   };
 
-  jwt.sign({ user }, "secretKey", { expiresIn: "1d" }, (err, token) => {
-    res.json({
-      token,
-    });
-  });
-});
+//   jwt.sign({ user }, "secretKey", { expiresIn: "1d" }, (err, token) => {
+//     res.json({
+//       token,
+//     });
+//   });
+// });
 
 // FORMAT OF TOKEN
 // Authorizatio: Bearer <access_token>
@@ -136,9 +136,21 @@ router.post("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
+  const user = {
+    email: email,
+    password: password,
+  };
+
   User.find({ email: email, password: password })
     .then((data) => {
-      res.json(data);
+      jwt.sign({ user }, "secretKey", { expiresIn: "1d" }, (err, token) => {
+        res.json({
+          token,
+          data,
+        });
+      });
+
+      // res.json(data);
     })
     .catch((error) => {
       console.log("error", error);
