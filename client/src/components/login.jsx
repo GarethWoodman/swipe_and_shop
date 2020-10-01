@@ -40,8 +40,8 @@ class Login extends Component {
 
           console.log(response.data.token);
           localStorage.setItem("authToken", response.data.token);
-          console.log(response.data.data[0].real_name)
-          this.props.usernameSetter(response.data.data[0].real_name)
+          console.log(response.data.data[0])
+          this.props.usernameSetter(response.data.data[0])
         }
       })
       // Called if server is unresponsive

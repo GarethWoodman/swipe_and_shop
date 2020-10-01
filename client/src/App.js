@@ -30,7 +30,7 @@ class App extends Component {
   };
 
   usernameSetter = (value) => {
-    this.setState({ currentUsername: value });
+    this.setState({ currentUser: value });
   };
 
   render() {
@@ -38,8 +38,8 @@ class App extends Component {
       <div>
         <p>Swipe and Shop</p>
 
-        {this.state.currentUsername !== "" && 
-          <p id="userName">Welcome {this.state.currentUser}!</p>}
+        {this.state.currentUser !== "" && 
+          <p id="userName">Welcome {this.state.currentUser.email}!</p>}
 
         {this.state.currentPage === "Login" && (
           <Button id={"signUp"} value={"Sign Up"} pageSetter={this.pageSetter} />
