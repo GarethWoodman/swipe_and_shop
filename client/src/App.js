@@ -8,6 +8,7 @@ import Login from "./components/login.jsx";
 class App extends Component {
   state = {
     currentPage: "Login",
+    currentUsername: ""
   };
 
   // pageSetter = ({ target }) => {
@@ -24,14 +25,21 @@ class App extends Component {
   //   this.setState({ currentPage: "Buy" });
   // };
 
-   pageSetter = (value) => {
+  pageSetter = (value) => {
     this.setState({ currentPage: value });
+  };
+
+  usernameSetter = (value) => {
+    this.setState({ currentUsername: value });
   };
 
   render() {
     return (
       <div>
         <p>Swipe and Shop</p>
+
+        {this.state.currentUsername !== "" && 
+          <p id="userName">Welcome {this.state.currentUsername}!</p>}
 
         {this.state.currentPage === "Login" && (
           <Button id={"signUp"} value={"Sign Up"} pageSetter={this.pageSetter} />
@@ -51,7 +59,7 @@ class App extends Component {
         )}
 
         {this.state.currentPage === "Login" && (
-          <Login pageSetter={this.pageSetter} />
+          <Login pageSetter={this.pageSetter} usernameSetter={this.usernameSetter} />
         )}
         {this.state.currentPage === "Buy" && <Buy />}
         {this.state.currentPage === "Sell" && <Sell />}

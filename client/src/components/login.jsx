@@ -40,6 +40,7 @@ class Login extends Component {
 
           console.log(response.data.token);
           localStorage.setItem("authToken", response.data.token);
+          this.props.usernameSetter("Alice")
         }
       })
       // Called if server is unresponsive
