@@ -8,7 +8,7 @@ import Login from "./components/login.jsx";
 class App extends Component {
   state = {
     currentPage: "Login",
-    currentUsername: ""
+    currentUser: ""
   };
 
   // pageSetter = ({ target }) => {
@@ -39,7 +39,7 @@ class App extends Component {
         <p>Swipe and Shop</p>
 
         {this.state.currentUsername !== "" && 
-          <p id="userName">Welcome {this.state.currentUsername}!</p>}
+          <p id="userName">Welcome {this.state.currentUser}!</p>}
 
         {this.state.currentPage === "Login" && (
           <Button id={"signUp"} value={"Sign Up"} pageSetter={this.pageSetter} />
