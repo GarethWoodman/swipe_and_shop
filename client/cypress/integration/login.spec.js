@@ -54,7 +54,9 @@ describe("Logging In", () => {
       cy.get("#signUp").should("not.exist");
       cy.get("#login");
 
-      cy.get("#real_name").type("Jag").should("have.value", "Jag");
+      cy.get("#real_name")
+        .type("Jag Makers")
+        .should("have.value", "Jag Makers");
       cy.get("#username").type("Jag").should("have.value", "Jag");
       cy.get("#email").type("jag@jag.com").should("have.value", "jag@jag.com");
       cy.get("#password").type("12345").should("have.value", "12345");
@@ -73,7 +75,7 @@ describe("Logging In", () => {
 
       // cy.get("#signUp").should("not.exist");
       cy.get("#login").should("not.exist");
-      cy.get("#welcomeMessage").contains("Jag");
+      cy.get("#welcomeMessage").contains("Jag Makers");
 
       cy.reload();
       cy.contains("Buy Page");
