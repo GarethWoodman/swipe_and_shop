@@ -23,14 +23,13 @@ router.post("/save", (req, res) => {
   const newItem = new Item(data);
 
   newItem.save((error) => {
+    // Return response.data false if error otherwise return true
     if (error) {
       res.status(500).json({ msg: "Sorry, internal server errors" });
-      return;
+      return false;
     }
 
-    return res.json({
-      msg: "Your data has been saved!!!!!!",
-    });
+    return true;
   });
 });
 

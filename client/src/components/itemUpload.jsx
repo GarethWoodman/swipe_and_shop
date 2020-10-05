@@ -34,21 +34,21 @@ class ItemUpload extends Component {
       url: "/item/save",
       data: payload,
     })
-    .then(() => {
+    .then((response) => {
+      // If response.data is true redirect to buy page
+      if(response.data) {
+        this.props.pageSetter("Buy")
+      }
       console.log("Data has been sent to the server");
     })
     .catch(() => {
       console.log("Internal server error")
-    })
-
-    console.log("-------- Item Props --------")
-    console.log(this.props)
-    this.props.pageSetter("Buy")
+    })    
   }
 
   render() {
     return (
-      <form id="itemSubmit" onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit}>
         <input id="item_name" type="text" placeholder="Name" onChange={this.myChangeHandler}></input>
         <input
           id="description"
@@ -59,7 +59,7 @@ class ItemUpload extends Component {
         <input id="price" type="number" placeholder="Price" onChange={this.myChangeHandler}></input>
         <input id="expiry_date" type="text" placeholder="Expiry" onChange={this.myChangeHandler}></input>
         <input id="picture" type="text" placeholder="Picture"onChange={this.myChangeHandler}></input>
-        <input type="submit" value="Submit"></input>
+        <input id="itemSubmit" type="submit" value="Submit"></input>
       </form>
     );
   }

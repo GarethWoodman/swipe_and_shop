@@ -55,7 +55,10 @@ class Buy extends Component {
   };
 
   render() {
-    if (!this.state.items.length) return null;
+    if (!this.state.items.length) {
+      console.log("Not loaded")
+      return null;
+    }
     console.log(this.state.items[0].item_name);
     return (
       <div>
