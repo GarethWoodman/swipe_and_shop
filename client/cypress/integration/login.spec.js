@@ -73,7 +73,7 @@ describe("Logging In", () => {
 
       // cy.get("#signUp").should("not.exist");
       cy.get("#login").should("not.exist");
-      cy.get("#userName").type("Jag")
+      cy.get("#welcomeMessage").contains("Jag");
     });
 
     it("Incorrect login after signing up", () => {

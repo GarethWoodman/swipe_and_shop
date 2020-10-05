@@ -8,7 +8,7 @@ import Login from "./components/login.jsx";
 class App extends Component {
   state = {
     currentPage: "Login",
-    currentUser: ""
+    currentUser: "",
   };
 
   // pageSetter = ({ target }) => {
@@ -38,11 +38,16 @@ class App extends Component {
       <div>
         <p>Swipe and Shop</p>
 
-        {this.state.currentUser !== "" && 
-          <p id="userName">Welcome {this.state.currentUser.email}!</p>}
+        {this.state.currentUser !== "" && (
+          <p id="welcomeMessage">Welcome {this.state.currentUser.real_name}!</p>
+        )}
 
         {this.state.currentPage === "Login" && (
-          <Button id={"signUp"} value={"Sign Up"} pageSetter={this.pageSetter} />
+          <Button
+            id={"signUp"}
+            value={"Sign Up"}
+            pageSetter={this.pageSetter}
+          />
         )}
 
         {this.state.currentPage === "Sign Up" && (
@@ -55,11 +60,18 @@ class App extends Component {
         )}
         {(this.state.currentPage === "Buy" ||
           this.state.currentPage === "Sell") && (
-          <Button id={"sellButton"} value={"Sell"} pageSetter={this.pageSetter} />
+          <Button
+            id={"sellButton"}
+            value={"Sell"}
+            pageSetter={this.pageSetter}
+          />
         )}
 
         {this.state.currentPage === "Login" && (
-          <Login pageSetter={this.pageSetter} usernameSetter={this.usernameSetter} />
+          <Login
+            pageSetter={this.pageSetter}
+            usernameSetter={this.usernameSetter}
+          />
         )}
         {this.state.currentPage === "Buy" && <Buy />}
         {this.state.currentPage === "Sell" && <Sell />}
