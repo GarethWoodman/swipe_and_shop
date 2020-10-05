@@ -43,11 +43,12 @@ class ItemUpload extends Component {
 
     console.log("-------- Item Props --------")
     console.log(this.props)
+    this.props.pageSetter("Buy")
   }
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
+      <form id="itemSubmit" onSubmit={this.onSubmit}>
         <input id="item_name" type="text" placeholder="Name" onChange={this.myChangeHandler}></input>
         <input
           id="description"

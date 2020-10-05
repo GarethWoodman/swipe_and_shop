@@ -80,7 +80,8 @@ class App extends Component {
           />
         )}
         {this.state.currentPage === "Buy" && <Buy />}
-        {this.state.currentPage === "Sell" && <Sell />}
+        {this.state.currentPage === "Sell" && 
+          <Sell pageSetter={this.pageSetter}/>}
         {this.state.currentPage === "Sign Up" && (
           <SignUp pageSetter={this.pageSetter} />
         )}
