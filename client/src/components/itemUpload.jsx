@@ -41,21 +41,23 @@ class ItemUpload extends Component {
       console.log("Internal server error")
     })
 
+    console.log("-------- Item Props --------")
     console.log(this.props)
   }
 
   render() {
     return (
-      <form>
-        <input id="item_name" type="text" placeholder="Name"></input>
+      <form onSubmit={this.onSubmit}>
+        <input id="item_name" type="text" placeholder="Name" onChange={this.myChangeHandler}></input>
         <input
           id="description"
           type="text"
           placeholder="Description"
+          onChange={this.myChangeHandler}
         ></input>
-        <input id="price" type="number" placeholder="Price"></input>
-        <input id="expiry_date" type="text" placeholder="Expiry"></input>
-        <input id="picture" type="text" placeholder="Picture"></input>
+        <input id="price" type="number" placeholder="Price" onChange={this.myChangeHandler}></input>
+        <input id="expiry_date" type="text" placeholder="Expiry" onChange={this.myChangeHandler}></input>
+        <input id="picture" type="text" placeholder="Picture"onChange={this.myChangeHandler}></input>
         <input type="submit" value="Submit"></input>
       </form>
     );
