@@ -14,9 +14,6 @@ class Sell extends Component {
     return (
       <div>
         <h1>Sell Page</h1>
-        <button id="itemUpload" onClick={this.loadForm}>
-          Item Upload
-        </button>
         <ItemUpload />
       </div>
     );
