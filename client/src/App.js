@@ -25,6 +25,12 @@ class App extends Component {
   //   this.setState({ currentPage: "Buy" });
   // };
 
+  componentDidMount() {
+    if (localStorage.getItem("authToken") !== null) {
+      this.pageSetter("Buy");
+    }
+  }
+
   pageSetter = (value) => {
     this.setState({ currentPage: value });
   };
