@@ -3,7 +3,7 @@ import axios from 'axios';
 
 class ItemUpload extends Component {
   state = {
-    user_id: "1",
+    user_id: localStorage.getItem("user_id"),
     item_name: "",
     description: "",
     price: 0.00,
@@ -44,6 +44,7 @@ class ItemUpload extends Component {
     .catch(() => {
       console.log("Internal server error")
     })    
+    console.log(this.state)
   }
 
   render() {
