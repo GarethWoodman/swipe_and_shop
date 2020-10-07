@@ -26,17 +26,17 @@ router.post("/save", (req, res) => {
     // Return response.data false if error otherwise return true
     if (error) {
       res.status(500).json({ msg: "Sorry, internal server errors" });
-      return false;
+      res.json(false);
     }
 
-    return true;
+    res.json(true);
   });
 });
 
 router.get("/:id", (req, res) => {
-  const id = req.params.id
+  const id = req.params.id;
 
-  Item.find({_id: id})
+  Item.find({ _id: id })
     .then((data) => {
       console.log(data);
       res.json(data);
@@ -44,7 +44,7 @@ router.get("/:id", (req, res) => {
     .catch((error) => {
       console.log("error: ", error);
     });
-})
+});
 
 router.delete("/:id", (req, res) => {
   console.log(req.body);
