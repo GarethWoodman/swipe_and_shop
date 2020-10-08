@@ -4,6 +4,7 @@ import axios from "axios";
 class Buy extends Component {
   state = {
     items: "",
+    users: "",
     itemNum: 0,
   };
 
@@ -14,10 +15,21 @@ class Buy extends Component {
         var data = response.data;
         this.setState({ items: data });
         // console.log(data)
-        console.log("Data has been recieved");
+        console.log("Data has been received");
       })
       .catch(() => {
         alert("Error retrieving data!!!");
+      });
+
+    axios
+      .get("/user")
+      .then((response) => {
+        var data = response.data;
+        this.setState({ users: data });
+        console.log("Data has been received");
+      })
+      .catch(() => {
+        alert("Error retrieving data");
       });
   };
 
