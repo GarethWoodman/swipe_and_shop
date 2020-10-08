@@ -15,29 +15,43 @@ class Buy extends Component {
       .then((response) => {
         var data = response.data;
         this.setState({ items: data });
-        this.getUser(this.state.items[this.state.itemNum].user_id)
-        // console.log(data)
         console.log("Data has been received");
       })
       .catch(() => {
         alert("Error retrieving data!!!");
       });
+
+    axios
+      .get("/user")
+      .then((response) => {
+        var data = response.data;
+
+        this.setState({ users: data})
+      })
+      .catch(() => {
+        alert("Error retrieving data mate")
+      })
   };
 
   getUser = (id) => {
-    const user = "";
+    for(var i = 0; i < this.state.users.length; i++) {
+      if (this.state.users[i]._id === id) {
+        return this.state.users[i]
+      }
+    }
 
-    axios
-    .get("/user/" + id)
-    .then((response) => {
-      var data = response.data[0];
-      this.setState({userItem: data })
-      console.log(this.state.userItem.real_name)
-      console.log("Data has been received");
-    })
-    .catch(() => {
-      alert("Error retrieving data");
-    });
+
+    // axios
+    // .get("/user/" + id)
+    // .then((response) => {
+    //   var data = response.data[0];
+    //   this.setState({userItem: data })
+    //   console.log(this.state.userItem.real_name)
+    //   console.log("Data has been received");
+    // })
+    // .catch(() => {
+    //   alert("Error retrieving data");
+    // });
 
   }
 
@@ -72,7 +86,6 @@ class Buy extends Component {
     if (num < this.state.items.length - 1) {
       this.setState({ itemNum: num + 1 });
     }
-    this.getUser(this.state.items[this.state.itemNum].user_id)
   };
 
   render() {
@@ -84,7 +97,7 @@ class Buy extends Component {
     return (
       <div>
         <h1>Buy Page</h1>
-        <p id="itemUserRealName">{this.state.userItem.real_name}</p>
+        <p id="itemUserRealName">{this.getUser(this.state.items[this.state.itemNum].user_id).real_name}</p>
         <p id="itemName">{this.state.items[this.state.itemNum].item_name}</p>
         <p id="itemDescription">
           {this.state.items[this.state.itemNum].description}
