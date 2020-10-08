@@ -6,6 +6,7 @@ class Buy extends Component {
     items: "",
     users: "",
     itemNum: 0,
+    userItem: "",
   };
 
   componentDidMount = () => {
@@ -14,24 +15,31 @@ class Buy extends Component {
       .then((response) => {
         var data = response.data;
         this.setState({ items: data });
+        this.getUser(this.state.items[this.state.itemNum].user_id)
         // console.log(data)
         console.log("Data has been received");
       })
       .catch(() => {
         alert("Error retrieving data!!!");
       });
+  };
+
+  getUser = (id) => {
+    const user = "";
 
     axios
-      .get("/user")
-      .then((response) => {
-        var data = response.data;
-        this.setState({ users: data });
-        console.log("Data has been received");
-      })
-      .catch(() => {
-        alert("Error retrieving data");
-      });
-  };
+    .get("/user/" + id)
+    .then((response) => {
+      var data = response.data[0];
+      this.setState({userItem: data })
+      console.log(this.state.userItem.real_name)
+      console.log("Data has been received");
+    })
+    .catch(() => {
+      alert("Error retrieving data");
+    });
+
+  }
 
   nextItemNo = () => {
     const num = this.state.itemNum;
@@ -64,6 +72,7 @@ class Buy extends Component {
     if (num < this.state.items.length - 1) {
       this.setState({ itemNum: num + 1 });
     }
+    this.getUser(this.state.items[this.state.itemNum].user_id)
   };
 
   render() {
@@ -75,7 +84,7 @@ class Buy extends Component {
     return (
       <div>
         <h1>Buy Page</h1>
-        <p id="itemUserRealName">{"Jag Makers"}</p>
+        <p id="itemUserRealName">{this.state.userItem.real_name}</p>
         <p id="itemName">{this.state.items[this.state.itemNum].item_name}</p>
         <p id="itemDescription">
           {this.state.items[this.state.itemNum].description}

@@ -4,6 +4,8 @@ const router = express.Router();
 
 const Item = require("../models/item");
 
+const User = require("../models/user");
+
 // Routes
 
 router.get("/", (req, res) => {
