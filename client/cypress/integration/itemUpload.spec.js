@@ -33,16 +33,13 @@ describe("Sell Items Page", () => {
   });
 
   it("has item upload form", () => {
-    const imageAddress = "https://static01.nyt.com/images/2019/04/02/science/28SCI-ZIMMER1/28SCI-ZIMMER1-videoSixteenByNineJumbo1600.jpg";
+    const imageAddress =
+      "https://static01.nyt.com/images/2019/04/02/science/28SCI-ZIMMER1/28SCI-ZIMMER1-videoSixteenByNineJumbo1600.jpg";
     cy.get("#item_name").type("Frog").should("have.value", "Frog");
-    cy.get("#description")
-      .type("Croaky")
-      .should("have.value", "Croaky");
+    cy.get("#description").type("Croaky").should("have.value", "Croaky");
     cy.get("#price").type(10).should("have.value", "10");
     cy.get("#expiry_date").type("1 year").should("have.value", "1 year");
-    cy.get("#picture")
-      .type(imageAddress)
-      .should("have.value", imageAddress);
+    cy.get("#picture").type(imageAddress).should("have.value", imageAddress);
     cy.get("#itemSubmit").click();
 
     cy.contains("Buy Page");
@@ -50,6 +47,8 @@ describe("Sell Items Page", () => {
     cy.get("#itemName").contains("Frog");
     cy.get("#itemDescription").contains("Croaky");
     cy.get("#itemPrice").contains("10");
-    cy.get("#itemPicture").should('have.attr', 'src', imageAddress)
+    cy.get("#itemPicture").should("have.attr", "src", imageAddress);
+
+    cy.get("#itemUserRealName").contains("Jag Makers");
   });
 });

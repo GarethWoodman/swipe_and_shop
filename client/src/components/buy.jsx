@@ -56,17 +56,24 @@ class Buy extends Component {
 
   render() {
     if (!this.state.items.length) {
-      console.log("Not loaded")
+      console.log("Not loaded");
       return null;
     }
     console.log(this.state.items[0].item_name);
     return (
       <div>
         <h1>Buy Page</h1>
+        <p id="itemUserRealName">{"Jag Makers"}</p>
         <p id="itemName">{this.state.items[this.state.itemNum].item_name}</p>
-        <p id="itemDescription">{this.state.items[this.state.itemNum].description}</p>
+        <p id="itemDescription">
+          {this.state.items[this.state.itemNum].description}
+        </p>
         <p id="itemPrice">{this.state.items[this.state.itemNum].price}</p>
-        <img id="itemPicture" src={this.state.items[this.state.itemNum].picture} alt="pic"></img>
+        <img
+          id="itemPicture"
+          src={this.state.items[this.state.itemNum].picture}
+          alt="pic"
+        ></img>
 
         <button id="yesButton" onClick={this.nextItemYes}>
           Yes
