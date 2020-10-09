@@ -14,8 +14,8 @@ class Buy extends Component {
       .get("/item")
       .then((response) => {
         var data = response.data;
+        console.log(data)
         this.setState({ items: data });
-        console.log("Data has been received");
       })
       .catch(() => {
         alert("Error retrieving data!!!");
@@ -89,7 +89,8 @@ class Buy extends Component {
   };
 
   render() {
-    if (!this.state.items.length) {
+    // Checks if items and users have been loaded, if they haven't - return null
+    if (!this.state.items.length || !this.state.users.length) {
       console.log("Not loaded");
       return null;
     }

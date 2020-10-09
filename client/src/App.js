@@ -26,9 +26,9 @@ class App extends Component {
   // };
 
   componentDidMount() {
-    if (localStorage.getItem("authToken") !== null) {
-      this.pageSetter("Buy");
-    }
+    // if (localStorage.getItem("authToken") !== null) {
+    //   this.pageSetter("Buy");
+    // }
   }
 
   pageSetter = (value) => {
