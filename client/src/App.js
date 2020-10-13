@@ -65,8 +65,11 @@ class App extends Component {
           <div>
             <Button id={"buyButton"} value={"Buy"} pageSetter={this.pageSetter} />
             <Button id={"sellButton"} value={"Sell"} pageSetter={this.pageSetter} />
+            <Button id={"shortListButton"} value={"Shortlist"} pageSetter={this.pageSetter} />
           </div>
         )}
+
+        {this.state.currentPage === "Shortlist" && <Shortlist />}
 
         {this.state.currentPage === "Login" && (
           <Login
