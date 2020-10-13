@@ -4,6 +4,7 @@ import Buy from "./components/buy.jsx";
 import SignUp from "./components/signUp.jsx";
 import Button from "./components/button.jsx";
 import Login from "./components/login.jsx";
+import "./App.css";
 
 class App extends Component {
   state = {
@@ -41,48 +42,51 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <p>Swipe and Shop</p>
+      <div id="app">
+        <div class="topnav">
+          <span id="title">Swipe and Shop</span>
+          <div class="navButtons">
+            {this.state.currentPage === "Login" && (
+              <Button
+                id={"signUp"}
+                value={"Sign Up"}
+                pageSetter={this.pageSetter}
+              />
+            )}
 
+            {this.state.currentPage === "Sign Up" && (
+              <Button id={"login"} value={"Login"} pageSetter={this.pageSetter} />
+            )}
+
+            {(this.state.currentPage === "Buy" ||
+              this.state.currentPage === "Sell") && (
+              <div>
+                <Button id={"buyButton"} value={"Buy"} pageSetter={this.pageSetter} />
+                <Button id={"sellButton"} value={"Sell"} pageSetter={this.pageSetter} />
+                <Button id={"shortListButton"} value={"Shortlist"} pageSetter={this.pageSetter} />
+              </div>
+            )}
+          </div>
+        </div>
+        <div id="content">
         {this.state.currentUser !== "" && (
           <p id="welcomeMessage">Welcome {this.state.currentUser.real_name}!</p>
         )}
+          {/* {this.state.currentPage === "Shortlist" && <Shortlist />} */}
 
-        {this.state.currentPage === "Login" && (
-          <Button
-            id={"signUp"}
-            value={"Sign Up"}
-            pageSetter={this.pageSetter}
-          />
-        )}
-
-        {this.state.currentPage === "Sign Up" && (
-          <Button id={"login"} value={"Login"} pageSetter={this.pageSetter} />
-        )}
-
-        {(this.state.currentPage === "Buy" ||
-          this.state.currentPage === "Sell") && (
-          <div>
-            <Button id={"buyButton"} value={"Buy"} pageSetter={this.pageSetter} />
-            <Button id={"sellButton"} value={"Sell"} pageSetter={this.pageSetter} />
-            <Button id={"shortListButton"} value={"Shortlist"} pageSetter={this.pageSetter} />
-          </div>
-        )}
-
-        {this.state.currentPage === "Shortlist" && <Shortlist />}
-
-        {this.state.currentPage === "Login" && (
-          <Login
-            pageSetter={this.pageSetter}
-            usernameSetter={this.usernameSetter}
-          />
-        )}
-        {this.state.currentPage === "Buy" && <Buy />}
-        {this.state.currentPage === "Sell" && 
-          <Sell pageSetter={this.pageSetter}/>}
-        {this.state.currentPage === "Sign Up" && (
-          <SignUp pageSetter={this.pageSetter} />
-        )}
+          {this.state.currentPage === "Login" && (
+            <Login
+              pageSetter={this.pageSetter}
+              usernameSetter={this.usernameSetter}
+            />
+          )}
+          {this.state.currentPage === "Buy" && <Buy />}
+          {this.state.currentPage === "Sell" && 
+            <Sell pageSetter={this.pageSetter}/>}
+          {this.state.currentPage === "Sign Up" && (
+            <SignUp pageSetter={this.pageSetter} />
+          )}
+        </div>
       </div>
     );
   }

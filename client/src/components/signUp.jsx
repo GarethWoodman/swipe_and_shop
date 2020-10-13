@@ -52,7 +52,7 @@ class SignUp extends Component {
   render() {
     console.log(this.state);
     return (
-      <div>
+      <div id="signUp">
         <form onSubmit={this.onSubmit}>
           <p>real_name:</p>
           <input id="real_name" type="text" onChange={this.myChangeHandler} />
@@ -72,7 +72,7 @@ class SignUp extends Component {
 
           <p>picture</p>
           <input id="picture" type="text" onChange={this.myChangeHandler} />
-
+          <br></br>
           <button id="userSubmit" type="submit">
             Submit
           </button>

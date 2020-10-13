@@ -57,6 +57,7 @@ class Login extends Component {
     console.log(this.state);
     return (
       <div>
+
         <h1>Login</h1>
 
         {this.state.error === true && (
@@ -74,6 +75,8 @@ class Login extends Component {
             onChange={this.myChangeHandler}
           />
 
+          <br></br>
+          <br></br>
           <button id="loginSubmit" type="submit">
             Submit
           </button>
