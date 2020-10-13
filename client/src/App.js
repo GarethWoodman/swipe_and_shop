@@ -63,13 +63,25 @@ class App extends Component {
         {(this.state.currentPage === "Buy" ||
           this.state.currentPage === "Sell") && (
           <div>
-            <Button id={"buyButton"} value={"Buy"} pageSetter={this.pageSetter} />
-            <Button id={"sellButton"} value={"Sell"} pageSetter={this.pageSetter} />
-            <Button id={"shortListButton"} value={"Shortlist"} pageSetter={this.pageSetter} />
+            <Button
+              id={"buyButton"}
+              value={"Buy"}
+              pageSetter={this.pageSetter}
+            />
+            <Button
+              id={"sellButton"}
+              value={"Sell"}
+              pageSetter={this.pageSetter}
+            />
+            <Button
+              id={"shortListButton"}
+              value={"Shortlist"}
+              pageSetter={this.pageSetter}
+            />
           </div>
         )}
 
-        {this.state.currentPage === "Shortlist" && <Shortlist />}
+        {/* {this.state.currentPage === "Shortlist" && <Shortlist />} */}
 
         {this.state.currentPage === "Login" && (
           <Login
@@ -78,8 +90,9 @@ class App extends Component {
           />
         )}
         {this.state.currentPage === "Buy" && <Buy />}
-        {this.state.currentPage === "Sell" && 
-          <Sell pageSetter={this.pageSetter}/>}
+        {this.state.currentPage === "Sell" && (
+          <Sell pageSetter={this.pageSetter} />
+        )}
         {this.state.currentPage === "Sign Up" && (
           <SignUp pageSetter={this.pageSetter} />
         )}
