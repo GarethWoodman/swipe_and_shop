@@ -40,7 +40,7 @@ class Login extends Component {
 
           console.log(response.data.token);
           localStorage.setItem("authToken", response.data.token);
-          localStorage.setItem("user_id", response.data.data[0]._id)
+          localStorage.setItem("user_id", response.data.data[0]._id);
           console.log(response.data.data[0]);
           this.props.usernameSetter(response.data.data[0]);
         }
@@ -57,25 +57,41 @@ class Login extends Component {
     console.log(this.state);
     return (
       <div>
-        <h1>Login</h1>
-
         {this.state.error === true && (
           <Error message={"Incorrect login information"} />
         )}
 
-        <form onSubmit={this.onSubmit}>
-          <p>email:</p>
-          <input id="emailLogin" type="text" onChange={this.myChangeHandler} />
+        <form className="form-signin" onSubmit={this.onSubmit}>
+          <h1 className="h3 mb-3 font-weight-normal"></h1>
 
-          <p>password:</p>
-          <input
-            id="passwordLogin"
-            type="text"
-            onChange={this.myChangeHandler}
-          />
+          {/* <p>email:</p> */}
+          <div className="form-group">
+            <input
+              id="emailLogin"
+              className="form-control"
+              placeholder="Email address"
+              type="email"
+              onChange={this.myChangeHandler}
+            />
+          </div>
 
-          <button id="loginSubmit" type="submit">
-            Submit
+          {/* <p>password:</p> */}
+          <div class="form-group">
+            <input
+              id="passwordLogin"
+              className="form-control"
+              placeholder="Password"
+              type="password"
+              onChange={this.myChangeHandler}
+            />
+          </div>
+
+          <button
+            id="loginSubmit"
+            className="btn btn-lg btn-primary btn-block"
+            type="submit"
+          >
+            Sign in
           </button>
         </form>
       </div>
