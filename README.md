@@ -16,6 +16,7 @@ An app to buy and sell items using a Tinder style selection process
 - Cypress
 - npm
 - Heroku
+- HTML/CSS
 
 ## Installation Guide
 1. Clone or Fork this repo to your local machine
