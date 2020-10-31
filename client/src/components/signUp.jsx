@@ -46,37 +46,82 @@ class SignUp extends Component {
 
     console.log("PROPS");
     console.log(this.props);
-    this.props.pageSetter("Login")
+    this.props.pageSetter("Login");
   };
 
   render() {
     console.log(this.state);
     return (
       <div>
-        <form onSubmit={this.onSubmit}>
-          <p>real_name:</p>
-          <input id="real_name" type="text" onChange={this.myChangeHandler} />
+        <section className="row justify-content-center">
+          <section className="col-12 col-sm-6 col-md-3">
+            <form className="form-signin" onSubmit={this.onSubmit}>
+              {/* <p>real_name:</p> */}
 
-          <p>username:</p>
-          <input id="username" type="text" onChange={this.myChangeHandler} />
+              <div className="form-group">
+                <input
+                  id="real_name"
+                  className="form-control"
+                  placeholder="Real Name"
+                  type="text"
+                  onChange={this.myChangeHandler}
+                />
+              </div>
 
-          <p>email:</p>
-          <input id="email" type="text" onChange={this.myChangeHandler} />
+              {/* <p>username:</p> */}
+              <div className="form-group">
+                <input
+                  id="username"
+                  className="form-control"
+                  placeholder="Username"
+                  type="text"
+                  onChange={this.myChangeHandler}
+                />
+              </div>
 
-          <p>password:</p>
-          <input
-            id="password"
-            type="password"
-            onChange={this.myChangeHandler}
-          />
+              {/* <p>email:</p> */}
+              <div className="form-group">
+                <input
+                  id="email"
+                  className="form-control"
+                  placeholder="Email address"
+                  type="email"
+                  onChange={this.myChangeHandler}
+                />
+              </div>
 
-          <p>picture</p>
-          <input id="picture" type="text" onChange={this.myChangeHandler} />
+              {/* <p>password:</p> */}
+              <div className="form-group">
+                <input
+                  id="password"
+                  className="form-control"
+                  placeholder="Password"
+                  type="password"
+                  onChange={this.myChangeHandler}
+                />
+              </div>
 
-          <button id="userSubmit" type="submit">
-            Submit
-          </button>
-        </form>
+              {/* <p>picture</p> */}
+              <div className="form-group">
+                <input
+                  id="picture"
+                  className="form-control"
+                  placeholder="Picture URL"
+                  type="text"
+                  onChange={this.myChangeHandler}
+                />
+              </div>
+
+              <button
+                id="userSubmit"
+                className="btn btn-lg btn-primary btn-block"
+                type="submit"
+              >
+                Sign up
+              </button>
+            </form>
+          </section>
+        </section>
       </div>
     );
   }
