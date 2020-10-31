@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./styles.css";
 import Sell from "./components/sell.jsx";
 import Buy from "./components/buy.jsx";
 import SignUp from "./components/signUp.jsx";
