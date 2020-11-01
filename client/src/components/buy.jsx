@@ -14,7 +14,7 @@ class Buy extends Component {
       .get("/item")
       .then((response) => {
         var data = response.data;
-        console.log(data)
+        console.log(data);
         this.setState({ items: data });
       })
       .catch(() => {
@@ -26,20 +26,19 @@ class Buy extends Component {
       .then((response) => {
         var data = response.data;
 
-        this.setState({ users: data})
+        this.setState({ users: data });
       })
       .catch(() => {
-        alert("Error retrieving data mate")
-      })
+        alert("Error retrieving data mate");
+      });
   };
 
   getUser = (id) => {
-    for(var i = 0; i < this.state.users.length; i++) {
+    for (var i = 0; i < this.state.users.length; i++) {
       if (this.state.users[i]._id === id) {
-        return this.state.users[i]
+        return this.state.users[i];
       }
     }
-
 
     // axios
     // .get("/user/" + id)
@@ -52,8 +51,7 @@ class Buy extends Component {
     // .catch(() => {
     //   alert("Error retrieving data");
     // });
-
-  }
+  };
 
   nextItemNo = () => {
     const num = this.state.itemNum;
@@ -98,7 +96,7 @@ class Buy extends Component {
     return (
       <div>
         <h1>Buy Page</h1>
-        <p id="itemUserRealName">{this.getUser(this.state.items[this.state.itemNum].user_id).real_name}</p>
+        {/* <p id="itemUserRealName">{this.getUser(this.state.items[this.state.itemNum].user_id).real_name}</p> */}
         <p id="itemName">{this.state.items[this.state.itemNum].item_name}</p>
         <p id="itemDescription">
           {this.state.items[this.state.itemNum].description}
@@ -110,11 +108,19 @@ class Buy extends Component {
           alt="pic"
         ></img>
 
-        <button id="yesButton" onClick={this.nextItemYes}>
+        <button
+          id="yesButton"
+          className="btn btn-lg btn-primary btn-block"
+          onClick={this.nextItemYes}
+        >
           Yes
         </button>
 
-        <button id="noButton" onClick={this.nextItemNo}>
+        <button
+          id="noButton"
+          className="btn btn-lg btn-primary btn-block"
+          onClick={this.nextItemNo}
+        >
           No
         </button>
       </div>
