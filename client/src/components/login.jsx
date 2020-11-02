@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Error from "./error.jsx";
+import InputBox from "./inputBox.jsx";
 
 class Login extends Component {
   state = {
@@ -67,7 +68,7 @@ class Login extends Component {
               <h1 className="h3 mb-3 font-weight-normal"></h1>
 
               {/* <p>email:</p> */}
-              <div className="form-group">
+              {/* <div className="form-group">
                 <input
                   id="emailLogin"
                   className="form-control"
@@ -75,10 +76,17 @@ class Login extends Component {
                   type="email"
                   onChange={this.myChangeHandler}
                 />
-              </div>
+              </div> */}
+
+              <InputBox
+                id={"emailLogin"}
+                placeholder={"Email address"}
+                type={"email"}
+                onChange={this.myChangeHandler}
+              />
 
               {/* <p>password:</p> */}
-              <div class="form-group">
+              {/* <div class="form-group">
                 <input
                   id="passwordLogin"
                   className="form-control"
@@ -86,7 +94,14 @@ class Login extends Component {
                   type="password"
                   onChange={this.myChangeHandler}
                 />
-              </div>
+              </div> */}
+
+              <InputBox
+                id={"passwordLogin"}
+                placeholder={"Password"}
+                type={"password"}
+                onChange={this.myChangeHandler}
+              />
 
               <button
                 id="loginSubmit"
