@@ -67,34 +67,12 @@ class Login extends Component {
             <form className="form-signin" onSubmit={this.onSubmit}>
               <h1 className="h3 mb-3 font-weight-normal"></h1>
 
-              {/* <p>email:</p> */}
-              {/* <div className="form-group">
-                <input
-                  id="emailLogin"
-                  className="form-control"
-                  placeholder="Email address"
-                  type="email"
-                  onChange={this.myChangeHandler}
-                />
-              </div> */}
-
               <InputBox
                 id={"emailLogin"}
                 placeholder={"Email address"}
                 type={"email"}
                 onChange={this.myChangeHandler}
               />
-
-              {/* <p>password:</p> */}
-              {/* <div class="form-group">
-                <input
-                  id="passwordLogin"
-                  className="form-control"
-                  placeholder="Password"
-                  type="password"
-                  onChange={this.myChangeHandler}
-                />
-              </div> */}
 
               <InputBox
                 id={"passwordLogin"}
