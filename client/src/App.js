@@ -5,6 +5,7 @@ import Buy from "./components/buy.jsx";
 import SignUp from "./components/signUp.jsx";
 import Button from "./components/button.jsx";
 import Login from "./components/login.jsx";
+import NavBar from "./components/navBar.jsx";
 
 class App extends Component {
   state = {
@@ -43,7 +44,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <p>Swipe and Shop</p>
+        <NavBar />
+
+        {/* <p>Swipe and Shop</p> */}
 
         {this.state.currentUser !== "" && (
           <p id="welcomeMessage">Welcome {this.state.currentUser.real_name}!</p>
