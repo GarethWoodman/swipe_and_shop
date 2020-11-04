@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-// import InputBox from "./inputBox.jsx";
+import InputBox from "./inputBox.jsx";
 
 class SignUp extends Component {
   state = {
@@ -57,61 +57,40 @@ class SignUp extends Component {
         <section className="row justify-content-center">
           <section className="col-12 col-sm-6 col-md-3">
             <form className="form-signin" onSubmit={this.onSubmit}>
-              {/* <p>real_name:</p> */}
+              <InputBox
+                id={"real_name"}
+                placeholder={"Real Name"}
+                type={"text"}
+                onChange={this.myChangeHandler}
+              />
 
-              <div className="form-group">
-                <input
-                  id="real_name"
-                  className="form-control"
-                  placeholder="Real Name"
-                  type="text"
-                  onChange={this.myChangeHandler}
-                />
-              </div>
+              <InputBox
+                id={"username"}
+                placeholder={"Username"}
+                type={"text"}
+                onChange={this.myChangeHandler}
+              />
 
-              {/* <p>username:</p> */}
-              <div className="form-group">
-                <input
-                  id="username"
-                  className="form-control"
-                  placeholder="Username"
-                  type="text"
-                  onChange={this.myChangeHandler}
-                />
-              </div>
+              <InputBox
+                id={"email"}
+                placeholder={"Email address"}
+                type={"email"}
+                onChange={this.myChangeHandler}
+              />
 
-              {/* <p>email:</p> */}
-              <div className="form-group">
-                <input
-                  id="email"
-                  className="form-control"
-                  placeholder="Email address"
-                  type="email"
-                  onChange={this.myChangeHandler}
-                />
-              </div>
+              <InputBox
+                id={"password"}
+                placeholder={"Password"}
+                type={"password"}
+                onChange={this.myChangeHandler}
+              />
 
-              {/* <p>password:</p> */}
-              <div className="form-group">
-                <input
-                  id="password"
-                  className="form-control"
-                  placeholder="Password"
-                  type="password"
-                  onChange={this.myChangeHandler}
-                />
-              </div>
-
-              {/* <p>picture</p> */}
-              <div className="form-group">
-                <input
-                  id="picture"
-                  className="form-control"
-                  placeholder="Picture URL"
-                  type="text"
-                  onChange={this.myChangeHandler}
-                />
-              </div>
+              <InputBox
+                id={"picture"}
+                placeholder={"Picture URL"}
+                type={"text"}
+                onChange={this.myChangeHandler}
+              />
 
               <button
                 id="userSubmit"
