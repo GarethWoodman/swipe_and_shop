@@ -8,6 +8,35 @@ class NavBar extends Component {
     this.setState({ isOpen: !this.state.isOpen });
   };
 
+  createMenu = () => {
+    // if (this.state.isLoggedIn === null) {
+    return (
+      <React.Fragment>
+        <li className="nav-item" key="login">
+          <a className="nav-link" href="/#">
+            Login
+          </a>
+        </li>
+        <li className="nav-item" key="signup">
+          <a className="nav-link" href="/#">
+            Signup
+          </a>
+        </li>
+      </React.Fragment>
+    );
+    // } else {
+    // return (
+    //   <ul className="navbar-nav ml-auto">
+    //     <li className="nav-item" key="logout">
+    //       <a className="nav-link" href="/#" onClick={this.clickSignout}>
+    //         Sign Out
+    //       </a>
+    //     </li>
+    //   </ul>
+    // );
+    // }
+  };
+
   render() {
     return (
       <nav
@@ -34,7 +63,8 @@ class NavBar extends Component {
           id="navbarText"
         >
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            {this.createMenu()}
+            {/* <li class="nav-item active">
               <a class="nav-link" href="#">
                 Home <span class="sr-only">(current)</span>
               </a>
@@ -48,7 +78,7 @@ class NavBar extends Component {
               <a class="nav-link" href="#">
                 Pricing
               </a>
-            </li>
+            </li> */}
           </ul>
           {/* <span class="navbar-text">Navbar text with an inline element</span> */}
         </div>

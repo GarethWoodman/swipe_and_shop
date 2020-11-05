@@ -44,7 +44,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NavBar />
+        <NavBar
+          currentPage={this.state.currentPage}
+          pageSetter={this.pageSetter}
+        />
 
         {/* <p>Swipe and Shop</p> */}
 
@@ -52,13 +55,13 @@ class App extends Component {
           <p id="welcomeMessage">Welcome {this.state.currentUser.real_name}!</p>
         )}
 
-        {this.state.currentPage === "Login" && (
+        {/* {this.state.currentPage === "Login" && (
           <Button
             id={"signUp"}
             value={"Sign Up"}
             pageSetter={this.pageSetter}
           />
-        )}
+        )} */}
 
         {this.state.currentPage === "Sign Up" && (
           <Button id={"login"} value={"Login"} pageSetter={this.pageSetter} />

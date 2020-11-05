@@ -2,13 +2,17 @@ import React, { Component } from "react";
 import axios from "axios";
 import Error from "./error.jsx";
 import InputBox from "./inputBox.jsx";
+// import Button from "./button.jsx";
 
 class Login extends Component {
-  state = {
-    error: false,
-    emailLogin: "",
-    passwordLogin: "",
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: false,
+      emailLogin: "",
+      passwordLogin: "",
+    };
+  }
 
   myChangeHandler = (event) => {
     let attribute = event.target.id;
@@ -66,27 +70,34 @@ class Login extends Component {
           <section className="col-12 col-sm-6 col-md-3">
             <form className="form-signin" onSubmit={this.onSubmit}>
               <h1 className="h3 mb-3 font-weight-normal"></h1>
-
               <InputBox
                 id={"emailLogin"}
                 placeholder={"Email address"}
                 type={"email"}
                 onChange={this.myChangeHandler}
               />
-
               <InputBox
                 id={"passwordLogin"}
                 placeholder={"Password"}
                 type={"password"}
                 onChange={this.myChangeHandler}
               />
-
               <button
                 id="loginSubmit"
                 className="btn btn-lg btn-primary btn-block"
                 type="submit"
               >
                 Sign in
+              </button>
+
+              <hr />
+              <button
+                id={"signUp"}
+                value={"Sign Up"}
+                className="btn btn-lg btn-success btn-block"
+                onClick={() => this.props.pageSetter("Sign Up")}
+              >
+                Create New Account
               </button>
             </form>
           </section>
