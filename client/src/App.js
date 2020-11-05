@@ -63,9 +63,9 @@ class App extends Component {
           />
         )} */}
 
-        {this.state.currentPage === "Sign Up" && (
+        {/* {this.state.currentPage === "Sign Up" && (
           <Button id={"login"} value={"Login"} pageSetter={this.pageSetter} />
-        )}
+        )} */}
 
         {(this.state.currentPage === "Buy" ||
           this.state.currentPage === "Sell") && (

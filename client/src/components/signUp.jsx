@@ -3,15 +3,18 @@ import axios from "axios";
 import InputBox from "./inputBox.jsx";
 
 class SignUp extends Component {
-  state = {
-    email: "",
-    password: "",
-    username: "",
-    real_name: "",
-    picture: "",
-    to_buy: [],
-    to_sell: [],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+      username: "",
+      real_name: "",
+      picture: "",
+      to_buy: [],
+      to_sell: [],
+    };
+  }
 
   myChangeHandler = (event) => {
     let attribute = event.target.id;
@@ -97,8 +100,20 @@ class SignUp extends Component {
                 className="btn btn-lg btn-primary btn-block"
                 type="submit"
               >
-                Sign up
+                Create Account
               </button>
+
+              <hr />
+              <button
+                id={"login"}
+                value={"Login"}
+                className="btn btn-lg btn-success btn-block"
+                onClick={() => this.props.pageSetter("Login")}
+              >
+                Sign In
+              </button>
+
+              {/* <Button id={"login"} value={"Login"} pageSetter={this.pageSetter} /> */}
             </form>
           </section>
         </section>
