@@ -2,7 +2,12 @@ import React, { Component } from "react";
 // import { Navbar } from "react-bootstrap";
 
 class NavBar extends Component {
-  state = {};
+  state = { isOpen: false };
+
+  toggleCollapse = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+  };
+
   render() {
     return (
       <nav
@@ -20,28 +25,32 @@ class NavBar extends Component {
           aria-controls="navbarText"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          onClick={this.toggleCollapse}
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav mr-auto">
-            {/* <li class="nav-item active">
+        <div
+          class={(this.state.isOpen ? "" : "collapse ") + "navbar-collapse"}
+          id="navbarText"
+        >
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
               <a class="nav-link" href="#">
                 Home <span class="sr-only">(current)</span>
               </a>
-            </li> */}
-            {/* <li class="nav-item">
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="#">
                 Features
               </a>
-            </li> */}
-            {/* <li class="nav-item">
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="#">
                 Pricing
               </a>
-            </li> */}
+            </li>
           </ul>
-          <span class="navbar-text">Navbar text with an inline element</span>
+          {/* <span class="navbar-text">Navbar text with an inline element</span> */}
         </div>
       </nav>
     );
