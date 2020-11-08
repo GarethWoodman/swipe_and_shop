@@ -26,9 +26,9 @@ class Shortlist extends Component {
     return (
       <div>
         { 
-          // (this.state.items).forEach(function (item, i) {
-          //   return <li>{item.item_name}</li> 
-          // })
+          this.state.items.map(function(item){
+            return <li>{item.item_name}</li>;
+          })
         }
       </div>
     )
