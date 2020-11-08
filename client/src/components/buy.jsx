@@ -71,16 +71,17 @@ class Buy extends Component {
   };
 
   nextItemYes = () => {
-    const item_id = this.state.items[this.state.itemNum]._id
+    const currentItem = this.state.items[this.state.itemNum]
     const user_id = localStorage.getItem("user_id")
 
     let currentUser = this.getUser(user_id)
 
     console.log(currentUser)
+    console.log("Item", currentItem)
 
     const payload = {
       user: currentUser,
-      item_id: item_id,
+      item: currentItem,
     }
 
     axios({

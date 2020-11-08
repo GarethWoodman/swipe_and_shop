@@ -3,25 +3,40 @@ import axios from "axios";
 
 class Shortlist extends Component {
   state = {
-    items: ""
+    items: []
   };
 
   componentDidMount = () => {
     const user_id = localStorage.getItem("user_id");
-
     axios
       .get("/user/" + user_id)
       .then((response) => {
-        var data = response.data;
-        console.log(data)
+        var data = response.data[0];
+        console.log(data.to_buy)
         this.setState({ items: data.to_buy });
       })
       .catch(() => {
         alert("Error retrieving data!!!");
       });
-    }
+  }
+
+  render() {
+    
+    console.log(this.state.items)
+    return (
+      <div>
+        { 
+          // (this.state.items).forEach(function (item, i) {
+          //   return <li>{item.item_name}</li> 
+          // })
+        }
+      </div>
+    )
+  }
 
 }
+
+export default Shortlist;
 
 // 1. User logs in
 // 2. User clicks yes on item

@@ -159,10 +159,10 @@ router.post("/login", (req, res) => {
 
 router.put("/save_item", (req, res) => {
   const user = req.body.user;
-  const item_id = req.body.item_id;
+  const item = req.body.item
 
-  let add_to_buy =  user.to_buy
-  add_to_buy.push(item_id)
+  let add_to_buy = user.to_buy
+  add_to_buy.push(item)
  
   const body = {
     to_buy : add_to_buy

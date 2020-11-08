@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./styles.css";
 import Sell from "./components/sell.jsx";
+import Shortlist from "./components/shortlist.jsx";
 import Buy from "./components/buy.jsx";
 import SignUp from "./components/signUp.jsx";
 import Button from "./components/button.jsx";
@@ -88,7 +89,7 @@ class App extends Component {
           </div>
         )}
 
-        {/* {this.state.currentPage === "Shortlist" && <Shortlist />} */}
+        {this.state.currentPage === "Shortlist" && <Shortlist />}
 
         {this.state.currentPage === "Login" && (
           <Login
