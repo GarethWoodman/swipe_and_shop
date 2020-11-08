@@ -157,6 +157,46 @@ router.post("/login", (req, res) => {
     });
 });
 
+router.put("/save_item", (req, res) => {
+  const user = req.body.user;
+  const item_id = req.body.item_id;
+
+  let add_to_buy =  user.to_buy
+  add_to_buy.push(item_id)
+ 
+  const body = {
+    to_buy : add_to_buy
+  } 
+
+  User.findOneAndUpdate({_id: user._id}, {$set: body}, {new: true})
+    .then((data) => {
+      console.log(data);
+      res.json(data);
+    })
+    .catch((error) => {
+      console.log("error: ", error);
+      next();
+    });
+
+  // User.find({ user_id }).then((model) => {
+  //   array_to_buy = model.to_buy;
+  //   array_to_buy.push(item_id);
+  //   console.log("in model")
+
+  //   return Object.assign(model, {to_buy: array_to_buy});
+  // }).then((model) => {
+  //   return model.save();
+  // }).then((updatedModel) => {
+  //   res.json({
+  //     msg: 'model updated',
+  //     updatedModel
+  //   });
+  // }).catch((err) => {
+  //   res.send(err);
+  // })
+})
+
+
 router.get("/:id", (req, res, next) => {
   console.log(req.params);
 

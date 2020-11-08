@@ -10,11 +10,11 @@ class Shortlist extends Component {
     const user_id = localStorage.getItem("user_id");
 
     axios
-      .get("/item/" + user_id)
+      .get("/user/" + user_id)
       .then((response) => {
         var data = response.data;
         console.log(data)
-        this.setState({ items: data });
+        this.setState({ items: data.to_buy });
       })
       .catch(() => {
         alert("Error retrieving data!!!");

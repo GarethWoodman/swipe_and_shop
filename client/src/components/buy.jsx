@@ -7,6 +7,7 @@ class Buy extends Component {
     users: "",
     itemNum: 0,
     userItem: "",
+    currentUser: "",
   };
 
   componentDidMount = () => {
@@ -40,6 +41,7 @@ class Buy extends Component {
       }
     }
 
+
     // axios
     // .get("/user/" + id)
     // .then((response) => {
@@ -53,6 +55,14 @@ class Buy extends Component {
     // });
   };
 
+  updateUser = (updatedUser) => {
+    for (var i = 0; i < this.state.users.length; i++) {
+      if (this.state.users[i]._id === updatedUser._id) {
+        this.state.users[i] = updatedUser
+      }
+    }
+  }
+
   nextItemNo = () => {
     const num = this.state.itemNum;
     if (num < this.state.items.length - 1) {
@@ -61,24 +71,31 @@ class Buy extends Component {
   };
 
   nextItemYes = () => {
-    // const payload = {
-    //   title: this.state.title,
-    //   body: this.state.body,
-    // };
+    const item_id = this.state.items[this.state.itemNum]._id
+    const user_id = localStorage.getItem("user_id")
 
-    // axios({
-    //   url: "/user/save",
-    //   method: "POST",
-    //   data: payload,
-    // })
-    //   .then(() => {
-    //     console.log("Data has been sent to the server");
-    //     this.resetUserInputs();
-    //     this.getBlogPost();
-    //   })
-    //   .catch(() => {
-    //     console.log("Internal server error");
-    //   });
+    let currentUser = this.getUser(user_id)
+
+    console.log(currentUser)
+
+    const payload = {
+      user: currentUser,
+      item_id: item_id,
+    }
+
+    axios({
+      url: "/user/save_item",
+      method: "PUT",
+      data: payload,
+    })
+      .then((response) => {
+        console.log("Data has been sent to the server");
+        console.log(response.data)
+        this.updateUser(response.data)
+      })
+      .catch(() => {
+        console.log("Internal server error");
+      });
 
     const num = this.state.itemNum;
     if (num < this.state.items.length - 1) {
