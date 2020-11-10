@@ -68,8 +68,11 @@ class App extends Component {
           <Button id={"login"} value={"Login"} pageSetter={this.pageSetter} />
         )} */}
 
-        {(this.state.currentPage === "Buy" ||
+        {/* {(this.state.currentPage === "Buy" ||
           this.state.currentPage === "Sell") && (
+
+            MOVE TO NAVBAR
+
           <div>
             <Button
               id={"buyButton"}
@@ -87,7 +90,7 @@ class App extends Component {
               pageSetter={this.pageSetter}
             />
           </div>
-        )}
+        )} */}
 
         {this.state.currentPage === "Shortlist" && <Shortlist />}
 
