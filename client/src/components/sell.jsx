@@ -13,8 +13,8 @@ class Sell extends Component {
   render() {
     return (
       <div>
-        <h1>Sell Page</h1>
-        <ItemUpload pageSetter={this.props.pageSetter}/>
+        {/* <h1>Sell Page</h1> */}
+        <ItemUpload pageSetter={this.props.pageSetter} />
       </div>
     );
   }

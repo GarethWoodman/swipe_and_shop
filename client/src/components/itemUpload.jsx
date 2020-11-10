@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import InputBox from "./inputBox.jsx";
 
 class ItemUpload extends Component {
   state = {
@@ -49,39 +50,53 @@ class ItemUpload extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          id="item_name"
-          type="text"
-          placeholder="Name"
-          onChange={this.myChangeHandler}
-        ></input>
-        <input
-          id="description"
-          type="text"
-          placeholder="Description"
-          onChange={this.myChangeHandler}
-        ></input>
-        <input
-          id="price"
-          type="number"
-          placeholder="Price"
-          onChange={this.myChangeHandler}
-        ></input>
-        <input
-          id="expiry_date"
-          type="text"
-          placeholder="Expiry"
-          onChange={this.myChangeHandler}
-        ></input>
-        <input
-          id="picture"
-          type="text"
-          placeholder="Picture"
-          onChange={this.myChangeHandler}
-        ></input>
-        <input id="itemSubmit" type="submit" value="Submit"></input>
-      </form>
+      <section className="row justify-content-center">
+        <section className="col-12 col-sm-6 col-md-3">
+          <form className="form-signin" onSubmit={this.onSubmit}>
+            <InputBox
+              id={"item_name"}
+              placeholder={"Name"}
+              type={"text"}
+              onChange={this.myChangeHandler}
+            />
+
+            <InputBox
+              id={"description"}
+              placeholder={"Description"}
+              type={"text"}
+              onChange={this.myChangeHandler}
+            />
+
+            <InputBox
+              id={"price"}
+              placeholder={"Price"}
+              type={"number"}
+              onChange={this.myChangeHandler}
+            />
+
+            <InputBox
+              id={"expiry_date"}
+              placeholder={"Expiry"}
+              type={"text"}
+              onChange={this.myChangeHandler}
+            />
+
+            <InputBox
+              id={"picture"}
+              placeholder={"Picture"}
+              type={"text"}
+              onChange={this.myChangeHandler}
+            />
+
+            <input
+              id="itemSubmit"
+              className="btn btn-lg btn-primary btn-block"
+              type="submit"
+              value="Submit"
+            ></input>
+          </form>
+        </section>
+      </section>
     );
   }
 }
