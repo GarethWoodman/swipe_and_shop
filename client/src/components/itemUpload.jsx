@@ -49,39 +49,43 @@ class ItemUpload extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          id="item_name"
-          type="text"
-          placeholder="Name"
-          onChange={this.myChangeHandler}
-        ></input>
-        <input
-          id="description"
-          type="text"
-          placeholder="Description"
-          onChange={this.myChangeHandler}
-        ></input>
-        <input
-          id="price"
-          type="number"
-          placeholder="Price"
-          onChange={this.myChangeHandler}
-        ></input>
-        <input
-          id="expiry_date"
-          type="text"
-          placeholder="Expiry"
-          onChange={this.myChangeHandler}
-        ></input>
-        <input
-          id="picture"
-          type="text"
-          placeholder="Picture"
-          onChange={this.myChangeHandler}
-        ></input>
-        <input id="itemSubmit" type="submit" value="Submit"></input>
-      </form>
+      <section className="row justify-content-center">
+        <section className="col-12 col-sm-6 col-md-3">
+          <form className="form-signin" onSubmit={this.onSubmit}>
+            <input
+              id="item_name"
+              type="text"
+              placeholder="Name"
+              onChange={this.myChangeHandler}
+            ></input>
+            <input
+              id="description"
+              type="text"
+              placeholder="Description"
+              onChange={this.myChangeHandler}
+            ></input>
+            <input
+              id="price"
+              type="number"
+              placeholder="Price"
+              onChange={this.myChangeHandler}
+            ></input>
+            <input
+              id="expiry_date"
+              type="text"
+              placeholder="Expiry"
+              onChange={this.myChangeHandler}
+            ></input>
+            <input
+              id="picture"
+              type="text"
+              placeholder="Picture"
+              onChange={this.myChangeHandler}
+            ></input>
+            <input id="itemSubmit" type="submit" value="Submit"></input>
+          </form>
+        </section>
+      </section>
     );
   }
 }
