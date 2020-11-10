@@ -41,7 +41,6 @@ class Buy extends Component {
       }
     }
 
-
     // axios
     // .get("/user/" + id)
     // .then((response) => {
@@ -58,10 +57,10 @@ class Buy extends Component {
   updateUser = (updatedUser) => {
     for (var i = 0; i < this.state.users.length; i++) {
       if (this.state.users[i]._id === updatedUser._id) {
-        this.state.users[i] = updatedUser
+        this.state.users[i] = updatedUser;
       }
     }
-  }
+  };
 
   nextItemNo = () => {
     const num = this.state.itemNum;
@@ -71,18 +70,18 @@ class Buy extends Component {
   };
 
   nextItemYes = () => {
-    const currentItem = this.state.items[this.state.itemNum]
-    const user_id = localStorage.getItem("user_id")
+    const currentItem = this.state.items[this.state.itemNum];
+    const user_id = localStorage.getItem("user_id");
 
-    let currentUser = this.getUser(user_id)
+    let currentUser = this.getUser(user_id);
 
-    console.log(currentUser)
-    console.log("Item", currentItem)
+    console.log(currentUser);
+    console.log("Item", currentItem);
 
     const payload = {
       user: currentUser,
       item: currentItem,
-    }
+    };
 
     axios({
       url: "/user/save_item",
@@ -91,8 +90,8 @@ class Buy extends Component {
     })
       .then((response) => {
         console.log("Data has been sent to the server");
-        console.log(response.data)
-        this.updateUser(response.data)
+        console.log(response.data);
+        this.updateUser(response.data);
       })
       .catch(() => {
         console.log("Internal server error");
@@ -113,7 +112,7 @@ class Buy extends Component {
     console.log(this.state.items[0].item_name);
     return (
       <div>
-        <h1>Buy Page</h1>
+        {/* <h1>Buy Page</h1> */}
         {/* <p id="itemUserRealName">{this.getUser(this.state.items[this.state.itemNum].user_id).real_name}</p> */}
         <p id="itemName">{this.state.items[this.state.itemNum].item_name}</p>
         <p id="itemDescription">
