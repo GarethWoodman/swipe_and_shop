@@ -16,7 +16,8 @@ class Buy extends Component {
       .then((response) => {
         var data = response.data;
         console.log(data);
-        this.setState({ items: data });
+        var randomisedItems = this.generateItemArray(data);
+        this.setState({ items: randomisedItems });
       })
       .catch(() => {
         alert("Error retrieving data!!!");
@@ -54,6 +55,23 @@ class Buy extends Component {
     // });
   };
 
+  generateItemArray = (array) => {
+    var currentIndex = array.length,
+      temporaryValue,
+      randomIndex;
+
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  };
+
   updateUser = (updatedUser) => {
     for (var i = 0; i < this.state.users.length; i++) {
       if (this.state.users[i]._id === updatedUser._id) {
@@ -64,9 +82,7 @@ class Buy extends Component {
 
   nextItemNo = () => {
     const num = this.state.itemNum;
-    if (num < this.state.items.length - 1) {
-      this.setState({ itemNum: num + 1 });
-    }
+    this.setState({ itemNum: num + 1 });
   };
 
   nextItemYes = () => {
@@ -98,9 +114,7 @@ class Buy extends Component {
       });
 
     const num = this.state.itemNum;
-    if (num < this.state.items.length - 1) {
-      this.setState({ itemNum: num + 1 });
-    }
+    this.setState({ itemNum: num + 1 });
   };
 
   render() {
@@ -114,32 +128,41 @@ class Buy extends Component {
       <div>
         {/* <h1>Buy Page</h1> */}
         {/* <p id="itemUserRealName">{this.getUser(this.state.items[this.state.itemNum].user_id).real_name}</p> */}
-        <p id="itemName">{this.state.items[this.state.itemNum].item_name}</p>
-        <p id="itemDescription">
-          {this.state.items[this.state.itemNum].description}
-        </p>
-        <p id="itemPrice">{this.state.items[this.state.itemNum].price}</p>
-        <img
-          id="itemPicture"
-          src={this.state.items[this.state.itemNum].picture}
-          alt="pic"
-        ></img>
+        {this.state.itemNum <= this.state.items.length - 1 && (
+          <div>
+            <p id="itemName">
+              {this.state.items[this.state.itemNum].item_name}
+            </p>
+            <p id="itemDescription">
+              {this.state.items[this.state.itemNum].description}
+            </p>
+            <p id="itemPrice">{this.state.items[this.state.itemNum].price}</p>
+            <img
+              id="itemPicture"
+              src={this.state.items[this.state.itemNum].picture}
+              alt="pic"
+            ></img>
 
-        <button
-          id="yesButton"
-          className="btn btn-lg btn-primary btn-block"
-          onClick={this.nextItemYes}
-        >
-          Yes
-        </button>
+            <button
+              id="yesButton"
+              className="btn btn-lg btn-primary btn-block"
+              onClick={this.nextItemYes}
+            >
+              Yes
+            </button>
 
-        <button
-          id="noButton"
-          className="btn btn-lg btn-primary btn-block"
-          onClick={this.nextItemNo}
-        >
-          No
-        </button>
+            <button
+              id="noButton"
+              className="btn btn-lg btn-primary btn-block"
+              onClick={this.nextItemNo}
+            >
+              No
+            </button>
+          </div>
+        )}
+        {this.state.itemNum > this.state.items.length - 1 && (
+          <h1>No items left in your area!</h1>
+        )}
       </div>
     );
   }
