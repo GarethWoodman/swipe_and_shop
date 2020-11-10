@@ -16,7 +16,8 @@ class Buy extends Component {
       .then((response) => {
         var data = response.data;
         console.log(data);
-        this.setState({ items: data });
+        var randomisedItems = this.generateItemArray(data);
+        this.setState({ items: randomisedItems });
       })
       .catch(() => {
         alert("Error retrieving data!!!");
@@ -41,7 +42,6 @@ class Buy extends Component {
       }
     }
 
-
     // axios
     // .get("/user/" + id)
     // .then((response) => {
@@ -55,13 +55,30 @@ class Buy extends Component {
     // });
   };
 
+  generateItemArray = (array) => {
+    var currentIndex = array.length,
+      temporaryValue,
+      randomIndex;
+
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  };
+
   updateUser = (updatedUser) => {
     for (var i = 0; i < this.state.users.length; i++) {
       if (this.state.users[i]._id === updatedUser._id) {
-        this.state.users[i] = updatedUser
+        this.state.users[i] = updatedUser;
       }
     }
-  }
+  };
 
   nextItemNo = () => {
     const num = this.state.itemNum;
@@ -71,18 +88,18 @@ class Buy extends Component {
   };
 
   nextItemYes = () => {
-    const currentItem = this.state.items[this.state.itemNum]
-    const user_id = localStorage.getItem("user_id")
+    const currentItem = this.state.items[this.state.itemNum];
+    const user_id = localStorage.getItem("user_id");
 
-    let currentUser = this.getUser(user_id)
+    let currentUser = this.getUser(user_id);
 
-    console.log(currentUser)
-    console.log("Item", currentItem)
+    console.log(currentUser);
+    console.log("Item", currentItem);
 
     const payload = {
       user: currentUser,
       item: currentItem,
-    }
+    };
 
     axios({
       url: "/user/save_item",
@@ -91,8 +108,8 @@ class Buy extends Component {
     })
       .then((response) => {
         console.log("Data has been sent to the server");
-        console.log(response.data)
-        this.updateUser(response.data)
+        console.log(response.data);
+        this.updateUser(response.data);
       })
       .catch(() => {
         console.log("Internal server error");
