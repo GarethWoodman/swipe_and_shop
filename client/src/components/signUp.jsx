@@ -13,6 +13,7 @@ class SignUp extends Component {
       picture: "",
       to_buy: [],
       to_sell: [],
+      sign_in_error: false,
     };
   }
 
@@ -40,17 +41,19 @@ class SignUp extends Component {
       url: "/user/save",
       data: payload,
     })
+      // If data can be saved
       .then(() => {
         console.log("Data has been sent to the server");
-        //this.resetUserInputs();
+        this.props.pageSetter("Login");
       })
+      // If data cannot be saved 
       .catch(() => {
         console.log("Internal server error");
+        this.setState({sign_in_error: true})
       });
 
     console.log("PROPS");
-    console.log(this.props);
-    this.props.pageSetter("Login");
+    console.log(this.props); 
   };
 
   render() {
@@ -59,6 +62,11 @@ class SignUp extends Component {
       <div>
         <section className="row justify-content-center">
           <section className="col-12 col-sm-6 col-md-3">
+            <div>
+              {this.state.sign_in_error && (
+                <h1>Wrong info</h1>
+              )}
+            </div>
             <form className="form-signin" onSubmit={this.onSubmit}>
               <InputBox
                 id={"real_name"}
