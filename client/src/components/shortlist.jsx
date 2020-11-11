@@ -3,7 +3,7 @@ import axios from "axios";
 
 class Shortlist extends Component {
   state = {
-    items: []
+    seller_items: [],
   };
 
   componentDidMount = () => {
@@ -11,23 +11,48 @@ class Shortlist extends Component {
     axios
       .get("/user/" + user_id)
       .then((response) => {
-        var data = response.data[0];
-        console.log(data.to_buy)
-        this.setState({ items: data.to_buy });
+        var items = response.data[0].to_buy;
+        this.get_item_and_seller(items)
       })
       .catch(() => {
         alert("Error retrieving data!!!");
       });
   }
 
-  render() {
-    
-    console.log(this.state.items)
+  async get_item_and_seller(items){
+    let sellers = [];
+    let promises = [];
+
+    items.forEach(function (item, index){
+      promises.push(
+      axios
+        .get("/user/" + item.user_id)
+        .then((response) => {
+          var data = response.data[0];
+          const seller_item = {seller: data, item: item}
+          sellers.push(seller_item)
+        })
+        .catch(() => {
+          console.log("---")
+        })
+      )
+    })
+
+    Promise.all(promises).then(() => this.setState({seller_items: sellers}))
+  }
+
+
+
+ render() {
+  if(!this.state.seller_items.length) {
+    return null
+  }
+
     return (
       <div>
         { 
-          this.state.items.map(function(item){
-            return <li>{item.item_name}</li>;
+          this.state.seller_items.map(function(item){ 
+            return <li>{item.seller.email}</li>
           })
         }
       </div>
