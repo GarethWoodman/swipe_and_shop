@@ -12,6 +12,13 @@ class NavBar extends Component {
     this.setState({ isOpen: !this.state.isOpen });
   };
 
+  logOut = () => {
+    console.log("Halo");
+    localStorage.setItem("authToken", null);
+    localStorage.setItem("user_id", null);
+    this.props.pageSetter("Login");
+  };
+
   createMenu = () => {
     if (
       this.props.currentPage === "Buy" ||
@@ -62,6 +69,12 @@ class NavBar extends Component {
                 value={"Shortlist"}
                 pageSetter={this.props.pageSetter}
               /> */}
+            </a>
+          </li>
+
+          <li className="nav-item" key="logout">
+            <a className="nav-link" href="/#" onClick={() => this.logOut()}>
+              Log Out
             </a>
           </li>
         </React.Fragment>
