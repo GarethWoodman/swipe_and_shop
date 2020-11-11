@@ -1,40 +1,72 @@
 import React, { Component } from "react";
+import Button from "./button.jsx";
 // import { Navbar } from "react-bootstrap";
 
 class NavBar extends Component {
-  state = { isOpen: false };
+  constructor(props) {
+    super(props);
+    this.state = { isOpen: false };
+  }
 
   toggleCollapse = () => {
     this.setState({ isOpen: !this.state.isOpen });
   };
 
   createMenu = () => {
-    // if (this.state.isLoggedIn === null) {
-    return (
-      <React.Fragment>
-        <li className="nav-item" key="login">
-          <a className="nav-link" href="/#">
-            Login
-          </a>
-        </li>
-        <li className="nav-item" key="signup">
-          <a className="nav-link" href="/#">
-            Signup
-          </a>
-        </li>
-      </React.Fragment>
-    );
-    // } else {
-    // return (
-    //   <ul className="navbar-nav ml-auto">
-    //     <li className="nav-item" key="logout">
-    //       <a className="nav-link" href="/#" onClick={this.clickSignout}>
-    //         Sign Out
-    //       </a>
-    //     </li>
-    //   </ul>
-    // );
-    // }
+    if (
+      this.props.currentPage === "Buy" ||
+      this.props.currentPage === "Sell" ||
+      this.props.currentPage === "Shortlist"
+    ) {
+      return (
+        <React.Fragment>
+          <li className="nav-item" key="buy">
+            <a
+              className="nav-link"
+              href="/#"
+              onClick={() => this.props.pageSetter("Buy")}
+            >
+              Buy
+              {/* <Button
+                id={"buyButton"}
+                value={"Buy"}
+                pageSetter={this.props.pageSetter}
+              /> */}
+            </a>
+          </li>
+
+          <li className="nav-item" key="sell">
+            <a
+              className="nav-link"
+              href="/#"
+              onClick={() => this.props.pageSetter("Sell")}
+            >
+              Sell
+              {/* <Button
+                id={"sellButton"}
+                value={"Sell"}
+                pageSetter={this.props.pageSetter}
+              /> */}
+            </a>
+          </li>
+
+          <li className="nav-item" key="shortlist">
+            <a
+              className="nav-link"
+              href="/#"
+              onClick={() => this.props.pageSetter("Shortlist")}
+            >
+              Shortlist
+              {/* <Button
+                id={"shortListButton"}
+                value={"Shortlist"}
+                pageSetter={this.props.pageSetter}
+              /> */}
+            </a>
+          </li>
+        </React.Fragment>
+      );
+    }
   };
 
   render() {
