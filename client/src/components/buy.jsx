@@ -78,12 +78,12 @@ class Buy extends Component {
 
   generateItemArray = () => {
     var items = this.state.items;
-    var shortlist = this.state.userShortlist;
-    var userItems = this.state.userItems;
+    var shortlist = this.state.userShortlist.map((obj) => obj._id);
+    var userItems = this.state.userItems.map((obj) => obj._id);
 
-    var itemArray = items.filter((val) => !shortlist.includes(val));
+    var itemArray = items.filter((val) => !shortlist.includes(val._id));
 
-    itemArray = items.filter((val) => !userItems.includes(val));
+    itemArray = itemArray.filter((val) => !userItems.includes(val._id));
 
     this.setState({ items: itemArray });
   };
