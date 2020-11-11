@@ -64,7 +64,7 @@ class SignUp extends Component {
           <section className="col-12 col-sm-6 col-md-3">
             <div>
               {this.state.sign_in_error && (
-                <h1>Wrong info you pleb</h1>
+                <h1>Wrong info</h1>
               )}
             </div>
             <form className="form-signin" onSubmit={this.onSubmit}>
