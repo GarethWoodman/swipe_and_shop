@@ -4,7 +4,6 @@ import Sell from "./components/sell.jsx";
 import Shortlist from "./components/shortlist.jsx";
 import Buy from "./components/buy.jsx";
 import SignUp from "./components/signUp.jsx";
-import Button from "./components/button.jsx";
 import Login from "./components/login.jsx";
 import NavBar from "./components/navBar.jsx";
 
@@ -50,43 +49,8 @@ class App extends Component {
           pageSetter={this.pageSetter}
         />
 
-        {/* <p>Swipe and Shop</p> */}
-
         {this.state.currentUser !== "" && (
           <p id="welcomeMessage">Welcome {this.state.currentUser.real_name}!</p>
-        )}
-
-        {/* {this.state.currentPage === "Login" && (
-          <Button
-            id={"signUp"}
-            value={"Sign Up"}
-            pageSetter={this.pageSetter}
-          />
-        )} */}
-
-        {/* {this.state.currentPage === "Sign Up" && (
-          <Button id={"login"} value={"Login"} pageSetter={this.pageSetter} />
-        )} */}
-
-        {(this.state.currentPage === "Buy" ||
-          this.state.currentPage === "Sell") && (
-          <div>
-            <Button
-              id={"buyButton"}
-              value={"Buy"}
-              pageSetter={this.pageSetter}
-            />
-            <Button
-              id={"sellButton"}
-              value={"Sell"}
-              pageSetter={this.pageSetter}
-            />
-            <Button
-              id={"shortListButton"}
-              value={"Shortlist"}
-              pageSetter={this.pageSetter}
-            />
-          </div>
         )}
 
         {this.state.currentPage === "Shortlist" && <Shortlist />}
