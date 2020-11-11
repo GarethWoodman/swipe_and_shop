@@ -12,35 +12,6 @@ class NavBar extends Component {
     this.setState({ isOpen: !this.state.isOpen });
   };
 
-  // createMenu = () => {
-  // if (this.state.isLoggedIn === null) {
-  // return (
-  //   <React.Fragment>
-  //     <li className="nav-item" key="login">
-  //       <a className="nav-link" href="/#">
-  //         Login
-  //       </a>
-  //     </li>
-  //     <li className="nav-item" key="signup">
-  //       <a className="nav-link" href="/#">
-  //         Signup
-  //       </a>
-  //     </li>
-  //   </React.Fragment>
-  // );
-  // } else {
-  // return (
-  //   <ul className="navbar-nav ml-auto">
-  //     <li className="nav-item" key="logout">
-  //       <a className="nav-link" href="/#" onClick={this.clickSignout}>
-  //         Sign Out
-  //       </a>
-  //     </li>
-  //   </ul>
-  // );
-  // }
-  // };
-
   createMenu = () => {
     if (
       this.props.currentPage === "Buy" ||
