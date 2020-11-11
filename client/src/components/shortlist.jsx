@@ -6,12 +6,16 @@ class Shortlist extends Component {
     seller_items: [],
   };
 
+  // Call this method on component
   componentDidMount = () => {
+    // Get current user from local storage
     const user_id = localStorage.getItem("user_id");
+    // Get users.to_buy list
     axios
       .get("/user/" + user_id)
       .then((response) => {
         var items = response.data[0].to_buy;
+        // Once response is returned call get_item_and_seller
         this.get_item_and_seller(items)
       })
       .catch(() => {
@@ -19,18 +23,21 @@ class Shortlist extends Component {
       });
   }
 
+  // Make Async function to render promise 
   async get_item_and_seller(items){
     let sellers = [];
+    // Initialize promises
     let promises = [];
 
+    // When items have been populated - loop through each item
     items.forEach(function (item, index){
+      // Push each promise into promises
       promises.push(
       axios
         .get("/user/" + item.user_id)
         .then((response) => {
           var data = response.data[0];
-          const seller_item = {seller: data, item: item}
-          sellers.push(seller_item)
+          sellers.push({seller: data, item: item})
         })
         .catch(() => {
           console.log("---")
@@ -38,16 +45,11 @@ class Shortlist extends Component {
       )
     })
 
+    // Once all promises have been fufilled setState for seller_items
     Promise.all(promises).then(() => this.setState({seller_items: sellers}))
   }
 
-
-
  render() {
-  if(!this.state.seller_items.length) {
-    return null
-  }
-
     return (
       <div>
         { 
@@ -69,3 +71,17 @@ export default Shortlist;
 // 4. User clicks on shortlist
 // 5. items that appear in users to_buy is listed 
 
+// Notes
+// Chaining promises
+// axios
+//   .get("/user/" + item.user_id)
+//   .then((response) => {
+//     var data = response.data[0];
+//     return Promise
+//   })
+//   .then((response) => {
+//     var data = response.data[0];
+//     this.setState({users: data})
+//   .catch(() => {
+//     alert("Blablabla")
+//   )}
