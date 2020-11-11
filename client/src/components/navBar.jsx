@@ -49,33 +49,48 @@ class NavBar extends Component {
     ) {
       return (
         <React.Fragment>
-          <li className="nav-item" key="login">
-            <a className="nav-link" href="/#">
-              <Button
+          <li className="nav-item" key="buy">
+            <a
+              className="nav-link"
+              href="/#"
+              onClick={() => this.props.pageSetter("Buy")}
+            >
+              Buy
+              {/* <Button
                 id={"buyButton"}
                 value={"Buy"}
                 pageSetter={this.props.pageSetter}
-              />
+              /> */}
             </a>
           </li>
 
-          <li className="nav-item" key="login">
-            <a className="nav-link" href="/#">
-              <Button
+          <li className="nav-item" key="sell">
+            <a
+              className="nav-link"
+              href="/#"
+              onClick={() => this.props.pageSetter("Sell")}
+            >
+              Sell
+              {/* <Button
                 id={"sellButton"}
                 value={"Sell"}
                 pageSetter={this.props.pageSetter}
-              />
+              /> */}
             </a>
           </li>
 
-          <li className="nav-item" key="signup">
-            <a className="nav-link" href="/#">
-              <Button
+          <li className="nav-item" key="shortlist">
+            <a
+              className="nav-link"
+              href="/#"
+              onClick={() => this.props.pageSetter("Shortlist")}
+            >
+              Shortlist
+              {/* <Button
                 id={"shortListButton"}
                 value={"Shortlist"}
                 pageSetter={this.props.pageSetter}
-              />
+              /> */}
             </a>
           </li>
         </React.Fragment>
