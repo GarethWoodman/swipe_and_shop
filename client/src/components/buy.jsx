@@ -126,43 +126,51 @@ class Buy extends Component {
     console.log(this.state.items[0].item_name);
     return (
       <div>
-        {/* <h1>Buy Page</h1> */}
-        {/* <p id="itemUserRealName">{this.getUser(this.state.items[this.state.itemNum].user_id).real_name}</p> */}
-        {this.state.itemNum <= this.state.items.length - 1 && (
-          <div>
-            <p id="itemName">
-              {this.state.items[this.state.itemNum].item_name}
-            </p>
-            <p id="itemDescription">
-              {this.state.items[this.state.itemNum].description}
-            </p>
-            <p id="itemPrice">{this.state.items[this.state.itemNum].price}</p>
-            <img
-              id="itemPicture"
-              src={this.state.items[this.state.itemNum].picture}
-              alt="pic"
-            ></img>
+        <section className="row justify-content-center">
+          <section className="col-12 col-sm-6 col-md-3">
+            <div className="form-signin">
+              {/* <h1>Buy Page</h1> */}
+              {/* <p id="itemUserRealName">{this.getUser(this.state.items[this.state.itemNum].user_id).real_name}</p> */}
+              {this.state.itemNum <= this.state.items.length - 1 && (
+                <div>
+                  <p id="itemName">
+                    {this.state.items[this.state.itemNum].item_name}
+                  </p>
+                  <p id="itemDescription">
+                    {this.state.items[this.state.itemNum].description}
+                  </p>
+                  <p id="itemPrice">
+                    {this.state.items[this.state.itemNum].price}
+                  </p>
+                  <img
+                    id="itemPicture"
+                    src={this.state.items[this.state.itemNum].picture}
+                    alt="pic"
+                  ></img>
 
-            <button
-              id="yesButton"
-              className="btn btn-lg btn-primary btn-block"
-              onClick={this.nextItemYes}
-            >
-              Yes
-            </button>
+                  <button
+                    id="yesButton"
+                    className="btn btn-lg btn-primary btn-block"
+                    onClick={this.nextItemYes}
+                  >
+                    Yes
+                  </button>
 
-            <button
-              id="noButton"
-              className="btn btn-lg btn-primary btn-block"
-              onClick={this.nextItemNo}
-            >
-              No
-            </button>
-          </div>
-        )}
-        {this.state.itemNum > this.state.items.length - 1 && (
-          <h1>No items left in your area!</h1>
-        )}
+                  <button
+                    id="noButton"
+                    className="btn btn-lg btn-primary btn-block"
+                    onClick={this.nextItemNo}
+                  >
+                    No
+                  </button>
+                </div>
+              )}
+              {this.state.itemNum > this.state.items.length - 1 && (
+                <h1>No items left in your area!</h1>
+              )}
+            </div>
+          </section>
+        </section>
       </div>
     );
   }
