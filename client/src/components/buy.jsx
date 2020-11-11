@@ -6,18 +6,36 @@ class Buy extends Component {
     items: "",
     users: "",
     itemNum: 0,
-    userItem: "",
+    userItems: "",
     currentUser: "",
   };
 
   componentDidMount = () => {
+    const user_id = localStorage.getItem("user_id");
+    axios
+      .get("/user/" + user_id)
+      .then((response) => {
+        var data = response.data[0];
+        console.log(data.to_buy);
+        this.setState({ userItems: data.to_buy });
+      })
+      .catch(() => {
+        alert("Error retrieving data!!!");
+      });
+
     axios
       .get("/item")
       .then((response) => {
         var data = response.data;
         console.log(data);
         var randomisedItems = this.generateItemArray(data);
-        this.setState({ items: randomisedItems });
+        console.log("tobuy: " + randomisedItems);
+        console.log("onshort: " + this.state.userItems);
+        var itemsNotOnShortlist = randomisedItems.filter(
+          (val) => !this.state.userItems.includes(val)
+        );
+        console.log("final array: " + itemsNotOnShortlist);
+        this.setState({ items: itemsNotOnShortlist });
       })
       .catch(() => {
         alert("Error retrieving data!!!");
@@ -41,18 +59,6 @@ class Buy extends Component {
         return this.state.users[i];
       }
     }
-
-    // axios
-    // .get("/user/" + id)
-    // .then((response) => {
-    //   var data = response.data[0];
-    //   this.setState({userItem: data })
-    //   console.log(this.state.userItem.real_name)
-    //   console.log("Data has been received");
-    // })
-    // .catch(() => {
-    //   alert("Error retrieving data");
-    // });
   };
 
   generateItemArray = (array) => {
