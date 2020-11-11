@@ -3,10 +3,11 @@ import axios from "axios";
 
 class Buy extends Component {
   state = {
-    items: "",
+    items: [],
+    userShortlist: [],
+    userItems: [],
     users: "",
     itemNum: 0,
-    userItems: "",
     currentUser: "",
   };
 
@@ -17,7 +18,8 @@ class Buy extends Component {
       .then((response) => {
         var data = response.data[0];
         console.log(data.to_buy);
-        this.setState({ userItems: data.to_buy });
+        this.setState({ userShortlist: data.to_buy });
+        this.setState({ userItems: data.to_sell });
       })
       .catch(() => {
         alert("Error retrieving data!!!");
@@ -27,15 +29,9 @@ class Buy extends Component {
       .get("/item")
       .then((response) => {
         var data = response.data;
-        console.log(data);
-        var randomisedItems = this.generateItemArray(data);
-        console.log("tobuy: " + randomisedItems);
-        console.log("onshort: " + this.state.userItems);
-        var itemsNotOnShortlist = randomisedItems.filter(
-          (val) => !this.state.userItems.includes(val)
-        );
-        console.log("final array: " + itemsNotOnShortlist);
-        this.setState({ items: itemsNotOnShortlist });
+        var items = data;
+        var randomisedItems = this.randomiseItemArray(items);
+        this.setState({ items: randomisedItems });
       })
       .catch(() => {
         alert("Error retrieving data!!!");
@@ -51,6 +47,8 @@ class Buy extends Component {
       .catch(() => {
         alert("Error retrieving data mate");
       });
+
+    setTimeout(this.generateItemArray, 3000);
   };
 
   getUser = (id) => {
@@ -61,7 +59,7 @@ class Buy extends Component {
     }
   };
 
-  generateItemArray = (array) => {
+  randomiseItemArray = (array) => {
     var currentIndex = array.length,
       temporaryValue,
       randomIndex;
@@ -76,6 +74,18 @@ class Buy extends Component {
     }
 
     return array;
+  };
+
+  generateItemArray = () => {
+    var items = this.state.items;
+    var shortlist = this.state.userShortlist;
+    var userItems = this.state.userItems;
+
+    var itemArray = items.filter((val) => !shortlist.includes(val));
+
+    itemArray = items.filter((val) => !userItems.includes(val));
+
+    this.setState({ items: itemArray });
   };
 
   updateUser = (updatedUser) => {
