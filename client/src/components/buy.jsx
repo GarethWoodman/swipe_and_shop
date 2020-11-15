@@ -127,8 +127,8 @@ class Buy extends Component {
     return (
       <div>
         <section className="row justify-content-center">
-          <section className="col-12 col-sm-6 col-md-3">
-            <div className="form-signin">
+          <section className="">
+            <div className="buy-page">
               {/* <h1>Buy Page</h1> */}
               {/* <p id="itemUserRealName">{this.getUser(this.state.items[this.state.itemNum].user_id).real_name}</p> */}
               {this.state.itemNum <= this.state.items.length - 1 && (
