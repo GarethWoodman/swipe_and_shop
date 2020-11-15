@@ -17,7 +17,7 @@ class Buy extends Component {
       .get("/user/" + user_id)
       .then((response) => {
         var data = response.data[0];
-        console.log(data.to_buy);
+        console.log(data.to_sell);
         this.setState({ userShortlist: data.to_buy });
         this.setState({ userItems: data.to_sell });
       })
@@ -43,12 +43,11 @@ class Buy extends Component {
         var data = response.data;
 
         this.setState({ users: data });
+        this.generateItemArray();
       })
       .catch(() => {
         alert("Error retrieving data mate");
       });
-
-    setTimeout(this.generateItemArray, 3000);
   };
 
   getUser = (id) => {
@@ -77,13 +76,19 @@ class Buy extends Component {
   };
 
   generateItemArray = () => {
-    var items = this.state.items;
-    var shortlist = this.state.userShortlist.map((obj) => obj._id);
-    var userItems = this.state.userItems.map((obj) => obj._id);
+    let items = this.state.items;
 
-    var itemArray = items.filter((val) => !shortlist.includes(val._id));
+    let shortlist = this.state.userShortlist;
+    let shortlistIds = shortlist.map((obj) => obj._id);
 
-    itemArray = itemArray.filter((val) => !userItems.includes(val._id));
+    console.log(this.state.userItems);
+    let userItems = this.state.userItems;
+    let userItemsIds = userItems.map((obj) => obj._id);
+    console.log(userItemsIds);
+
+    var itemArray = items.filter((val) => !shortlistIds.includes(val._id));
+
+    itemArray = itemArray.filter((val) => !userItemsIds.includes(val._id));
 
     this.setState({ items: itemArray });
   };
