@@ -10,12 +10,71 @@ class ItemUpload extends Component {
     price: 0.0,
     expiry_date: "",
     picture: "",
+    users: "",
+  };
+
+  componentDidMount = () => {
+    axios
+      .get("/user")
+      .then((response) => {
+        var data = response.data;
+
+        this.setState({ users: data });
+        this.generateItemArray();
+      })
+      .catch(() => {
+        alert("Error retrieving data mate");
+      });
+  };
+
+  getUser = (id) => {
+    for (var i = 0; i < this.state.users.length; i++) {
+      if (this.state.users[i]._id === id) {
+        return this.state.users[i];
+      }
+    }
   };
 
   myChangeHandler = (event) => {
     let attribute = event.target.id;
     let value = event.target.value;
     this.setState({ [attribute]: value });
+  };
+
+  updateUserSellList = (item) => {
+    // const currentItem = this.state.items[this.state.itemNum];
+    // const user_id = localStorage.getItem("user_id");
+    // let currentUser = this.getUser(user_id);
+    // console.log(currentUser);
+    // console.log("Item", currentItem);
+
+    let itemToSell = item;
+
+    console.log("itemToSell");
+    console.log(itemToSell);
+
+    let currentUser = this.getUser(this.state.user_id);
+
+    const payload = {
+      user: currentUser,
+      item: itemToSell,
+    };
+
+    axios({
+      url: "/user/sell_item",
+      method: "PUT",
+      data: payload,
+    })
+      .then((response) => {
+        console.log("Data has been sent to the server");
+        console.log(response.data);
+        // this.updateUser(response.data);
+      })
+      .catch(() => {
+        console.log("Internal server error");
+      });
+    // const num = this.state.itemNum;
+    // this.setState({ itemNum: num + 1 });
   };
 
   onSubmit = (event) => {
@@ -41,6 +100,10 @@ class ItemUpload extends Component {
           this.props.pageSetter("Buy");
         }
         console.log("Data has been sent to the server");
+        console.log("response");
+        console.log(response.data);
+
+        this.updateUserSellList(response.data);
       })
       .catch(() => {
         console.log("Internal server error");

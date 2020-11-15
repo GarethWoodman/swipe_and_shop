@@ -31,7 +31,7 @@ router.post("/save", (req, res) => {
       res.json(false);
     }
 
-    res.json(true);
+    res.json(newItem);
   });
 });
 
