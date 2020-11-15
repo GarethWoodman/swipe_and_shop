@@ -32,8 +32,8 @@ class SignUp extends Component {
       username: this.state.username,
       real_name: this.state.real_name,
       picture: this.state.picture,
-      to_buy: [1],
-      to_sell: [1],
+      to_buy: [],
+      to_sell: [],
     };
 
     axios({
@@ -46,14 +46,14 @@ class SignUp extends Component {
         console.log("Data has been sent to the server");
         this.props.pageSetter("Login");
       })
-      // If data cannot be saved 
+      // If data cannot be saved
       .catch(() => {
         console.log("Internal server error");
-        this.setState({sign_in_error: true})
+        this.setState({ sign_in_error: true });
       });
 
     console.log("PROPS");
-    console.log(this.props); 
+    console.log(this.props);
   };
 
   render() {
@@ -62,11 +62,7 @@ class SignUp extends Component {
       <div>
         <section className="row justify-content-center">
           <section className="col-12 col-sm-6 col-md-3">
-            <div>
-              {this.state.sign_in_error && (
-                <h1>Wrong info</h1>
-              )}
-            </div>
+            <div>{this.state.sign_in_error && <h1>Wrong info</h1>}</div>
             <form className="form-signin" onSubmit={this.onSubmit}>
               <InputBox
                 id={"real_name"}

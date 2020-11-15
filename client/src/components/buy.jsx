@@ -3,20 +3,34 @@ import axios from "axios";
 
 class Buy extends Component {
   state = {
-    items: "",
+    items: [],
+    userShortlist: [],
+    userItems: [],
     users: "",
     itemNum: 0,
-    userItem: "",
     currentUser: "",
   };
 
   componentDidMount = () => {
+    const user_id = localStorage.getItem("user_id");
+    axios
+      .get("/user/" + user_id)
+      .then((response) => {
+        var data = response.data[0];
+        console.log(data.to_sell);
+        this.setState({ userShortlist: data.to_buy });
+        this.setState({ userItems: data.to_sell });
+      })
+      .catch(() => {
+        alert("Error retrieving data!!!");
+      });
+
     axios
       .get("/item")
       .then((response) => {
         var data = response.data;
-        console.log(data);
-        var randomisedItems = this.generateItemArray(data);
+        var items = data;
+        var randomisedItems = this.randomiseItemArray(items);
         this.setState({ items: randomisedItems });
       })
       .catch(() => {
@@ -29,6 +43,7 @@ class Buy extends Component {
         var data = response.data;
 
         this.setState({ users: data });
+        this.generateItemArray();
       })
       .catch(() => {
         alert("Error retrieving data mate");
@@ -41,21 +56,9 @@ class Buy extends Component {
         return this.state.users[i];
       }
     }
-
-    // axios
-    // .get("/user/" + id)
-    // .then((response) => {
-    //   var data = response.data[0];
-    //   this.setState({userItem: data })
-    //   console.log(this.state.userItem.real_name)
-    //   console.log("Data has been received");
-    // })
-    // .catch(() => {
-    //   alert("Error retrieving data");
-    // });
   };
 
-  generateItemArray = (array) => {
+  randomiseItemArray = (array) => {
     var currentIndex = array.length,
       temporaryValue,
       randomIndex;
@@ -70,6 +73,24 @@ class Buy extends Component {
     }
 
     return array;
+  };
+
+  generateItemArray = () => {
+    let items = this.state.items;
+
+    let shortlist = this.state.userShortlist;
+    let shortlistIds = shortlist.map((obj) => obj._id);
+
+    console.log(this.state.userItems);
+    let userItems = this.state.userItems;
+    let userItemsIds = userItems.map((obj) => obj._id);
+    console.log(userItemsIds);
+
+    var itemArray = items.filter((val) => !shortlistIds.includes(val._id));
+
+    itemArray = itemArray.filter((val) => !userItemsIds.includes(val._id));
+
+    this.setState({ items: itemArray });
   };
 
   updateUser = (updatedUser) => {
