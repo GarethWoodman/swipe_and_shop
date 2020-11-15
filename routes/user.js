@@ -157,18 +157,19 @@ router.post("/login", (req, res) => {
     });
 });
 
+// Save to_buy items
 router.put("/save_item", (req, res) => {
   const user = req.body.user;
-  const item = req.body.item
+  const item = req.body.item;
 
-  let add_to_buy = user.to_buy
-  add_to_buy.push(item)
- 
+  let add_to_buy = user.to_buy;
+  add_to_buy.push(item);
+
   const body = {
-    to_buy : add_to_buy
-  } 
+    to_buy: add_to_buy,
+  };
 
-  User.findOneAndUpdate({_id: user._id}, {$set: body}, {new: true})
+  User.findOneAndUpdate({ _id: user._id }, { $set: body }, { new: true })
     .then((data) => {
       console.log(data);
       res.json(data);
@@ -194,8 +195,30 @@ router.put("/save_item", (req, res) => {
   // }).catch((err) => {
   //   res.send(err);
   // })
-})
+});
 
+// Save to_sell items
+router.put("/sell_item", (req, res) => {
+  const user = req.body.user;
+  const item = req.body.item;
+
+  let add_to_sell = user.to_sell;
+  add_to_sell.push(item);
+
+  const body = {
+    to_sell: add_to_sell,
+  };
+
+  User.findOneAndUpdate({ _id: user._id }, { $set: body }, { new: true })
+    .then((data) => {
+      console.log(data);
+      res.json(data);
+    })
+    .catch((error) => {
+      console.log("error: ", error);
+      next();
+    });
+});
 
 router.get("/:id", (req, res, next) => {
   console.log(req.params);
