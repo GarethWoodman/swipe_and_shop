@@ -10,6 +10,29 @@ class ItemUpload extends Component {
     price: 0.0,
     expiry_date: "",
     picture: "",
+    users: "",
+  };
+
+  componentDidMount = () => {
+    axios
+      .get("/user")
+      .then((response) => {
+        var data = response.data;
+
+        this.setState({ users: data });
+        this.generateItemArray();
+      })
+      .catch(() => {
+        alert("Error retrieving data mate");
+      });
+  };
+
+  getUser = (id) => {
+    for (var i = 0; i < this.state.users.length; i++) {
+      if (this.state.users[i]._id === id) {
+        return this.state.users[i];
+      }
+    }
   };
 
   myChangeHandler = (event) => {
@@ -30,10 +53,10 @@ class ItemUpload extends Component {
     console.log("itemToSell");
     console.log(itemToSell);
 
-    let currentUserId = this.state.user_id;
+    let currentUser = this.getUser(this.state.user_id);
 
     const payload = {
-      user: currentUserId,
+      user: currentUser,
       item: itemToSell,
     };
 
