@@ -199,7 +199,7 @@ router.put("/save_item", (req, res) => {
 
 // Save to_sell items
 router.put("/sell_item", (req, res) => {
-  const user = req.body.user;
+  const userId = req.body.user;
   const item = req.body.item;
 
   let add_to_sell = user.to_sell;
@@ -209,9 +209,9 @@ router.put("/sell_item", (req, res) => {
     to_sell: add_to_sell,
   };
 
-  User.findOneAndUpdate({ _id: user._id }, { $set: body }, { new: true })
+  User.findOneAndUpdate({ _id: userId }, { $set: body }, { new: true })
     .then((data) => {
-      console.log(data);
+      console.log("success my g!");
       res.json(data);
     })
     .catch((error) => {

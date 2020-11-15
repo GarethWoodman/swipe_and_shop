@@ -18,6 +18,42 @@ class ItemUpload extends Component {
     this.setState({ [attribute]: value });
   };
 
+  updateUserSellList = (item) => {
+    // const currentItem = this.state.items[this.state.itemNum];
+    // const user_id = localStorage.getItem("user_id");
+    // let currentUser = this.getUser(user_id);
+    // console.log(currentUser);
+    // console.log("Item", currentItem);
+
+    let itemToSell = item;
+
+    console.log("itemToSell");
+    console.log(itemToSell);
+
+    let currentUserId = this.state.user_id;
+
+    const payload = {
+      user: currentUserId,
+      item: itemToSell,
+    };
+
+    axios({
+      url: "/user/sell_item",
+      method: "PUT",
+      data: payload,
+    })
+      .then((response) => {
+        console.log("Data has been sent to the server");
+        console.log(response.data);
+        // this.updateUser(response.data);
+      })
+      .catch(() => {
+        console.log("Internal server error");
+      });
+    // const num = this.state.itemNum;
+    // this.setState({ itemNum: num + 1 });
+  };
+
   onSubmit = (event) => {
     event.preventDefault();
 
@@ -41,6 +77,10 @@ class ItemUpload extends Component {
           this.props.pageSetter("Buy");
         }
         console.log("Data has been sent to the server");
+        console.log("response");
+        console.log(response.data);
+
+        this.updateUserSellList(response.data);
       })
       .catch(() => {
         console.log("Internal server error");
