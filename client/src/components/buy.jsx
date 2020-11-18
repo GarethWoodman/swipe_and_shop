@@ -169,21 +169,23 @@ class Buy extends Component {
                     alt="pic"
                   ></img>
 
-                  <button
-                    id="yesButton"
-                    className="btn btn-lg btn-primary btn-block"
-                    onClick={this.nextItemYes}
-                  >
-                    Yes
-                  </button>
+                  <div id="buyButtons">
+                    <button
+                      id="yesButton"
+                      className="btn btn-lg btn-primary btn-block"
+                      onClick={this.nextItemYes}
+                    >
+                      Yes
+                    </button>
 
-                  <button
-                    id="noButton"
-                    className="btn btn-lg btn-primary btn-block"
-                    onClick={this.nextItemNo}
-                  >
-                    No
-                  </button>
+                    <button
+                      id="noButton"
+                      className="btn btn-lg btn-primary btn-block"
+                      onClick={this.nextItemNo}
+                    >
+                      No
+                    </button>
+                  </div>
                 </div>
               )}
               {this.state.itemNum > this.state.items.length - 1 && (
