@@ -66,11 +66,13 @@ class App extends Component {
         <NavBar
           currentPage={this.state.currentPage}
           pageSetter={this.pageSetter}
+          currentUser={this.state.currentUser}
+          usernameSetter={this.usernameSetter}
         />
 
-        {this.state.currentUser !== "" && (
+        {/* {this.state.currentUser !== "" && (
           <p id="welcomeMessage">Welcome {this.state.currentUser.real_name}!</p>
-        )}
+        )} */}
 
         {this.state.currentPage === "Shortlist" && <Shortlist />}
 

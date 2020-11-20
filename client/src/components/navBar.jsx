@@ -17,6 +17,7 @@ class NavBar extends Component {
     localStorage.setItem("authToken", null);
     localStorage.setItem("user_id", null);
     this.props.pageSetter("Login");
+    this.props.usernameSetter("");
   };
 
   createMenu = () => {
@@ -91,6 +92,17 @@ class NavBar extends Component {
         <a class="navbar-brand" href="#">
           Swipe and Shop
         </a>
+
+        <div class="">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="navbar-text">{this.props.currentUser.real_name}</a>
+            </li>
+          </ul>
+        </div>
+
+        {/* <span class="navbar-text">{this.props.currentUser.real_name}</span> */}
+
         <button
           class="navbar-toggler"
           type="button"
