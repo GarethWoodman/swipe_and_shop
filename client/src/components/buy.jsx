@@ -12,6 +12,7 @@ class Buy extends Component {
   };
 
   componentDidMount = () => {
+    // This can be moved up to App.js (look at component did mount)
     const user_id = localStorage.getItem("user_id");
     axios
       .get("/user/" + user_id)

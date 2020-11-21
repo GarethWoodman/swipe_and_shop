@@ -6,6 +6,7 @@ import Buy from "./components/buy.jsx";
 import SignUp from "./components/signUp.jsx";
 import Login from "./components/login.jsx";
 import NavBar from "./components/navBar.jsx";
+import axios from "axios";
 
 class App extends Component {
   state = {
@@ -30,6 +31,24 @@ class App extends Component {
   componentDidMount() {
     if (localStorage.getItem("authToken") !== null) {
       this.pageSetter("Buy");
+
+      const user_id = localStorage.getItem("user_id");
+      axios
+        .get("/user/" + user_id)
+        .then((response) => {
+          var data = response.data[0];
+
+          console.log("Andrew did mount");
+          console.log(data);
+
+          this.usernameSetter(data);
+          // console.log(data.to_sell);
+          // this.setState({ userShortlist: data.to_buy });
+          // this.setState({ userItems: data.to_sell });
+        })
+        .catch(() => {
+          alert("Error retrieving data!!!");
+        });
     }
   }
 
@@ -47,11 +66,13 @@ class App extends Component {
         <NavBar
           currentPage={this.state.currentPage}
           pageSetter={this.pageSetter}
+          currentUser={this.state.currentUser}
+          usernameSetter={this.usernameSetter}
         />
 
-        {this.state.currentUser !== "" && (
+        {/* {this.state.currentUser !== "" && (
           <p id="welcomeMessage">Welcome {this.state.currentUser.real_name}!</p>
-        )}
+        )} */}
 
         {this.state.currentPage === "Shortlist" && <Shortlist />}
 
