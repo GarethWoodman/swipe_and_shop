@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Button from "./button.jsx";
-import logo from "../images/swipe_and_shop_logo.png"
+import logo from "../images/swipe_and_shop_logo.png";
 // import { Navbar } from "react-bootstrap";
 
 class NavBar extends Component {
@@ -92,7 +92,7 @@ class NavBar extends Component {
       >
         <a class="navbar-brand">
           {/* Swipe and Shop */}
-          <img src={logo} style={{height: "40px"}}/> 
+          <img src={logo} style={{ height: "40px" }} />
         </a>
 
         <div class="">

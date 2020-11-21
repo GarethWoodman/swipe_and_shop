@@ -55,6 +55,9 @@ class ItemUpload extends Component {
 
     let currentUser = this.getUser(this.state.user_id);
 
+    console.log("CURRENT USER");
+    console.log(currentUser);
+
     const payload = {
       user: currentUser,
       item: itemToSell,

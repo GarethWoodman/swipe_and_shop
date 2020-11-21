@@ -11,44 +11,59 @@ class Buy extends Component {
     currentUser: "",
   };
 
-  componentDidMount = () => {
-    // This can be moved up to App.js (look at component did mount)
+  getCurrentUser = async () => {
     const user_id = localStorage.getItem("user_id");
-    axios
+    await axios
       .get("/user/" + user_id)
       .then((response) => {
         var data = response.data[0];
         console.log(data.to_sell);
         this.setState({ userShortlist: data.to_buy });
         this.setState({ userItems: data.to_sell });
+        console.log("ONE");
       })
       .catch(() => {
         alert("Error retrieving data!!!");
       });
+  };
 
-    axios
+  getItems = async () => {
+    await axios
       .get("/item")
       .then((response) => {
         var data = response.data;
         var items = data;
         var randomisedItems = this.randomiseItemArray(items);
         this.setState({ items: randomisedItems });
+        console.log("TWO");
       })
       .catch(() => {
         alert("Error retrieving data!!!");
       });
+  };
 
-    axios
+  getUsers = async () => {
+    await axios
       .get("/user")
       .then((response) => {
         var data = response.data;
 
         this.setState({ users: data });
         this.generateItemArray();
+        console.log("THREE");
       })
       .catch(() => {
         alert("Error retrieving data mate");
       });
+  };
+
+  componentDidMount = async () => {
+    // This can be moved up to App.js (look at component did mount)
+    await this.getCurrentUser();
+
+    await this.getItems();
+
+    await this.getUsers();
   };
 
   getUser = (id) => {
