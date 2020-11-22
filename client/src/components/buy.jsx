@@ -47,9 +47,7 @@ class Buy extends Component {
       .get("/user")
       .then((response) => {
         var data = response.data;
-
         this.setState({ users: data });
-        this.generateItemArray();
         console.log("THREE");
       })
       .catch(() => {
@@ -97,16 +95,25 @@ class Buy extends Component {
     let shortlist = this.state.userShortlist;
     let shortlistIds = shortlist.map((obj) => obj._id);
 
-    console.log(this.state.userItems);
     let userItems = this.state.userItems;
     let userItemsIds = userItems.map((obj) => obj._id);
-    console.log(userItemsIds);
 
     var itemArray = items.filter((val) => !shortlistIds.includes(val._id));
 
     itemArray = itemArray.filter((val) => !userItemsIds.includes(val._id));
 
-    this.setState({ items: itemArray });
+    if (!this.arrayEquals(itemArray, items)) {
+      this.setState({ items: itemArray });
+    }
+  };
+
+  arrayEquals = (a, b) => {
+    return (
+      Array.isArray(a) &&
+      Array.isArray(b) &&
+      a.length === b.length &&
+      a.every((val, index) => val === b[index])
+    );
   };
 
   updateUser = (updatedUser) => {
@@ -155,11 +162,13 @@ class Buy extends Component {
   };
 
   render() {
+    // this.generateItemArray();
     // Checks if items and users have been loaded, if they haven't - return null
     if (!this.state.items.length || !this.state.users.length) {
       console.log("Not loaded");
       return null;
     }
+    this.generateItemArray();
     console.log(this.state.items[0].item_name);
     return (
       <div>
