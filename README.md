@@ -1,4 +1,4 @@
-![Swipe and Shop](https://raw.githubusercontent.com/GarethWoodman/swipe_and_shop/master/client/src/images/swipe_and_shop_logo.png)
+<div align="center">![Swipe and Shop](https://raw.githubusercontent.com/GarethWoodman/swipe_and_shop/master/client/src/images/swipe_and_shop_logo.png)</div>
 
 An app to buy and sell items using a Tinder style selection process
 
