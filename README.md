@@ -1,4 +1,4 @@
-# Swipe and Shop 🛒
+![Swipe and Shop](client/src/images/swipe_and_logo.png)
 
 An app to buy and sell items using a Tinder style selection process
 
