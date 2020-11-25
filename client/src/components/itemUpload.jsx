@@ -116,7 +116,7 @@ class ItemUpload extends Component {
 
   render() {
     return (
-      <section className="row justify-content-center">
+      <section className="d-flex justify-content-center">
         <section className="col-12 col-sm-6 col-md-3">
           <form className="form-signin" onSubmit={this.onSubmit}>
             <InputBox

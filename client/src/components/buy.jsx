@@ -163,7 +163,7 @@ class Buy extends Component {
     console.log(this.state.items[0].item_name);
     return (
       <div>
-        <section className="row justify-content-center">
+        <section className="d-flex justify-content-center">
           <section className="">
             <div className="buy-page">
               {/* <h1>Buy Page</h1> */}

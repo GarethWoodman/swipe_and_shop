@@ -66,7 +66,7 @@ class Login extends Component {
           <Error message={"Incorrect login information"} />
         )}
 
-        <section className="row justify-content-center">
+        <section className="d-flex justify-content-center">
           <section className="col-12 col-sm-6 col-md-3">
             <form className="form-signin" onSubmit={this.onSubmit}>
               <h1 className="h3 mb-3 font-weight-normal"></h1>
