@@ -37,7 +37,7 @@ class Login extends Component {
     })
       // Called if server provides response
       .then((response) => {
-        if (response.data.data.length == 0) {
+        if (response.data.data.length === 0) {
           this.setState({ error: true });
         } else {
           console.log("Login accepted");

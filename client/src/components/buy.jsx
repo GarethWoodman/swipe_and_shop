@@ -180,7 +180,7 @@ class Buy extends Component {
                     {this.state.items[this.state.itemNum].price}
                   </p>
                   <img
-                    id="itemPicture"
+                    className="itemPicture"
                     src={this.state.items[this.state.itemNum].picture}
                     alt="pic"
                   ></img>

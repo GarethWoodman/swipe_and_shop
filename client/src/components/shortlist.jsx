@@ -53,16 +53,20 @@ class Shortlist extends Component {
     return (
       <div>
         <section className="d-flex justify-content-center">
-          <section className="col-12 col-sm-6 col-md-3">
+          <section className="">
             {this.state.seller_items.map(function (item) {
               return (
-                <div>
+                <div className="shortlist-page">
                   Contact:
                   <li>{`Name: ${item.seller.real_name} - Email: ${item.seller.email}`}</li>
                   <li>---</li>
                   Item:
                   <li>{item.item.item_name}</li>
-                  <img src={item.item.picture} />
+                  <img
+                    className="itemPicture"
+                    alt="pic"
+                    src={item.item.picture}
+                  />
                   <br></br>
                   <br></br>
                 </div>
