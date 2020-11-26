@@ -60,7 +60,7 @@ class SignUp extends Component {
     console.log(this.state);
     return (
       <div>
-        <section className="row justify-content-center">
+        <section className="d-flex justify-content-center">
           <section className="col-12 col-sm-6 col-md-3">
             <div>{this.state.sign_in_error && <h1>Wrong info</h1>}</div>
             <form className="form-signin" onSubmit={this.onSubmit}>

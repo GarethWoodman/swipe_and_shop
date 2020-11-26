@@ -163,7 +163,7 @@ class Buy extends Component {
     console.log(this.state.items[0].item_name);
     return (
       <div>
-        <section className="row justify-content-center">
+        <section className="d-flex justify-content-center">
           <section className="">
             <div className="buy-page">
               {/* <h1>Buy Page</h1> */}
@@ -180,7 +180,7 @@ class Buy extends Component {
                     {this.state.items[this.state.itemNum].price}
                   </p>
                   <img
-                    id="itemPicture"
+                    className="itemPicture"
                     src={this.state.items[this.state.itemNum].picture}
                     alt="pic"
                   ></img>
