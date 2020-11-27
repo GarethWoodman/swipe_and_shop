@@ -98,7 +98,7 @@ class NavBar extends Component {
         <div class="">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="navbar-text">{this.props.currentUser.real_name}</a>
+              {/* <a class="navbar-text">{this.props.currentUser.real_name}</a> */}
             </li>
           </ul>
         </div>

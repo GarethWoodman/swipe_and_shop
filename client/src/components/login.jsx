@@ -52,7 +52,7 @@ class Login extends Component {
       })
       // Called if server is unresponsive
       .catch(() => {
-        console.log("Internal Server Error");
+        alert("Internal server error on login")
       });
 
     // this.props.pageSetter("Buy");

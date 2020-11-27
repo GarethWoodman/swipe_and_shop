@@ -19,7 +19,7 @@ class Shortlist extends Component {
         this.get_item_and_seller(items);
       })
       .catch(() => {
-        alert("Error retrieving data!!!");
+        alert("Error getting user_id from shortlist");
       });
   };
 
