@@ -11,8 +11,7 @@ class Buy extends Component {
     currentUser: "",
   };
 
-  getCurrentUser = async () => {
-    const user_id = localStorage.getItem("user_id");
+  getCurrentUser = async (user_id) => {    
     await axios
       .get("/user/" + user_id)
       .then((response) => {
@@ -23,7 +22,7 @@ class Buy extends Component {
         console.log("ONE");
       })
       .catch(() => {
-        alert("Error retrieving data!!!");
+        alert("Error getting user from buy");
       });
   };
 
@@ -38,7 +37,7 @@ class Buy extends Component {
         console.log("TWO");
       })
       .catch(() => {
-        alert("Error retrieving data!!!");
+        alert("Error getting iterm from buy");
       });
   };
 
@@ -53,14 +52,17 @@ class Buy extends Component {
         console.log("THREE");
       })
       .catch(() => {
-        alert("Error retrieving data mate");
+        alert("Error getting all users from buy");
       });
   };
 
   componentDidMount = async () => {
     // This can be moved up to App.js (look at component did mount)
-    await this.getCurrentUser();
 
+    if (localStorage.getItem("user_id") !== "null") {
+      await this.getCurrentUser(localStorage.getItem("user_id"));
+    }
+    
     await this.getItems();
 
     await this.getUsers();

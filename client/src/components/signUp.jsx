@@ -48,7 +48,7 @@ class SignUp extends Component {
       })
       // If data cannot be saved
       .catch(() => {
-        console.log("Internal server error");
+        alert("Error saving user on signUp");
         this.setState({ sign_in_error: true });
       });
 
