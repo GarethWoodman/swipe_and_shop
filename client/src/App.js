@@ -29,7 +29,8 @@ class App extends Component {
   // };
 
   componentDidMount() {
-    if (localStorage.getItem("authToken") !== null) {
+    if (localStorage.getItem("authToken") !== "null") {
+      console.log(localStorage.getItem("authToken"))
       this.pageSetter("Buy");
 
       const user_id = localStorage.getItem("user_id");
@@ -47,7 +48,7 @@ class App extends Component {
           // this.setState({ userItems: data.to_sell });
         })
         .catch(() => {
-          alert("Error retrieving data!!!");
+          alert("Error retrieving data user on App.js");
         });
     }
   }
