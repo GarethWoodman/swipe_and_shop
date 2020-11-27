@@ -15,17 +15,18 @@ class ItemUpload extends Component {
 
   componentDidMount = () => {
     axios
-      .get("/user")
-      .then((response) => {
-        var data = response.data;
+    .get("/user")
+    .then((response) => {
+      var data = response.data;
 
-        this.setState({ users: data });
-        this.generateItemArray();
-      })
-      .catch(() => {
-        alert("Error retrieving data mate");
-      });
-  };
+      this.setState({ users: data });
+      this.generateItemArray();
+    })
+    .catch(() => {
+      console.log("Error getting all users in itemUpload");
+    });
+  }
+    
 
   getUser = (id) => {
     for (var i = 0; i < this.state.users.length; i++) {
