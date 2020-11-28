@@ -99,15 +99,16 @@ class ItemUpload extends Component {
       data: payload,
     })
       .then((response) => {
-        // If response.data is true redirect to buy page
-        if (response.data) {
-          this.props.pageSetter("Buy");
-        }
         console.log("Data has been sent to the server");
         console.log("response");
         console.log(response.data);
 
         this.updateUserSellList(response.data);
+        // If response.data is true redirect to buy page
+        // Set page after records have been updated
+        if (response.data) {
+          this.props.pageSetter("Buy");
+        }
       })
       .catch(() => {
         console.log("Internal server error");
