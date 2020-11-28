@@ -41,13 +41,13 @@ class Login extends Component {
           this.setState({ error: true });
         } else {
           console.log("Login accepted");
-          this.props.pageSetter("Buy");
-
           console.log(response.data.token);
           localStorage.setItem("authToken", response.data.token);
           localStorage.setItem("user_id", response.data.data[0]._id);
           console.log(response.data.data[0]);
           this.props.usernameSetter(response.data.data[0]);
+          // Set page AFTER items are set in local storage
+          this.props.pageSetter("Buy");
         }
       })
       // Called if server is unresponsive
