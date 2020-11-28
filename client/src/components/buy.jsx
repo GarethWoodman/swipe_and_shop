@@ -11,61 +11,37 @@ class Buy extends Component {
     currentUser: "",
   };
 
-  getCurrentUser = async (user_id) => {    
+  getCurrentUser = async (user_id) => {
     await axios
       .get("/user/" + user_id)
       .then((response) => {
         var data = response.data[0];
-        console.log(data.to_sell);
         this.setState({ userShortlist: data.to_buy });
         this.setState({ userItems: data.to_sell });
         console.log("ONE");
+        return axios.get("/item")
       })
-      .catch(() => {
-        alert("Error getting user from buy");
-      });
-  };
-
-  getItems = async () => {
-    await axios
-      .get("/item")
       .then((response) => {
         var data = response.data;
         var items = data;
         var randomisedItems = this.randomiseItemArray(items);
         this.setState({ items: randomisedItems });
         console.log("TWO");
+        return axios.get("/user")
       })
-      .catch(() => {
-        alert("Error getting iterm from buy");
-      });
-  };
-
-  getUsers = async () => {
-    await axios
-      .get("/user")
       .then((response) => {
         var data = response.data;
-
+        this.generateItemArray()
         this.setState({ users: data });
-        this.generateItemArray();
         console.log("THREE");
       })
       .catch(() => {
         alert("Error getting all users from buy");
       });
-  };
+  }
 
-  componentDidMount = async () => {
-    // This can be moved up to App.js (look at component did mount)
-
-    if (localStorage.getItem("user_id") !== "null") {
-      await this.getCurrentUser(localStorage.getItem("user_id"));
-    }
-    
-    await this.getItems();
-
-    await this.getUsers();
+  componentDidMount = () => {
+    this.getCurrentUser(localStorage.getItem('user_id'))
   };
 
   getUser = (id) => {
@@ -157,12 +133,6 @@ class Buy extends Component {
   };
 
   render() {
-    // Checks if items and users have been loaded, if they haven't - return null
-    if (!this.state.items.length || !this.state.users.length) {
-      console.log("Not loaded");
-      return null;
-    }
-    console.log(this.state.items[0].item_name);
     return (
       <div>
         <section className="d-flex justify-content-center">
