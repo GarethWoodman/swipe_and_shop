@@ -87,7 +87,7 @@ class NavBar extends Component {
   render() {
     return (
       <nav
-        class="navbar navbar-expand-lg navbar-light bg-light"
+        class="navbar navbar-expand-lg navbar-light bg-light fixed-top"
         // style={{ backgroundColor: "#1E90FF" }}
       >
         <a class="navbar-brand">

@@ -30,7 +30,7 @@ class App extends Component {
 
   componentDidMount() {
     if (localStorage.getItem("authToken") !== "null") {
-      console.log(localStorage.getItem("authToken"))
+      console.log(localStorage.getItem("authToken"));
       this.pageSetter("Buy");
 
       const user_id = localStorage.getItem("user_id");
@@ -75,21 +75,23 @@ class App extends Component {
           <p id="welcomeMessage">Welcome {this.state.currentUser.real_name}!</p>
         )} */}
 
-        {this.state.currentPage === "Shortlist" && <Shortlist />}
+        <div className="mainBody">
+          {this.state.currentPage === "Shortlist" && <Shortlist />}
 
-        {this.state.currentPage === "Login" && (
-          <Login
-            pageSetter={this.pageSetter}
-            usernameSetter={this.usernameSetter}
-          />
-        )}
-        {this.state.currentPage === "Buy" && <Buy />}
-        {this.state.currentPage === "Sell" && (
-          <Sell pageSetter={this.pageSetter} />
-        )}
-        {this.state.currentPage === "Sign Up" && (
-          <SignUp pageSetter={this.pageSetter} />
-        )}
+          {this.state.currentPage === "Login" && (
+            <Login
+              pageSetter={this.pageSetter}
+              usernameSetter={this.usernameSetter}
+            />
+          )}
+          {this.state.currentPage === "Buy" && <Buy />}
+          {this.state.currentPage === "Sell" && (
+            <Sell pageSetter={this.pageSetter} />
+          )}
+          {this.state.currentPage === "Sign Up" && (
+            <SignUp pageSetter={this.pageSetter} />
+          )}
+        </div>
       </div>
     );
   }

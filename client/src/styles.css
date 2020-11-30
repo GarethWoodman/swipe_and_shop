@@ -41,3 +41,7 @@
   width: 90.5%;
   bottom: 30px;
 }
+
+.mainBody {
+  margin-top: 65px; /* Add a top margin to avoid content overlay */
+}
