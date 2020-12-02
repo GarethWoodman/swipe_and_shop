@@ -57,11 +57,16 @@ class Shortlist extends Component {
             {this.state.seller_items.map(function (item) {
               return (
                 <div className="shortlist-page">
-                  Contact:
-                  <li>{`Name: ${item.seller.real_name} - Email: ${item.seller.email}`}</li>
-                  <li>---</li>
-                  Item:
-                  <li>{item.item.item_name}</li>
+                  <h2>{item.item.item_name}</h2>
+
+                  <dl>
+                    <dt>{`Price: £${item.item.price}`}</dt>
+                    {/* <dt>{`Expiry: ${item.item.expiry_date}`}</dt> */}
+                    {/* <dt>{`Description: ${item.item.description}`}</dt> */}
+                    <dt>{`Contact Name: ${item.seller.real_name}`}</dt>
+                    <dt>{`Email: ${item.seller.email}`}</dt>
+                  </dl>
+
                   <img
                     className="itemPicture"
                     alt="pic"
