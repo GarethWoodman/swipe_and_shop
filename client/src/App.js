@@ -51,6 +51,17 @@ class App extends Component {
           alert("Error retrieving data user on App.js");
         });
     }
+
+    // Clear all records of items before logging in
+    console.log("Deleting all items")
+    axios
+      .delete("/item/delete")
+      .then((response) => {
+        console.log(response)
+      })
+      .catch(() => {
+        console.log("Error deleting all records in App.js");
+      });
   }
 
   pageSetter = (value) => {

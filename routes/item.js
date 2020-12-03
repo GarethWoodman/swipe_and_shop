@@ -8,6 +8,17 @@ const User = require("../models/user");
 
 // Routes
 
+// Delete all
+// Block only works if placed first
+router.delete("/delete", (req, res) => {
+  console.log("In delete route for all items")
+  Item.deleteMany({}, function (err){
+    if (err) throw err;
+
+    res.status(200).json({ msg: "Deleted all records" })
+  });
+});
+
 router.get("/", (req, res) => {
   Item.find({})
     .then((data) => {
