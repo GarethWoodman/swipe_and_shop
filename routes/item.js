@@ -32,18 +32,27 @@ router.get("/", (req, res) => {
 
 router.post("/save", (req, res) => {
   const data = req.body;
+  console.log(data.length)
 
-  const newItem = new Item(data);
+  // If there's more than one item
+  if(data.length > 1){
+    Item.insertMany(data, function(err) {
+      if (err) throw err;
+      res.status(200).json({ msg: "Inserted records of 151 pokemon" });
+    });
+  } else {
+    const newItem = new Item(data);
 
-  newItem.save((error) => {
-    // Return response.data false if error otherwise return true
-    if (error) {
-      res.status(500).json({ msg: "Sorry, internal server errors" });
-      res.json(false);
-    }
+    newItem.save((error) => {
+      // Return response.data false if error otherwise return true
+      if (error) {
+        res.status(500).json({ msg: "Sorry, internal server errors" });
+        res.json(false);
+      }
 
-    res.json(newItem);
-  });
+      res.json(newItem);
+    });
+  }
 });
 
 router.get("/:id", (req, res) => {
