@@ -71,14 +71,14 @@ class App extends Component {
   async populateDB(){
     let pokemon = []
 
-    for (let i = 1; i <= 151; i++) {
+    for (let i = 1; i <= 3; i++) {
       const url = "https://pokeapi.co/api/v2/pokemon/" + i
       const response = await fetch(url)
       this.data = await response.json()
       console.log(this.data.name)
   
       const payload = {
-        user_id: "123",
+        user_id: "5fb94fe588f9ad9e2cf04380",
         item_name: this.data.name,
         description: `#${this.data.id} | Type: ${this.data.types[0].type.name} | Ability: ${this.data.abilities[0].ability.name}`,
         price: 1,
