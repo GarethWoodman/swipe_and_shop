@@ -103,9 +103,6 @@ class NavBar extends Component {
                 src={this.props.currentUser.picture}
                 style={{ height: "34px" }}
               />
-            </li>
-
-            <li class="nav-item">
               <a class="navbar-text">{this.props.currentUser.real_name}</a>
             </li>
           </ul>
