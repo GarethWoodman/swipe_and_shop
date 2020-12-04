@@ -19,7 +19,7 @@ class Buy extends Component {
         this.setState({ userShortlist: data.to_buy });
         this.setState({ userItems: data.to_sell });
         console.log("ONE");
-        return axios.get("/item")
+        return axios.get("/item");
       })
       .then((response) => {
         var data = response.data;
@@ -27,21 +27,21 @@ class Buy extends Component {
         var randomisedItems = this.randomiseItemArray(items);
         this.setState({ items: randomisedItems });
         console.log("TWO");
-        return axios.get("/user")
+        return axios.get("/user");
       })
       .then((response) => {
         var data = response.data;
-        this.generateItemArray()
+        this.generateItemArray();
         this.setState({ users: data });
         console.log("THREE");
       })
       .catch(() => {
         alert("Error getting all users from buy");
       });
-  }
+  };
 
   componentDidMount = () => {
-    this.getCurrentUser(localStorage.getItem('user_id'))
+    this.getCurrentUser(localStorage.getItem("user_id"));
   };
 
   getUser = (id) => {
@@ -149,7 +149,7 @@ class Buy extends Component {
                     {this.state.items[this.state.itemNum].description}
                   </p>
                   <p id="itemPrice">
-                    {this.state.items[this.state.itemNum].price}
+                    £{this.state.items[this.state.itemNum].price}
                   </p>
                   <img
                     className="itemPicture"
