@@ -45,3 +45,9 @@
 .mainBody {
   margin-top: 65px; /* Add a top margin to avoid content overlay */
 }
+
+#profilePicture {
+  border-radius: 50%;
+  margin-top: 6.5px;
+  margin-right: 4.5px;
+}

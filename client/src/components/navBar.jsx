@@ -98,6 +98,14 @@ class NavBar extends Component {
         <div class="navbar-brand d-flex w-50 mr-auto">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
+              <img
+                id="profilePicture"
+                src={this.props.currentUser.picture}
+                style={{ height: "34px" }}
+              />
+            </li>
+
+            <li class="nav-item">
               <a class="navbar-text">{this.props.currentUser.real_name}</a>
             </li>
           </ul>
