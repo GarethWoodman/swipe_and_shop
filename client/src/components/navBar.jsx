@@ -88,7 +88,7 @@ class NavBar extends Component {
     return (
       <nav
         class="navbar navbar-expand-lg navbar-light fixed-top"
-        style={{ backgroundColor: "#1976d2" }}
+        style={{ backgroundColor: "#ffffff" }}
       >
         <a class="navbar-brand">
           {/* Swipe and Shop */}
