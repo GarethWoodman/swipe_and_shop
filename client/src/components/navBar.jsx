@@ -87,17 +87,22 @@ class NavBar extends Component {
   render() {
     return (
       <nav
-        class="navbar navbar-expand-lg navbar-light bg-light fixed-top"
-        // style={{ backgroundColor: "#1E90FF" }}
+        class="navbar navbar-expand-lg navbar-light fixed-top"
+        style={{ backgroundColor: "#ffffff" }}
       >
         <a class="navbar-brand">
           {/* Swipe and Shop */}
           <img src={logo} style={{ height: "40px" }} />
         </a>
 
-        <div class="">
-          <ul class="navbar-nav ml-auto">
+        <div class="navbar-brand d-flex w-50 mr-auto">
+          <ul class="navbar-nav mr-auto">
             <li class="nav-item">
+              <img
+                id="profilePicture"
+                src={this.props.currentUser.picture}
+                style={{ height: "34px" }}
+              />
               <a class="navbar-text">{this.props.currentUser.real_name}</a>
             </li>
           </ul>
