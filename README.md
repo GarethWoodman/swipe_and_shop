@@ -6,6 +6,8 @@
   An app to buy and sell items using a Tinder style selection process
 </div>
 
+Check out our app at [https://swipe-and-shop.herokuapp.com/](https://swipe-and-shop.herokuapp.com/)
+
 # Tech Stack:
 
 - MongoDB
