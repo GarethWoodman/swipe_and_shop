@@ -2,9 +2,7 @@
   <img src="https://raw.githubusercontent.com/GarethWoodman/swipe_and_shop/master/client/src/images/swipe_and_shop_logo.png"/>
 </div>
 
-<div align="center">
-  An app to buy and sell items using a Tinder style selection process
-</div>
+An app to buy and sell items using a Tinder style selection process
 
 Check out our app at [https://swipe-and-shop.herokuapp.com/](https://swipe-and-shop.herokuapp.com/)
 
