@@ -177,7 +177,7 @@ class Buy extends Component {
                 </div>
               )}
               {this.state.itemNum > this.state.items.length - 1 && (
-                <h1>No items left in your area!</h1>
+                <h1 className="noItemsLeft">No items left in your area!</h1>
               )}
             </div>
           </section>

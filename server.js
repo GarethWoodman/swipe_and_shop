@@ -15,9 +15,6 @@ const routes = require("./routes/api");
 const userRouter = require("./routes/user");
 const itemRouter = require("./routes/item");
 
-// const MONGODB_URI =
-//   "mongodb+srv://andrewhulme:MerryChristmas@swipeandshop.rtrxp.mongodb.net/SwipeAndShop?retryWrites=true&w=majority";
-
 //Step 2
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/swipe_and_shop",

@@ -61,3 +61,8 @@
 
   /* the rest of your styling */
 }
+
+.noItemsLeft {
+  margin-top: 38%;
+  font-weight: 500;
+}

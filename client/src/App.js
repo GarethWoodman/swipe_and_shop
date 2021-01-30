@@ -11,7 +11,13 @@ import axios from "axios";
 class App extends Component {
   state = {
     currentPage: "Login",
-    currentUser: "",
+    currentUser: {
+      email: "",
+      password: "",
+      username: "",
+      real_name: "",
+      picture: "",
+    },
   };
 
   // pageSetter = ({ target }) => {
@@ -29,7 +35,7 @@ class App extends Component {
   // };
 
   componentDidMount() {
-    if (localStorage.getItem("authToken") !== "null") {
+    if (localStorage.getItem("authToken") !== null) {
       console.log(localStorage.getItem("authToken"));
       this.pageSetter("Buy");
 

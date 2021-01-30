@@ -15,13 +15,20 @@ class NavBar extends Component {
 
   logOut = () => {
     console.log("Halo");
-    localStorage.setItem("authToken", null);
-    localStorage.setItem("user_id", null);
+
+    localStorage.clear();
+
     this.props.pageSetter("Login");
     this.props.usernameSetter("");
   };
 
   createMenu = () => {
+    console.log("NavBar props currentUser");
+    console.log(this.props.currentUser);
+
+    console.log("NavBar props currentPage");
+    console.log(this.props.currentPage);
+
     if (
       this.props.currentPage === "Buy" ||
       this.props.currentPage === "Sell" ||
@@ -97,14 +104,17 @@ class NavBar extends Component {
 
         <div class="navbar-brand d-flex w-50 mr-auto">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <img
-                id="profilePicture"
-                src={this.props.currentUser.picture}
-                style={{ height: "34px" }}
-              />
-              <a class="navbar-text">{this.props.currentUser.real_name}</a>
-            </li>
+            {this.props.currentUser.email !== "" && (
+              <li class="nav-item">
+                <img
+                  id="profilePicture"
+                  src={this.props.currentUser.picture}
+                  style={{ height: "34px" }}
+                />
+
+                <a class="navbar-text">{this.props.currentUser.real_name}</a>
+              </li>
+            )}
           </ul>
         </div>
 
